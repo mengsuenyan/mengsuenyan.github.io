@@ -26,7 +26,7 @@ function Update-Index {
             $header = $md.AddHeader($dir, $lvl)
             $files = Get-ChildItem $dir.FullName -File
             foreach ($file in $files) {
-                $md.AddLink($header, $file.basename, $file.FullName.TrimStart($RootDir).insert(0, '.\'))
+                $md.AddLink($header, $file.basename, $file.FullName.TrimStart($RootDir))
             }
             __itedir__ $dir.FullName ($lvl + 1)
         }
