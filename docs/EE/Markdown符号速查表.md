@@ -57,54 +57,54 @@
 |$\centerdot$|`$\centerdot$`|
 |$\setminus$|`$\setminus$`|
 |$\%$|`$\%$`|
-|$\ast$|`$\ast$|`|
-|$\$$|`$\$$|`|
-|$\infty$|`$\infty$|`|
-|$\pm$|`$\pm$|`|
-|$\mp$|`$\mp$|`|
-|$\lvert$|`$\lvert$|`|
-|$\rvert$|`$\rvert$|`|
-|$\lVert$|`$\lVert$|`|
-|$\rVert$|`$\rVert$|`|
+|$\ast$|`$\ast$`|
+|$\$$|`$\$$`|
+|$\infty$|`$\infty$`|
+|$\pm$|`$\pm$`|
+|$\mp$|`$\mp$`|
+|$\lvert$|`$\lvert$`|
+|$\rvert$|`$\rvert$`|
+|$\lVert$|`$\lVert$`|
+|$\rVert$|`$\rVert$`|
 
 
 ### [关系逻辑算符](#toc)
 
 |算符形式|语法|
 |:-:|:-:|
-|$\neq$|`$\neq$|`|
-|$\leq$|`$\leq$|`|
+|$\neq$|`$\neq$`|
+|$\leq$|`$\leq$`|
 |$\ge$|`$\ge$|`|
-|$\equiv$|`$\equiv$|`|
-|$\approx$|`$\approx$|`|
-|$\simeq$|`$\simeq$|`|
-|$\ll$|`$\ll$|`|
-|$\gg$|`$\gg$|`|
-|$\propto$|`$\propto$|`|
-|$\varnothing$|`$\varnothing$|`|
-|$\varpropto$|`$\varpropto$|`|
-|$\mid$|`$\mid$|`|
-|$\shortmid$|`$\shortmid$|`|
-|$\parallel$|`$\parallel$|`|
-|$\multimap$|`$\multimap$|`|
-|$\perp$|`$\perp$|`|
-|$\subset$|`$\subset$|`|
-|$\supset$|`$\supset$|`|
-|$\subseteq$|`$\subseteq$|`|
-|$\supseteq$|`$\supseteq$|`|
-|$\subseteqq$|`$\subseteqq$|`|
-|$\supseteqq$|`$\supseteqq$|`|
-|$\nsubseteq$|`$\nsubseteq$|`|
-|$\nsupseteq$|`$\nsupseteq$|`|
-|$\subsetneqq$|`$\subsetneqq$|`|
-|$\supsetneqq$|`$\supsetneqq$|`|
-|$\cup$|`$\cup$|`|
-|$\cap$|`$\cap$|`|
-|$\in$|`$\in$|`|
-|$\notin$|`$\notin$|`|
-|$\vee$|`$\vee$|`|
-|$\wedge$|`$\wedge$|`|
-|$\And$|`$\And$|`|
+|$\equiv$|`$\equiv$`|
+|$\approx$|`$\approx$`|
+|$\simeq$|`$\simeq$`|
+|$\ll$|`$\ll$`|
+|$\gg$|`$\gg$`|
+|$\propto$|`$\propto$`|
+|$\varnothing$|`$\varnothing$`|
+|$\varpropto$|`$\varpropto$`|
+|$\mid$|`$\mid$`|
+|$\shortmid$|`$\shortmid$`|
+|$\parallel$|`$\parallel$`|
+|$\multimap$|`$\multimap$`|
+|$\perp$|`$\perp$`|
+|$\subset$|`$\subset$`|
+|$\supset$|`$\supset$`|
+|$\subseteq$|`$\subseteq$`|
+|$\supseteq$|`$\supseteq$`|
+|$\subseteqq$|`$\subseteqq$`|
+|$\supseteqq$|`$\supseteqq$`|
+|$\nsubseteq$|`$\nsubseteq$`|
+|$\nsupseteq$|`$\nsupseteq$`|
+|$\subsetneqq$|`$\subsetneqq$`|
+|$\supsetneqq$|`$\supsetneqq$`|
+|$\cup$|`$\cup$`|
+|$\cap$|`$\cap$`|
+|$\in$|`$\in$`|
+|$\notin$|`$\notin$`|
+|$\vee$|`$\vee$`|
+|$\wedge$|`$\wedge$`|
+|$\And$|`$\And$`|
 
 
 ### [证明算符](#toc)
@@ -123,10 +123,10 @@
 
 |算符形式|语法|
 |:-:|:-:|
-|$\pounds$|`$\pounds$|`|
-|$\partial$|`$\partial$|`|
-|$\nabla$|`$\nabla$|`|
-|$\prod$|`$\prod$|`|
+|$\pounds$|`$\pounds$`|
+|$\partial$|`$\partial$`|
+|$\nabla$|`$\nabla$`|
+|$\prod$|`$\prod$`|
 |$\sum$|`$\sum$|`|
 |$\int$|`$\int$|`|
 |$\iint$|`$\iint$|`|
@@ -178,6 +178,24 @@
 |$\bar{a}$|`$\bar{a}$|`|
 |$\dot{a}$|`$\dot{a}$|`|
 |$\ddot{a}$|`$\ddot{a}$`|
+
+## [箭头](#toc)
+
+|示例|语法|示例|语法|示例|语法|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|$\rightarrow$|`$\rightarrow$|`|$\leftarrow$|`$\leftarrow$|`|$\to$|`$\to$|`|
+|$\iff$|`$\iff$|`|$\multimap$|`$\multimap$|`|$\Rightarrow$|`$\Rightarrow$|`|
+|$\Leftarrow$|`$\Leftarrow$|`|$\longrightarrow$|`$\longrightarrow$|`|$\Longrightarrow$|`$\Longrightarrow$|`|
+|$\longleftarrow$|`$\longleftarrow$|`|$\Longleftarrow$|`$\Longleftarrow$|`|$\uparrow$|`$\uparrow$|`|
+|$\Uparrow$|`$\Uparrow$|`|$\downarrow$|`$\downarrow$|`|$\Downarrow$|`$\Downarrow$|`|
+|$\updownarrow$|`$\updownarrow$|`|$\Updownarrow$|`$\Updownarrow$|`|$\nearrow$|`$\nearrow$|`|
+|$\nwarrow$|`$\nwarrow$|`|$\swarrow$|`$\swarrow$|`|$\searrow$|`$\searrow$|`|
+|$\longleftrightarrow$|`$\longleftrightarrow$|`|$\Longleftrightarrow$|`$\Longleftrightarrow$|`|$\leftrightsquigarrow$|`$\leftrightsquigarrow$|`|
+|$\longmapsto$|`$\longmapsto$|`|$\rightarrowtail$|`$\rightarrowtail$|`|$\leftarrowtail$|`$\leftarrowtail$|`|
+|$\dashrightarrow$|`$\dashrightarrow$|`|$\dashleftarrow$|`$\dashleftarrow$|`|$\circlearrowright$|`$\circlearrowright$|`|
+|$\circlearrowleft$|`$\circlearrowleft$|`|$\Rsh$|`$\Rsh$|`|$\Lsh$|`$\Lsh$|`|
+|$\hookrightarrow$|`$\hookrightarrow$|`|$\hookleftarrow$|`$\hookleftarrow$|`|$\curvearrowright$|`$\curvearrowright$|`|
+|$\curvearrowleft$|`$\curvearrowleft$|`|$\looparrowright$|`$\looparrowright$|`|$\looparrowleft$|`$\looparrowleft$|`|
 
 
 ## [方程组](#toc)
