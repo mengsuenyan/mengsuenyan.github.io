@@ -49,7 +49,7 @@
 
 |算符形式|语法|
 |:-:|:-:|
-|$\times$|`\times$`|
+|$\times$|`$\times$`|
 |$\div$|`$\div$`|
 |$\sqrt{}$|`$\sqrt{}$`|
 |$\frac{n}{d}$|`$\frac{n}{d}$`|
