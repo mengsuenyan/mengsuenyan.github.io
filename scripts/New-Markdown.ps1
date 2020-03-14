@@ -1,4 +1,4 @@
-. (Join-Path (Split-Path -Parent $MyInvocation.MyCommand.Source) OOP.ps1)
+. (Join-Path $PSScriptRoot OOP.ps1)
 
 function New-Markdown {
     param(

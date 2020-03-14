@@ -1,4 +1,4 @@
-$ScriptPath = Split-Path -Parent $MyInvocation.MyCommand.Source
+$ScriptPath = $PSScriptRoot
 . (Join-Path $ScriptPath New-Markdown.ps1)
 
 function Update-Index {
@@ -24,7 +24,7 @@ function Update-Index {
         $dirs = Get-ChildItem $path -Directory
         foreach ($dir in $dirs) {
             $header = $md.AddHeader($dir, $lvl)
-            $files = Get-ChildItem $dir.FullName -File
+            $files = Get-ChildItem $dir.FullName -File -Filter "*.html"
             foreach ($file in $files) {
                 $md.AddLink($header, $file.basename, $file.FullName.TrimStart($RootDir).Replace('\', '/'))
             }
