@@ -51,7 +51,7 @@
 |:-:|:-:|
 |$\times$|`$\times$`|
 |$\div$|`$\div$`|
-|$\sqrt{}$|`$\sqrt{}$`|
+|$\sqrt{x}$|`$\sqrt{x}$`|
 |$\frac{n}{d}$|`$\frac{n}{d}$`|
 |$\cdot$|`$\cdot$`|
 |$\centerdot$|`$\centerdot$`|
