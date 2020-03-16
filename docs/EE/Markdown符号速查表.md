@@ -196,6 +196,9 @@
 |$\circlearrowleft$|`$\circlearrowleft$|`|$\Rsh$|`$\Rsh$|`|$\Lsh$|`$\Lsh$|`|
 |$\hookrightarrow$|`$\hookrightarrow$|`|$\hookleftarrow$|`$\hookleftarrow$|`|$\curvearrowright$|`$\curvearrowright$|`|
 |$\curvearrowleft$|`$\curvearrowleft$|`|$\looparrowright$|`$\looparrowright$|`|$\looparrowleft$|`$\looparrowleft$|`|
+|$\xleftarrow{a}$|`$\xleftarrow{a}$`|$\xrightarrow{a}$|`$\xrightarrow{a}$`|$\xleftrightarrow{a}$|`$\xleftrightarrow{a}$`|
+|$\overrightarrow{a}$|`$\overrightarrow{a}$`|$\overleftarrow{a}$|`$\overleftarrow{a}$`|$\overleftrightarrow{a}$|`$\overleftrightarrow{a}$`|
+|$\underrightarrow{a}$|`$\underrightarrow{a}$`|$\underleftarrow{a}$|`$\underleftarrow{a}$`|$\underleftrightarrow{a}$|`$\underleftrightarrow{a}$`|
 
 
 ## [方程组](#toc)
@@ -207,3 +210,29 @@ f_{\epsilon}(t) =
 0, otherwise
 \end{cases}
 $$
+
+```latex
+$$
+f_{\epsilon}(t) =
+\begin{cases}
+\frac{1}{\epsilon}, -\frac{\epsilon}{2} \leq t \leq \frac{\epsilon}{2} \\
+0, otherwise
+\end{cases}
+$$
+```
+
+$$
+\begin{aligned}
+f(t) & = \frac{(s+1)(s+3)}{(s+1)(s+2)(s+5)} \\
+& = \frac{s+3}{(s+2)(s+5)}
+\end{aligned}
+$$
+
+```latex
+$$
+\begin{aligned}
+f(t) & = \frac{(s+1)(s+3)}{(s+1)(s+2)(s+5)} \\
+& = \frac{s+3}{(s+2)(s+5)}
+\end{aligned}
+$$
+```
