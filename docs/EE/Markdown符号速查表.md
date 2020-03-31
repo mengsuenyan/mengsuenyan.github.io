@@ -78,6 +78,7 @@
 |$\equiv$|`$\equiv$`|
 |$\approx$|`$\approx$`|
 |$\simeq$|`$\simeq$`|
+|$\cong$|`$\cong$`|
 |$\ll$|`$\ll$`|
 |$\gg$|`$\gg$`|
 |$\propto$|`$\propto$`|
