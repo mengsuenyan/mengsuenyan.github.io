@@ -7,7 +7,7 @@
         <script type="text/x-mathjax-config">
           MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
         </script>
-        <script type="text/javascript" async src="file:///c:\Users\Lenovo\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.5.2\node_modules\@shd101wyy\mume\dependencies\mathjax\MathJax.js" charset="UTF-8"></script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
         
       
       
@@ -365,7 +365,7 @@ begin
 
     <span class="token function">AddRoundKey</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> w<span class="token punctuation">[</span>Nr<span class="token operator">*</span>Nb<span class="token punctuation">,</span> <span class="token punctuation">(</span>Nr<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span>Nb <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-    <span class="token keyword">for</span> round <span class="token operator">=</span> Nr<span class="token operator">-</span><span class="token number">1</span> stepp <span class="token operator">-</span><span class="token number">1</span> downto <span class="token number">1</span>
+    <span class="token keyword">for</span> round <span class="token operator">=</span> Nr<span class="token operator">-</span><span class="token number">1</span> step <span class="token operator">-</span><span class="token number">1</span> downto <span class="token number">1</span>
         <span class="token function">InvShiftRows</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span>
         <span class="token function">InvSubBytes</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span>
         <span class="token function">AddRoundKey</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> w<span class="token punctuation">[</span>round<span class="token operator">*</span>Nb<span class="token punctuation">,</span> <span class="token punctuation">(</span>round<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span>Nb <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>

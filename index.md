@@ -15,6 +15,7 @@
 
 - [Markdown符号速查表](docs/EE/Markdown符号速查表.html)
 - [信号与线性系统](docs/EE/信号与线性系统.html)
+- [傅氏变换的性质](docs/EE/傅氏变换的性质.html)
 - [滤波器设计](docs/EE/滤波器设计.html)
 ## [MS](#toc)
 

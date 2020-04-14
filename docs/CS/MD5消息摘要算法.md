@@ -7,9 +7,9 @@
 
 ```mermaid
 graph LR;
-    step1([位填充])-->step2([初始化MD缓存]);
-    step2 --> step3([数据处理]);
-    step3 --> step4([拼接输出]);
+    step1(位填充)-->step2(初始化MD缓存);
+    step2 --> step3(数据处理);
+    step3 --> step4(拼接输出);
 ```
 
 ### [位填充](#toc)

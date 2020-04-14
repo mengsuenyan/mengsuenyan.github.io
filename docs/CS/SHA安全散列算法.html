@@ -7,13 +7,13 @@
         <script type="text/x-mathjax-config">
           MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
         </script>
-        <script type="text/javascript" async src="file:///c:\Users\Lenovo\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.5.2\node_modules\@shd101wyy\mume\dependencies\mathjax\MathJax.js" charset="UTF-8"></script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
         
       
       
 
       
-      <script type="text/javascript" src="file:///c:\Users\Lenovo\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.5.2\node_modules\@shd101wyy\mume\dependencies\mermaid\mermaid.min.js" charset="UTF-8"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@8.1.0/dist/mermaid.min.js"></script>
       
       
       
@@ -390,12 +390,12 @@ pre[data-line] .line-highlight[data-end]:after {
     id1 -.-&gt; id11;
 
     subgraph &#x9884;&#x5904;&#x7406;;
-    id11([&#x4F4D;&#x586B;&#x5145;]) --&gt; id12([&#x5757;&#x5212;&#x5206;]);
+    id11(&#x4F4D;&#x586B;&#x5145;) --&gt; id12(&#x5757;&#x5212;&#x5206;);
     end;
 
     subgraph &#x4E3B;&#x6D41;&#x7A0B;;
-    id1([&#x9884;&#x5904;&#x7406;]) --&gt; id2([&#x521D;&#x59CB;&#x5316;Hash&#x503C;]);
-    id2 --&gt; id3([&#x8BA1;&#x7B97;Hash&#x503C;]);
+    id1(&#x9884;&#x5904;&#x7406;) --&gt; id2(&#x521D;&#x59CB;&#x5316;Hash&#x503C;);
+    id2 --&gt; id3(&#x8BA1;&#x7B97;Hash&#x503C;);
     end
 </div><h2 class="mume-header" id="%E9%A2%84%E5%A4%84%E7%90%86toc"><a href="#toc">&#x9884;&#x5904;&#x7406;</a></h2>
 
@@ -508,11 +508,11 @@ pre[data-line] .line-highlight[data-end]:after {
 <li><span class="mathjax-exps">$x + y$</span>: <span class="mathjax-exps">$(x+y)\%2^{l}$</span>, <span class="mathjax-exps">$l$</span>&#x8868;&#x793A;&#x5355;&#x8BCD;&#x957F;&#x5EA6;;</li>
 <li><span class="mathjax-exps">$Ch(x,y,z), Maj(x,y,z)$</span>&#x5F0F;&#x4E2D;&#x7684;&#x5F02;&#x6216;&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x6362;&#x6216;&#x64CD;&#x4F5C;;</li>
 </ul>
-<h3 class="mume-header" id="sha-1toc"><a href="toc">SHA-1</a></h3>
+<h3 class="mume-header" id="sha-1toc"><a href="#toc">SHA-1</a></h3>
 
 <p></p><div class="mathjax-exps">$$f_{t}(x,y,z) = \begin{cases} Ch(x,y,z) = (x \&amp; y) \oplus ((\sim x) \&amp; z), \quad 0 \le t \le 19 \\ Parity(x,y,z) = x \oplus y \oplus z, \quad 20 \le t \le 39 \\ Maj(x,y,z) = (x \&amp; y)\oplus (x \&amp; z) \oplus (y\&amp;z), \quad 40 \le t \le 59 \\ Parity(x,y,z) = x \oplus y \oplus z, \quad 60 \le t \le 79 \end{cases}$$</div><p></p>
 <p></p><div class="mathjax-exps">$$K_{t} = \begin{aligned} &amp; 0x5A827999, \quad 0 \le t \le 19 \\ &amp; 0x6ED9EBA1, \quad 20 \le t \le 39\\ &amp; 0x8F1BBCDC, \quad 40 \le t \le 59\\ &amp; 0xCA62C1D6, \quad 60 \le t \le 79 \end{aligned}$$</div><p></p>
-<h3 class="mume-header" id="sha-224-sha-256toc"><a href="toc">SHA-224 SHA-256</a></h3>
+<h3 class="mume-header" id="sha-224-sha-256toc"><a href="#toc">SHA-224 SHA-256</a></h3>
 
 <p></p><div class="mathjax-exps">$$\begin{aligned} Ch(x,y,z) &amp;= (x \&amp; y) \oplus ((\sim x) \&amp; z) \\ Maj(x,y,z) &amp;= (x \&amp; y)\oplus (x \&amp; z) \oplus (y\&amp;z) \\ \sum_{0}^{\{256\}}(x) &amp;= (x\ggg 2)\oplus(x\ggg 13)\oplus(x\ggg 22) \\ \sum_{1}^{\{256\}}(x) &amp;= (x\ggg 6)\oplus(x\ggg 11)\oplus(x\ggg 25) \\ \sigma_{0}^{\{256\}}(x) &amp;= (x\ggg 7)\oplus(x\ggg 18)\oplus(x\gg 3) \\ \sigma_{1}^{\{256\}}(x) &amp;= (x\ggg 17)\oplus(x\ggg 19)\oplus(x\gg 10) \end{aligned}$$</div><p></p>
 <p>&#x5E38;&#x91CF;&#x4E3A;&#x81EA;&#x7136;&#x6570;&#x524D;64&#x4E2A;&#x8D28;&#x6570;&#x7684;&#x7ACB;&#x65B9;&#x6839;&#x7684;&#x5404;&#x81EA;&#x5C0F;&#x6570;&#x7684;&#x524D;32&#x4F4D;:</p>
