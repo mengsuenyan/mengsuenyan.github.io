@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>index</title>
+      <title>HMAC&#x57FA;&#x4E8E;Hash&#x7684;&#x6D88;&#x606F;&#x8BA4;&#x8BC1;&#x7801;</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -268,36 +268,45 @@ pre[data-line] .line-highlight[data-end]:after {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview  ">
-      <p><span id="toc"></span></p>
+      <h1 class="mume-header" id="hmac%E5%9F%BA%E4%BA%8Ehash%E7%9A%84%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81toc"><a href="#toc">HMAC&#x57FA;&#x4E8E;Hash&#x7684;&#x6D88;&#x606F;&#x8BA4;&#x8BC1;&#x7801;</a></h1>
+
+<p><span id="toc"></span></p>
 <ul>
-<li><a href="#mengsuenyan%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2toc">mengsuenyan&#x7684;&#x4E2A;&#x4EBA;&#x535A;&#x5BA2;</a>
+<li><a href="#hmac%E5%9F%BA%E4%BA%8Ehash%E7%9A%84%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81toc">HMAC&#x57FA;&#x4E8E;Hash&#x7684;&#x6D88;&#x606F;&#x8BA4;&#x8BC1;&#x7801;</a>
 <ul>
-<li><a href="#cstoc">CS</a></li>
-<li><a href="#eetoc">EE</a></li>
-<li><a href="#mstoc">MS</a></li>
+<li><a href="#hmactoc">HMAC</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></li>
 </ul>
 </li>
 </ul>
-<h1 class="mume-header" id="mengsuenyan%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2toc"><a href="#toc">mengsuenyan&#x7684;&#x4E2A;&#x4EBA;&#x535A;&#x5BA2;</a></h1>
-
-<h2 class="mume-header" id="cstoc"><a href="#toc">CS</a></h2>
+<h2 class="mume-header" id="hmactoc"><a href="#toc">HMAC</a></h2>
 
 <ul>
-<li><a href="docs/CS/AES%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95.html">AES&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;</a></li>
-<li><a href="docs/CS/HMAC%E5%9F%BA%E4%BA%8EHash%E7%9A%84%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81.html">HMAC&#x57FA;&#x4E8E;Hash&#x7684;&#x6D88;&#x606F;&#x8BA4;&#x8BC1;&#x7801;</a></li>
-<li><a href="docs/CS/MD5%E6%B6%88%E6%81%AF%E6%91%98%E8%A6%81%E7%AE%97%E6%B3%95.html">MD5&#x6D88;&#x606F;&#x6458;&#x8981;&#x7B97;&#x6CD5;</a></li>
-<li><a href="docs/CS/SHA%E5%AE%89%E5%85%A8%E6%95%A3%E5%88%97%E7%AE%97%E6%B3%95.html">SHA&#x5B89;&#x5168;&#x6563;&#x5217;&#x7B97;&#x6CD5;</a></li>
+<li>H: &#x54C8;&#x5E0C;&#x51FD;&#x6570;;</li>
+<li>K: &#x5BC6;&#x94A5;;</li>
+<li><span class="mathjax-exps">$K_{0}$</span>: &#x7ECF;&#x8FC7;&#x9884;&#x5904;&#x7406;&#x540E;&#x7684;&#x5BC6;&#x94A5;;</li>
+<li>B: &#x54C8;&#x5E0C;&#x51FD;&#x6570;&#x8BA1;&#x7B97;&#x6D88;&#x606F;&#x7684;&#x54C8;&#x5E0C;&#x503C;&#x65F6;, &#x6240;&#x4F7F;&#x7528;&#x7684;&#x5757;&#x5927;&#x5C0F;(&#x5B57;&#x8282;&#x957F;&#x5EA6;);</li>
+<li>L: &#x54C8;&#x5E0C;&#x51FD;&#x6570;&#x6240;&#x8BA1;&#x7B97;&#x7684;&#x54C8;&#x5E0C;&#x503C;&#x7684;&#x5B57;&#x8282;&#x957F;&#x5EA6;;</li>
+<li>text: &#x6D88;&#x606F;&#x6570;&#x636E;;</li>
+<li><span class="mathjax-exps">$x\oplus y$</span>: x&#x5F02;&#x6216;y;</li>
+<li><span class="mathjax-exps">$x\dots y$</span>:&#x8868;&#x793A;&#x5C06;&#x6570;&#x636E;&#x5757;<span class="mathjax-exps">$y$</span>&#x62FC;&#x63A5;&#x5728;&#x6570;&#x636E;&#x5757;<span class="mathjax-exps">$x$</span>&#x4E4B;&#x540E;;</li>
 </ul>
-<h2 class="mume-header" id="eetoc"><a href="#toc">EE</a></h2>
+<p>HMAC&#x901A;&#x8FC7;&#x6307;&#x5B9A;&#x7684;Hash&#x51FD;&#x6570;, &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x6D88;&#x606F;&#x4F20;&#x8F93;&#x6216;&#x5B58;&#x50A8;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x9A8C;&#x8BC1;&#x673A;&#x5236;, &#x5176;&#x9A8C;&#x8BC1;&#x673A;&#x5236;&#x5982;&#x4E0B;:</p>
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; MAC(text) == HMAC(K, text) \Rightarrow \\ &amp; MAC(text) == H((K_{0} \oplus opad) \dots H(K_{0} \oplus ipad)\dots text) \end{aligned}$$</div><p></p>
+<p>&#x89E3;&#x91CA;&#x5982;&#x4E0B;:</p>
+<ul>
+<li>ipad: <code>0x36</code>&#x91CD;&#x590D;B&#x6B21;&#x540E;&#x5F97;&#x5230;&#x7684;&#x5B57;&#x8282;&#x957F;&#x5EA6;&#x4E3A;B&#x7684;&#x6570;&#x636E;&#x5757;;</li>
+<li>opad: <code>0x5c</code>&#x91CD;&#x590D;B&#x6B21;&#x540E;&#x5F97;&#x5230;&#x7684;&#x5B57;&#x8282;&#x957F;&#x5EA6;&#x4E3A;B&#x7684;&#x6570;&#x636E;&#x5757;;</li>
+<li><span class="mathjax-exps">$K_0$</span>: &#x5982;&#x679C;<span class="mathjax-exps">$len(K)==B$</span>, &#x90A3;&#x4E48;<span class="mathjax-exps">$K_{0}=K$</span>; &#x5982;&#x679C;<span class="mathjax-exps">$len(K)\lt B$</span>, &#x90A3;&#x4E48;&#x5728;K&#x540E;&#x586B;&#x5145;<span class="mathjax-exps">$B-len(K)$</span>&#x4E2A;&#x4F4D;0&#x5F97;&#x5230;<span class="mathjax-exps">$K_{0}$</span>; &#x5982;&#x679C;<span class="mathjax-exps">$len(K)\gt B$</span>, &#x90A3;&#x4E48;&#x5148;&#x5BF9;&#x5176;&#x8FDB;&#x884C;H(K), &#x7136;&#x540E;&#x586B;&#x5145;<span class="mathjax-exps">$B-len(K)$</span>&#x4E2A;0&#x5F97;&#x5230;<span class="mathjax-exps">$K_{0}$</span>;</li>
+<li>&#x5C06;&#x6D88;&#x606F;&#x4F20;&#x62FC;&#x63A5;&#x5230;<span class="mathjax-exps">$K_{0}\oplus ipad$</span>&#x4E4B;&#x540E;, &#x8BA1;&#x7B97;Hash&#x503C;&#x8BB0;&#x4E3A;<span class="mathjax-exps">$H_{r1}$</span>;</li>
+<li>&#x5C06;<span class="mathjax-exps">$H_{r1}$</span>&#x62FC;&#x63A5;&#x5230;<span class="mathjax-exps">$K_{0}\oplus opad$</span>&#x4E4B;&#x540E;, Hash&#x8BA1;&#x7B97;&#x51FA;&#x6765;&#x7684;&#x7ED3;&#x679C;&#x4FBF;&#x662F;MAC&#x503C;;</li>
+</ul>
+<h2 class="mume-header" id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc"><a href="#toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></h2>
 
 <ul>
-<li><a href="docs/EE/Markdown%E7%AC%A6%E5%8F%B7%E9%80%9F%E6%9F%A5%E8%A1%A8.html">Markdown&#x7B26;&#x53F7;&#x901F;&#x67E5;&#x8868;</a></li>
-<li><a href="docs/EE/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%BA%BF%E6%80%A7%E7%B3%BB%E7%BB%9F.html">&#x4FE1;&#x53F7;&#x4E0E;&#x7EBF;&#x6027;&#x7CFB;&#x7EDF;</a></li>
-<li><a href="docs/EE/%E5%82%85%E6%B0%8F%E5%8F%98%E6%8D%A2%E7%9A%84%E6%80%A7%E8%B4%A8.html">&#x5085;&#x6C0F;&#x53D8;&#x6362;&#x7684;&#x6027;&#x8D28;</a></li>
-<li><a href="docs/EE/%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%AE%BE%E8%AE%A1.html">&#x6EE4;&#x6CE2;&#x5668;&#x8BBE;&#x8BA1;</a></li>
+<li><a href="https://datatracker.ietf.org/doc/rfc2104/">RFC2104 HMAC</a>;</li>
+<li><a href="https://csrc.nist.gov/publications/detail/fips/198/1/final">FIPS/198-1 HMAC</a>;</li>
 </ul>
-<h2 class="mume-header" id="mstoc"><a href="#toc">MS</a></h2>
-
 
       </div>
       
