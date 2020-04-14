@@ -1,0 +1,598 @@
+<!DOCTYPE html><html><head>
+      <title>SHA&#x5B89;&#x5168;&#x6563;&#x5217;&#x7B97;&#x6CD5;</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="file:///c:\Users\Lenovo\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.5.2\node_modules\@shd101wyy\mume\dependencies\mathjax\MathJax.js" charset="UTF-8"></script>
+        
+      
+      
+
+      
+      <script type="text/javascript" src="file:///c:\Users\Lenovo\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.5.2\node_modules\@shd101wyy\mume\dependencies\mermaid\mermaid.min.js" charset="UTF-8"></script>
+      
+      
+      
+      
+      
+
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="sha%E5%AE%89%E5%85%A8%E6%95%A3%E5%88%97%E7%AE%97%E6%B3%95toc"><a href="#toc">SHA&#x5B89;&#x5168;&#x6563;&#x5217;&#x7B97;&#x6CD5;</a></h1>
+
+<ul>
+<li><a href="#sha%E5%AE%89%E5%85%A8%E6%95%A3%E5%88%97%E7%AE%97%E6%B3%95toc">SHA&#x5B89;&#x5168;&#x6563;&#x5217;&#x7B97;&#x6CD5;</a>
+<ul>
+<li><a href="#%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8Etoc">&#x7B80;&#x8981;&#x8BF4;&#x660E;</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8Btoc">&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;</a></li>
+<li><a href="#%E9%A2%84%E5%A4%84%E7%90%86toc">&#x9884;&#x5904;&#x7406;</a>
+<ul>
+<li><a href="#%E4%BD%8D%E5%A1%AB%E5%85%85toc">&#x4F4D;&#x586B;&#x5145;</a>
+<ul>
+<li><a href="#%E4%BD%8D%E5%A1%AB%E5%85%85-sha-1-sha-224-sha-256toc">&#x4F4D;&#x586B;&#x5145;: SHA-1 SHA-224 SHA-256</a></li>
+<li><a href="#%E4%BD%8D%E5%A1%AB%E5%85%85-sha-384-sha-512-sha-512224-sha-512256toc">&#x4F4D;&#x586B;&#x5145;: SHA-384 SHA-512 SHA-512/224 SHA-512/256</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9D%97%E5%88%92%E5%88%86toc">&#x5757;&#x5212;&#x5206;</a>
+<ul>
+<li><a href="#%E5%9D%97%E5%88%92%E5%88%86-sha-1-sha-224-sha-256toc">&#x5757;&#x5212;&#x5206;: SHA-1 SHA-224 SHA-256</a></li>
+<li><a href="#%E5%9D%97%E5%88%92%E5%88%86-sha-384-sha-512-sha-512224-sha-512256toc">&#x5757;&#x5212;&#x5206;: SHA-384 SHA-512 SHA-512/224 SHA-512/256</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%88%9D%E5%A7%8B%E5%8C%96hash%E5%80%BCtoc">&#x521D;&#x59CB;&#x5316;Hash&#x503C;</a>
+<ul>
+<li><a href="#sha-512t%E7%9A%84%E5%88%9D%E5%A7%8Bhash%E5%80%BC%E8%AE%A1%E7%AE%97toc">SHA-512/t&#x7684;&#x521D;&#x59CB;Hash&#x503C;&#x8BA1;&#x7B97;</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AE%A1%E7%AE%97hash%E5%80%BCtoc">&#x8BA1;&#x7B97;Hash&#x503C;</a>
+<ul>
+<li><a href="#sha-1-hash%E5%80%BC%E8%AE%A1%E7%AE%97toc">SHA-1 Hash&#x503C;&#x8BA1;&#x7B97;</a></li>
+<li><a href="#sha-256-hash%E5%80%BC%E8%AE%A1%E7%AE%97toc">SHA-256 Hash&#x503C;&#x8BA1;&#x7B97;</a></li>
+<li><a href="#sha-224-hash%E5%80%BC%E8%AE%A1%E7%AE%97toc">SHA-224 Hash&#x503C;&#x8BA1;&#x7B97;</a></li>
+<li><a href="#sha-512-hash%E5%80%BC%E8%AE%A1%E7%AE%97toc">SHA-512 Hash&#x503C;&#x8BA1;&#x7B97;</a></li>
+<li><a href="#sha-384-hash%E5%80%BC%E8%AE%A1%E7%AE%97toc">SHA-384 Hash&#x503C;&#x8BA1;&#x7B97;</a></li>
+<li><a href="#sha-512224-hash%E5%80%BC%E8%AE%A1%E7%AE%97toc">SHA-512/224 Hash&#x503C;&#x8BA1;&#x7B97;</a></li>
+<li><a href="#sha-512256-hash%E5%80%BC%E8%AE%A1%E7%AE%97toc">SHA-512/256 Hash&#x503C;&#x8BA1;&#x7B97;</a></li>
+</ul>
+</li>
+<li><a href="#%E5%87%BD%E6%95%B0%E5%B8%B8%E9%87%8F%E8%AF%B4%E6%98%8Etoc">&#x51FD;&#x6570;&#x5E38;&#x91CF;&#x8BF4;&#x660E;</a>
+<ul>
+<li><a href="#sha-1toc">SHA-1</a></li>
+<li><a href="#sha-224-sha-256toc">SHA-224 SHA-256</a></li>
+<li><a href="#sha-384-sha-512-sha-512224-sha-512256toc">SHA-384 SHA-512 SHA-512/224 SHA-512/256</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></li>
+</ul>
+</li>
+</ul>
+<p><span id="toc"></span></p>
+<h2 class="mume-header" id="%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8Etoc"><a href="#toc">&#x7B80;&#x8981;&#x8BF4;&#x660E;</a></h2>
+
+<p>SHS(Secure Hash Standard, FIPS 180-4)&#x5B9A;&#x4E49;&#x4E86;SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224&#x548C;SHA-512/256&#x8FD9;&#x51E0;&#x79CD;SHA&#x7B97;&#x6CD5;, &#x6BCF;&#x79CD;SHA&#x7B97;&#x6CD5;&#x6240;&#x80FD;&#x5904;&#x7406;&#x6D88;&#x606F;&#x957F;&#x5EA6;/&#x5757;&#x5927;&#x5C0F;/&#x5355;&#x8BCD;&#x957F;&#x5EA6;/&#x6D88;&#x606F;&#x6458;&#x8981;&#x957F;&#x5EA6;&#x5982;&#x4E0B;&#x8868;:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">&#x6D88;&#x606F;&#x957F;&#x5EA6;(bits)</th>
+<th style="text-align:center">&#x5757;&#x5927;&#x5C0F;(bits)</th>
+<th style="text-align:center">&#x5355;&#x8BCD;&#x957F;&#x5EA6;(bits)</th>
+<th style="text-align:center">&#x6D88;&#x606F;&#x6458;&#x8981;&#x957F;&#x5EA6;(bits)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SHA-1</td>
+<td style="text-align:center"><span class="mathjax-exps">$\lt 2^{64}$</span></td>
+<td style="text-align:center">512</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">160</td>
+</tr>
+<tr>
+<td style="text-align:center">SHA-224</td>
+<td style="text-align:center"><span class="mathjax-exps">$\lt 2^{64}$</span></td>
+<td style="text-align:center">512</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">224</td>
+</tr>
+<tr>
+<td style="text-align:center">SHA1-256</td>
+<td style="text-align:center"><span class="mathjax-exps">$\lt 2^{64}$</span></td>
+<td style="text-align:center">512</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">256</td>
+</tr>
+<tr>
+<td style="text-align:center">SHA1-384</td>
+<td style="text-align:center"><span class="mathjax-exps">$\lt 2^{128}$</span></td>
+<td style="text-align:center">1024</td>
+<td style="text-align:center">64</td>
+<td style="text-align:center">384</td>
+</tr>
+<tr>
+<td style="text-align:center">SHA1-512</td>
+<td style="text-align:center"><span class="mathjax-exps">$\lt 2^{128}$</span></td>
+<td style="text-align:center">1024</td>
+<td style="text-align:center">64</td>
+<td style="text-align:center">512</td>
+</tr>
+<tr>
+<td style="text-align:center">SHA1-512/224</td>
+<td style="text-align:center"><span class="mathjax-exps">$\lt 2^{128}$</span></td>
+<td style="text-align:center">1024</td>
+<td style="text-align:center">64</td>
+<td style="text-align:center">224</td>
+</tr>
+<tr>
+<td style="text-align:center">SHA1-512/256</td>
+<td style="text-align:center"><span class="mathjax-exps">$\lt 2^{128}$</span></td>
+<td style="text-align:center">1024</td>
+<td style="text-align:center">64</td>
+<td style="text-align:center">256</td>
+</tr>
+</tbody>
+</table>
+<h2 class="mume-header" id="%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8Btoc"><a href="#toc">&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;</a></h2>
+
+<div class="mermaid">graph TD;
+    id1 -.-&gt; id11;
+
+    subgraph &#x9884;&#x5904;&#x7406;;
+    id11([&#x4F4D;&#x586B;&#x5145;]) --&gt; id12([&#x5757;&#x5212;&#x5206;]);
+    end;
+
+    subgraph &#x4E3B;&#x6D41;&#x7A0B;;
+    id1([&#x9884;&#x5904;&#x7406;]) --&gt; id2([&#x521D;&#x59CB;&#x5316;Hash&#x503C;]);
+    id2 --&gt; id3([&#x8BA1;&#x7B97;Hash&#x503C;]);
+    end
+</div><h2 class="mume-header" id="%E9%A2%84%E5%A4%84%E7%90%86toc"><a href="#toc">&#x9884;&#x5904;&#x7406;</a></h2>
+
+<h3 class="mume-header" id="%E4%BD%8D%E5%A1%AB%E5%85%85toc"><a href="#toc">&#x4F4D;&#x586B;&#x5145;</a></h3>
+
+<h4 class="mume-header" id="%E4%BD%8D%E5%A1%AB%E5%85%85-sha-1-sha-224-sha-256toc"><a href="#toc">&#x4F4D;&#x586B;&#x5145;: SHA-1 SHA-224 SHA-256</a></h4>
+
+<p>&#x586B;&#x5145;&#x7684;&#x89C4;&#x5219;: &#x7ECF;&#x8FC7;&#x4F4D;&#x586B;&#x5145;&#x540E;&#x7684;&#x6D88;&#x606F;&#x957F;&#x5EA6;&#x662F;512&#x7684;&#x6574;&#x6570;&#x500D;. &#x8BB0;&#x4F4D;&#x957F;&#x5EA6;&#x4E3A;<span class="mathjax-exps">$l$</span>&#x7684;&#x6D88;&#x606F;&#x4E3A;<span class="mathjax-exps">$Msg$</span> &#x586B;&#x5145;&#x89C4;&#x5219;&#x5982;&#x4E0B;:</p>
+<ul>
+<li>&#x5728;<span class="mathjax-exps">$Msg$</span>&#x540E;&#x586B;&#x5145;&#x4E00;&#x4F4D;1, &#x7136;&#x540E;&#x518D;&#x586B;&#x5145;&#x82E5;&#x5E72;&#x4F4D;0, &#x4EE5;&#x4F7F;&#x5F97;&#x586B;&#x5145;&#x540E;&#x7684;&#x6D88;&#x606F;&#x957F;&#x5EA6;&#x662F;448&#x7684;&#x6574;&#x6570;&#x500D;, &#x8BB0;&#x4E3A;<span class="mathjax-exps">$Msg_p$</span>;</li>
+<li>&#x5C06;&#x4F4D;&#x957F;&#x5EA6;<span class="mathjax-exps">$l$</span>&#x653E;&#x5165;&#x540E;&#x7EED;&#x7684;64&#x4F4D;&#x4E2D;, &#x7ECF;&#x8FC7;&#x6B64;&#x6B65;&#x540E;, &#x586B;&#x5145;&#x7684;&#x6D88;&#x606F;&#x7684;&#x4F4D;&#x957F;&#x5EA6;&#x662F;512&#x7684;&#x6574;&#x6570;&#x500D;;
+<ul>
+<li>&#x6CE8;&#x610F;: <span class="mathjax-exps">$l$</span>&#x7684;&#x6309;&#x7167;&#x4ECE;&#x9AD8;&#x5B57;&#x8282;&#x5230;&#x4F4E;&#x5B57;&#x8282;&#x7684;&#x987A;&#x5E8F;&#x4F9D;&#x6B21;&#x586B;&#x5145;&#x5230;<span class="mathjax-exps">$Msg_p$</span>&#x4E4B;&#x540E;;</li>
+</ul>
+</li>
+</ul>
+<p>&#x8BB0;&#x7ECF;&#x8FC7;&#x4F4D;&#x586B;&#x5145;&#x540E;&#x7684;&#x6D88;&#x606F;&#x4E3A;<span class="mathjax-exps">$M$</span>.</p>
+<h4 class="mume-header" id="%E4%BD%8D%E5%A1%AB%E5%85%85-sha-384-sha-512-sha-512224-sha-512256toc"><a href="#toc">&#x4F4D;&#x586B;&#x5145;: SHA-384 SHA-512 SHA-512/224 SHA-512/256</a></h4>
+
+<p>&#x586B;&#x5145;&#x7684;&#x89C4;&#x5219;: &#x7ECF;&#x8FC7;&#x4F4D;&#x586B;&#x5145;&#x540E;&#x7684;&#x6D88;&#x606F;&#x957F;&#x5EA6;&#x662F;1024&#x7684;&#x6574;&#x6570;&#x500D;. &#x8BB0;&#x4F4D;&#x957F;&#x5EA6;&#x4E3A;<span class="mathjax-exps">$l$</span>&#x7684;&#x6D88;&#x606F;&#x4E3A;<span class="mathjax-exps">$Msg$</span> &#x586B;&#x5145;&#x89C4;&#x5219;&#x5982;&#x4E0B;:</p>
+<ul>
+<li>&#x5728;<span class="mathjax-exps">$Msg$</span>&#x540E;&#x586B;&#x5145;&#x4E00;&#x4F4D;1, &#x7136;&#x540E;&#x518D;&#x586B;&#x5145;&#x82E5;&#x5E72;&#x4F4D;0, &#x4EE5;&#x4F7F;&#x5F97;&#x586B;&#x5145;&#x540E;&#x7684;&#x6D88;&#x606F;&#x957F;&#x5EA6;&#x662F;896&#x7684;&#x6574;&#x6570;&#x500D;, &#x8BB0;&#x4E3A;<span class="mathjax-exps">$Msg_p$</span>;</li>
+<li>&#x5C06;&#x4F4D;&#x957F;&#x5EA6;<span class="mathjax-exps">$l$</span>&#x653E;&#x5165;&#x540E;&#x7EED;&#x7684;128&#x4F4D;&#x4E2D;, &#x7ECF;&#x8FC7;&#x6B64;&#x6B65;&#x540E;, &#x586B;&#x5145;&#x7684;&#x6D88;&#x606F;&#x7684;&#x4F4D;&#x957F;&#x5EA6;&#x662F;1024&#x7684;&#x6574;&#x6570;&#x500D;;
+<ul>
+<li>&#x6CE8;&#x610F;: <span class="mathjax-exps">$l$</span>&#x7684;&#x6309;&#x7167;&#x4ECE;&#x9AD8;&#x5B57;&#x8282;&#x5230;&#x4F4E;&#x5B57;&#x8282;&#x7684;&#x987A;&#x5E8F;&#x4F9D;&#x6B21;&#x586B;&#x5145;&#x5230;<span class="mathjax-exps">$Msg_p$</span>&#x4E4B;&#x540E;;</li>
+</ul>
+</li>
+</ul>
+<p>&#x8BB0;&#x7ECF;&#x8FC7;&#x4F4D;&#x586B;&#x5145;&#x540E;&#x7684;&#x6D88;&#x606F;&#x4E3A;<span class="mathjax-exps">$M$</span>.</p>
+<h3 class="mume-header" id="%E5%9D%97%E5%88%92%E5%88%86toc"><a href="#toc">&#x5757;&#x5212;&#x5206;</a></h3>
+
+<h4 class="mume-header" id="%E5%9D%97%E5%88%92%E5%88%86-sha-1-sha-224-sha-256toc"><a href="#toc">&#x5757;&#x5212;&#x5206;: SHA-1 SHA-224 SHA-256</a></h4>
+
+<p>&#x5C06;&#x6D88;&#x606F;<span class="mathjax-exps">$M$</span>&#x6309;512&#x4F4D;&#x957F;&#x5EA6;, &#x5212;&#x5206;&#x4E3A;<span class="mathjax-exps">$N$</span>&#x4E2A;&#x6D88;&#x606F;&#x5757;, &#x4F9D;&#x6B21;&#x8BB0;&#x4E3A;<span class="mathjax-exps">$M^{(1)}, M^{(2)},\cdots,M^{(N)}$</span>. &#x7136;&#x540E;&#x5C06;&#x6BCF;&#x4E2A;&#x6D88;&#x606F;&#x5757;&#x518D;&#x5212;&#x5206;&#x4E3A;32&#x4F4D;&#x957F;&#x7684;&#x5355;&#x8BCD;, &#x4F9D;&#x6B21;&#x8BB0;&#x4E3A;<span class="mathjax-exps">$M^{(i)}_{0}, M^{(i)}_{1},\cdots,M^{(i)}_{15}$</span>. &#x5176;&#x4E2D;, <span class="mathjax-exps">$M^{i}_{j}$</span>&#x8868;&#x793A;&#x7B2C;<span class="mathjax-exps">$i$</span>&#x4E2A;&#x5757;&#x4E2D;&#x7684;&#x7B2C;<span class="mathjax-exps">$j$</span>&#x4E2A;&#x5355;&#x8BCD;.</p>
+<h4 class="mume-header" id="%E5%9D%97%E5%88%92%E5%88%86-sha-384-sha-512-sha-512224-sha-512256toc"><a href="#toc">&#x5757;&#x5212;&#x5206;: SHA-384 SHA-512 SHA-512/224 SHA-512/256</a></h4>
+
+<p>&#x5C06;&#x6D88;&#x606F;<span class="mathjax-exps">$M$</span>&#x6309;1024&#x4F4D;&#x957F;&#x5EA6;, &#x5212;&#x5206;&#x4E3A;<span class="mathjax-exps">$N$</span>&#x4E2A;&#x6D88;&#x606F;&#x5757;, &#x4F9D;&#x6B21;&#x8BB0;&#x4E3A;<span class="mathjax-exps">$M^{(1)}, M^{(2)},\cdots,M^{(N)}$</span>. &#x7136;&#x540E;&#x5C06;&#x6BCF;&#x4E2A;&#x6D88;&#x606F;&#x5757;&#x518D;&#x5212;&#x5206;&#x4E3A;64&#x4F4D;&#x957F;&#x7684;&#x5355;&#x8BCD;, &#x4F9D;&#x6B21;&#x8BB0;&#x4E3A;<span class="mathjax-exps">$M^{(i)}_{0}, M^{(i)}_{1},\cdots,M^{(i)}_{15}$</span>. &#x5176;&#x4E2D;, <span class="mathjax-exps">$M^{i}_{j}$</span>&#x8868;&#x793A;&#x7B2C;<span class="mathjax-exps">$i$</span>&#x4E2A;&#x5757;&#x4E2D;&#x7684;&#x7B2C;<span class="mathjax-exps">$j$</span>&#x4E2A;&#x5355;&#x8BCD;.</p>
+<h2 class="mume-header" id="%E5%88%9D%E5%A7%8B%E5%8C%96hash%E5%80%BCtoc"><a href="#toc">&#x521D;&#x59CB;&#x5316;Hash&#x503C;</a></h2>
+
+<p>&#x5404;&#x4E2A;SHA&#x7B97;&#x6CD5;&#x7684;&#x521D;&#x59CB;&#x5316;Hash&#x503C;&#x5982;&#x4E0B;, &#x5176;&#x4E2D;<span class="mathjax-exps">$H_{j}^{i}$</span>&#x8868;&#x793A;&#x7B2C;<span class="mathjax-exps">$i$</span>&#x8F6E;Hash&#x503C;&#x7684;&#x7B2C;<span class="mathjax-exps">$j$</span>&#x4E2A;&#x5355;&#x8BCD;.</p>
+<ul>
+<li>SHA-1;</li>
+</ul>
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; H_{0}^{0} = 0x67452301, H_{1}^{0} = 0xEFCDAB89, H_{2}^{0} = 0x98BADCFE \\ &amp; H_{3}^{0} = 0x10325476, H_{4}^{0} = 0xC3D2E1F0 \end{aligned}$$</div><p></p>
+<ul>
+<li>SHA-224;</li>
+</ul>
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; H_{0}^{0} = 0xC1059ED8, H_{1}^{0} = 0x367CD507, H_{2}^{0} = 0x3070DD17 \\ &amp; H_{3}^{0} = 0xF70E5939, H_{4}^{0} = 0xFFC00B31, H_{5}^{0} = 0x68581511 \\ &amp; H_{6}^{0} = 0x64F98FA7, H_{7}^{0} = 0xBEFA4FA4 \end{aligned}$$</div><p></p>
+<ul>
+<li>SHA-256;</li>
+</ul>
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; H_{0}^{0} = 0x6A09E667, H_{1}^{0} = 0xBB67AE85, H_{2}^{0} = 0x3C6EF372 \\ &amp; H_{3}^{0} = 0xA54FF53A, H_{4}^{0} = 0x510E527F, H_{5}^{0} = 0x9B05688C \\ &amp; H_{6}^{0} = 0x1F83D9AB, H_{7}^{0} = 0x5BE0CD19 \end{aligned}$$</div><p></p>
+<ul>
+<li>SHA-384</li>
+</ul>
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; H_{0}^{0} = 0xcbbb9d5dc1059ed8, H_{1}^{0} = 0x629a292a367cd507, H_{2}^{0} = 0x9159015a3070dd17 \\ &amp; H_{3}^{0} = 0x152fecd8f70e5939, H_{4}^{0} = 0x67332667ffc00b31, H_{5}^{0} = 0x8eb44a8768581511 \\ &amp; H_{6}^{0} = 0xdb0c2e0d64f98fa7, H_{7}^{0} = 0x47b5481dbefa4fa4 \end{aligned}$$</div><p></p>
+<ul>
+<li>SHA-512</li>
+</ul>
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; H_{0}^{0} = 0x6a09e667f3bcc908, H_{1}^{0} = 0xbb67ae8584caa73b, H_{2}^{0} = 0x3c6ef372fe94f82b \\ &amp; H_{3}^{0} = 0xa54ff53a5f1d36f1, H_{4}^{0} = 0x510e527fade682d1, H_{5}^{0} = 0x9b05688c2b3e6c1f \\ &amp; H_{6}^{0} = 0x1f83d9abfb41bd6b, H_{7}^{0} = 0x5be0cd19137e2179 \end{aligned}$$</div><p></p>
+<ul>
+<li>SHA-512/224</li>
+</ul>
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; H_{0}^{0} = 0x8c3d37c819544da2, H_{1}^{0} = 0x73e1996689dcd4d6, H_{2}^{0} = 0x1dfab7ae32ff9c82 \\ &amp; H_{3}^{0} = 0x679dd514582f9fcf, H_{4}^{0} = 0x0f6d2b697bd44da8, H_{5}^{0} = 0x77e36f7304c48942 \\ &amp; H_{6}^{0} = 0x3f9d85a86a1d36c8, H_{7}^{0} = 0x1112e6ad91d692a1 \end{aligned}$$</div><p></p>
+<ul>
+<li>SHA-512/256</li>
+</ul>
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; H_{0}^{0} = 0x22312194fc2bf72c, H_{1}^{0} = 0x9f555fa3c84c64c2, H_{2}^{0} = 0x2393b86b6f53b151 \\ &amp; H_{3}^{0} = 0x963877195940eabd, H_{4}^{0} = 0x96283ee2a88effe3, H_{5}^{0} = 0xbe5e1e2553863992 \\ &amp; H_{6}^{0} = 0x2b0199fc2c85b8aa, H_{7}^{0} = 0x0eb72ddc81c52ca2 \end{aligned}$$</div><p></p>
+<h3 class="mume-header" id="sha-512t%E7%9A%84%E5%88%9D%E5%A7%8Bhash%E5%80%BC%E8%AE%A1%E7%AE%97toc"><a href="#toc">SHA-512/t&#x7684;&#x521D;&#x59CB;Hash&#x503C;&#x8BA1;&#x7B97;</a></h3>
+
+<p>SHA-512/t&#x662F;&#x5229;&#x7528;SHA-512&#x7B97;&#x6CD5;&#x8BA1;&#x7B97;&#x51FA;512&#x4F4D;&#x7684;&#x6458;&#x8981;&#x503C;, &#x7136;&#x540E;&#x622A;&#x65AD;&#x8F93;&#x51FA;t&#x4F4D;. &#x5176;&#x4E2D;, <span class="mathjax-exps">$t &lt; 512, t \ne 384$</span>. &#x5176;&#x521D;&#x59CB;Hash&#x503C;&#x8BA1;&#x7B97;&#x5982;&#x4E0B;:</p>
+<ul>
+<li>&#x5C06;SHA-512&#x7684;&#x521D;&#x59CB;Hash&#x503C;&#x7684;&#x6BCF;&#x4E2A;&#x5355;&#x8BCD;&#x4E0E;<span class="mathjax-exps">$a5a5a5a5a5a5a5a5$</span>&#x5F02;&#x6216;, &#x7136;&#x540E;&#x5C06;&#x8BE5;&#x5F02;&#x6216;&#x540E;&#x7684;&#x7ED3;&#x679C;&#x4F5C;&#x4E3A;SHA-512&#x7684;&#x521D;&#x59CB;Hash&#x503C;;</li>
+<li>&#x518D;&#x5229;&#x7528;SHA-512&#x7B97;&#x6CD5;, &#x5BF9;&#x5B57;&#x7B26;&#x4E32;<code>SHA-512/t</code>&#x505A;SHA-512 Hash&#x8BA1;&#x7B97;, &#x7136;&#x540E;&#x8BA1;&#x7B97;&#x7684;&#x7ED3;&#x679C;&#x4F5C;&#x4E3A;SHA-512/t&#x7B97;&#x6CD5;&#x7684;&#x521D;&#x59CB;Hash&#x503C;. &#x5176;&#x4E2D;, &#x5B57;&#x7B26;&#x4E32;<code>SHA-512/t</code>&#x4E2D;&#x7684;t&#x66FF;&#x6362;&#x5177;&#x4F53;&#x7684;&#x6570;&#x5B57;, &#x4F8B;&#x5982;t=256, &#x90A3;&#x4E48;&#x5B57;&#x7B26;&#x4E32;&#x4E3A;<code>SHA-512/256</code>.</li>
+</ul>
+<p>&#x6CE8;: &#x7C7B;&#x4F3C;&#x7684;, SHA-224&#x662F;SHA-256&#x7684;&#x7279;&#x5316;;</p>
+<h2 class="mume-header" id="%E8%AE%A1%E7%AE%97hash%E5%80%BCtoc"><a href="#toc">&#x8BA1;&#x7B97;Hash&#x503C;</a></h2>
+
+<h3 class="mume-header" id="sha-1-hash%E5%80%BC%E8%AE%A1%E7%AE%97toc"><a href="#toc">SHA-1 Hash&#x503C;&#x8BA1;&#x7B97;</a></h3>
+
+<p>&#x7B97;&#x6CD5;&#x4F2A;&#x4EE3;&#x7801;&#x5982;&#x4E0B;:</p>
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; MASK = 0x0000000f \\ &amp; \quad \\ &amp; for \quad i=0 \dots N \\ &amp; \qquad for \quad j=0...16 \\ &amp; \qquad \qquad W_{j}=M_{j}^{i} \\ &amp; \qquad end \\ &amp; \quad \\ &amp; \qquad a = H_{0}^{i}, b=H_{1}^{i}, c=H_{2}^{i}, d=H_{3}^{i}, e=H_{4}^{i} \\ &amp; \quad \\ &amp; \qquad for \quad j=0...80 \\ &amp; \qquad \qquad s = j \And MASK \\ &amp; \qquad \qquad if \quad j \ge 16 \\ &amp; \qquad \qquad \qquad W_{s} = (W_{(s+13)\And MASK}\oplus W_{(s+8)\And MASK} \oplus W_{(s+2)\And MASK} \oplus W_{s}) \lll 1 \\ &amp; \qquad \qquad end \\ &amp; \qquad \qquad t = (a \lll 5) + f_{t}(b,c,d) + e + K_{t} + W_{s} \\ &amp; \qquad \qquad a,b,c,d,e=t,a,(b\lll 30), c,d \\ &amp; \qquad end \\ &amp; \quad \\ &amp; \qquad H_{0}^{i+1},H_{1}^{i+1},H_{2}^{i+1},H_{3}^{i+1},H_{4}^{i+1}=a+H_{0}^{i},b+H_{1}^{i},c+H_{2}^{i},d+H_{3}^{i},e+H_{4}^{i}\\ &amp; end \\ &amp; \quad \\ &amp; H=[H_{0}^{N},H_{1}^{N},H_{2}^{N},H_{3}^{N},H_{4}^{N}] \end{aligned}$$</div><p></p>
+<h3 class="mume-header" id="sha-256-hash%E5%80%BC%E8%AE%A1%E7%AE%97toc"><a href="#toc">SHA-256 Hash&#x503C;&#x8BA1;&#x7B97;</a></h3>
+
+<p>&#x7B97;&#x6CD5;&#x4F2A;&#x4EE3;&#x7801;&#x5982;&#x4E0B;:</p>
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; for \quad i=0 \dots N \\ &amp; \qquad for \quad j=0...64 \\ &amp; \qquad \qquad if \quad j \le 16 \\ &amp; \qquad \qquad \qquad W_{j}=M_{j}^{i} \\ &amp; \qquad \qquad else \\ &amp; \qquad \qquad \qquad W_{j} = \sigma_{1}^{256}(W_{j-2}) + W_{j-7} + \sigma_{0}^{256}(W_{j-15}) + W_{j-16}\\ &amp; \qquad \qquad end \\ &amp; \qquad end \\ &amp; \quad \\ &amp; \qquad a = H_{0}^{i}, b=H_{1}^{i}, c=H_{2}^{i}, d=H_{3}^{i}, e=H_{4}^{i}, f=H_{5}^{i}, g=H_{6}^{i}, h=H_{7}^{i} \\ &amp; \quad \\ &amp; \qquad for \quad j=0...64 \\ &amp; \qquad \qquad t_{1} = h+\sum_{1}^{256}(e)+Ch(e,f,g)+K_{j}+W_{j} \\ &amp; \qquad \qquad t_{2} = \sum_{0}^{256}(a)+Maj(a,b,c) \\ &amp; \qquad \qquad a,b,c,d,e,f,g,h=t_{1}+t_{2},a,b,c,d+t_{1},e,f,g \\ &amp; \qquad end \\ &amp; \quad \\ &amp; \qquad H_{0}^{i+1},H_{1}^{i+1},H_{2}^{i+1},H_{3}^{i+1},H_{4}^{i+1},H_{5}^{i+1},H_{6}^{i+1},H_{7}^{i+1}=a+H_{0}^{i},b+H_{1}^{i},c+H_{2}^{i},d+H_{3}^{i},e+H_{4}^{i},f+H_{5}^{i},g+H_{6}^{i},h+H_{7}^{i}\\ &amp; end \\ &amp; \quad \\ &amp; H=[H_{0}^{N},H_{1}^{N},H_{2}^{N},H_{3}^{N},H_{4}^{N},H_{5}^{N},H_{6}^{N},H_{7}^{N}] \end{aligned}$$</div><p></p>
+<h3 class="mume-header" id="sha-224-hash%E5%80%BC%E8%AE%A1%E7%AE%97toc"><a href="#toc">SHA-224 Hash&#x503C;&#x8BA1;&#x7B97;</a></h3>
+
+<p>SHA-224&#x662F;SHA-256&#x7684;&#x7279;&#x5316;, &#x9664;&#x4E86;&#x5176;&#x521D;&#x59CB;Hash&#x503C;&#x4E0D;&#x540C;&#x5916;, &#x548C;SHA-256&#x7684;&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;&#x4E00;&#x81F4;, &#x6700;&#x540E;&#x7ED3;&#x679C;&#x622A;&#x65AD;&#x4E3A;224&#x4F4D;<span class="mathjax-exps">$H=[H_{0}^{N},H_{1}^{N},H_{2}^{N},H_{3}^{N},H_{4}^{N},H_{5}^{N},H_{6}^{N}]$</span>.</p>
+<h3 class="mume-header" id="sha-512-hash%E5%80%BC%E8%AE%A1%E7%AE%97toc"><a href="#toc">SHA-512 Hash&#x503C;&#x8BA1;&#x7B97;</a></h3>
+
+<p>&#x7B97;&#x6CD5;&#x4F2A;&#x4EE3;&#x7801;&#x5982;&#x4E0B;:</p>
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; for \quad i=0 \dots N \\ &amp; \qquad for \quad j=0...80 \\ &amp; \qquad \qquad if \quad j \le 16 \\ &amp; \qquad \qquad \qquad W_{j}=M_{j}^{i} \\ &amp; \qquad \qquad else \\ &amp; \qquad \qquad \qquad W_{j} = \sigma_{1}^{512}(W_{j-2}) + W_{j-7} + \sigma_{0}^{512}(W_{j-15}) + W_{j-16}\\ &amp; \qquad \qquad end \\ &amp; \qquad end \\ &amp; \quad \\ &amp; \qquad a = H_{0}^{i}, b=H_{1}^{i}, c=H_{2}^{i}, d=H_{3}^{i}, e=H_{4}^{i}, f=H_{5}^{i}, g=H_{6}^{i}, h=H_{7}^{i} \\ &amp; \quad \\ &amp; \qquad for \quad j=0...80 \\ &amp; \qquad \qquad t_{1} = h+\sum_{1}^{512}(e)+Ch(e,f,g)+K_{j}+W_{j} \\ &amp; \qquad \qquad t_{2} = \sum_{0}^{512}(a)+Maj(a,b,c) \\ &amp; \qquad \qquad a,b,c,d,e,f,g,h=t_{1}+t_{2},a,b,c,d+t_{1},e,f,g \\ &amp; \qquad end \\ &amp; \quad \\ &amp; \qquad H_{0}^{i+1},H_{1}^{i+1},H_{2}^{i+1},H_{3}^{i+1},H_{4}^{i+1},H_{5}^{i+1},H_{6}^{i+1},H_{7}^{i+1}=a+H_{0}^{i},b+H_{1}^{i},c+H_{2}^{i},d+H_{3}^{i},e+H_{4}^{i},f+H_{5}^{i},g+H_{6}^{i},h+H_{7}^{i}\\ &amp; end \\ &amp; \quad \\ &amp; H=[H_{0}^{N},H_{1}^{N},H_{2}^{N},H_{3}^{N},H_{4}^{N},H_{5}^{N},H_{6}^{N},H_{7}^{N}] \end{aligned}$$</div><p></p>
+<h3 class="mume-header" id="sha-384-hash%E5%80%BC%E8%AE%A1%E7%AE%97toc"><a href="#toc">SHA-384 Hash&#x503C;&#x8BA1;&#x7B97;</a></h3>
+
+<p>SHA-384&#x662F;SHA-512&#x7684;&#x7279;&#x5316;, &#x9664;&#x4E86;&#x5176;&#x521D;&#x59CB;Hash&#x503C;&#x4E0D;&#x540C;&#x5916;, &#x548C;SHA-512&#x7684;&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;&#x4E00;&#x81F4;, &#x6700;&#x540E;&#x7ED3;&#x679C;&#x622A;&#x65AD;&#x4E3A;384&#x4F4D;<span class="mathjax-exps">$H=[H_{0}^{N},H_{1}^{N},H_{2}^{N},H_{3}^{N},H_{4}^{N},H_{5}^{N}]$</span>.</p>
+<h3 class="mume-header" id="sha-512224-hash%E5%80%BC%E8%AE%A1%E7%AE%97toc"><a href="#toc">SHA-512/224 Hash&#x503C;&#x8BA1;&#x7B97;</a></h3>
+
+<p>SHA-512/224&#x662F;SHA-512&#x7684;&#x7279;&#x5316;, &#x9664;&#x4E86;&#x5176;&#x521D;&#x59CB;Hash&#x503C;&#x4E0D;&#x540C;&#x5916;, &#x548C;SHA-512&#x7684;&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;&#x4E00;&#x81F4;, &#x6700;&#x540E;&#x7ED3;&#x679C;&#x622A;&#x65AD;&#x4E3A;384&#x4F4D;<span class="mathjax-exps">$H=[H_{0}^{N},H_{1}^{N},H_{2}^{N},H_{3}^{N}(0\dots32)]$</span>.</p>
+<h3 class="mume-header" id="sha-512256-hash%E5%80%BC%E8%AE%A1%E7%AE%97toc"><a href="#toc">SHA-512/256 Hash&#x503C;&#x8BA1;&#x7B97;</a></h3>
+
+<p>SHA-512/256&#x662F;SHA-512&#x7684;&#x7279;&#x5316;, &#x9664;&#x4E86;&#x5176;&#x521D;&#x59CB;Hash&#x503C;&#x4E0D;&#x540C;&#x5916;, &#x548C;SHA-512&#x7684;&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;&#x4E00;&#x81F4;, &#x6700;&#x540E;&#x7ED3;&#x679C;&#x622A;&#x65AD;&#x4E3A;384&#x4F4D;<span class="mathjax-exps">$H=[H_{0}^{N},H_{1}^{N},H_{2}^{N},H_{3}^{N}]$</span>.</p>
+<h2 class="mume-header" id="%E5%87%BD%E6%95%B0%E5%B8%B8%E9%87%8F%E8%AF%B4%E6%98%8Etoc"><a href="#toc">&#x51FD;&#x6570;&#x5E38;&#x91CF;&#x8BF4;&#x660E;</a></h2>
+
+<ul>
+<li><span class="mathjax-exps">$x \oplus y$</span>: x&#x5F02;&#x6216;y;</li>
+<li><span class="mathjax-exps">$x \lll n$</span>: x&#x5FAA;&#x73AF;&#x5DE6;&#x79FB;n&#x4F4D;;</li>
+<li><span class="mathjax-exps">$x \ggg n$</span>: x&#x5FAA;&#x73AF;&#x53F3;&#x79FB;n&#x4F4D;;</li>
+<li><span class="mathjax-exps">$x \gg n$</span>: x&#x53F3;&#x79FB;n&#x4F4D;, &#x9AD8;n&#x4F4D;&#x586B;&#x5145;&#x4E3A;0;</li>
+<li><span class="mathjax-exps">$x + y$</span>: <span class="mathjax-exps">$(x+y)\%2^{l}$</span>, <span class="mathjax-exps">$l$</span>&#x8868;&#x793A;&#x5355;&#x8BCD;&#x957F;&#x5EA6;;</li>
+<li><span class="mathjax-exps">$Ch(x,y,z), Maj(x,y,z)$</span>&#x5F0F;&#x4E2D;&#x7684;&#x5F02;&#x6216;&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x6362;&#x6216;&#x64CD;&#x4F5C;;</li>
+</ul>
+<h3 class="mume-header" id="sha-1toc"><a href="toc">SHA-1</a></h3>
+
+<p></p><div class="mathjax-exps">$$f_{t}(x,y,z) = \begin{cases} Ch(x,y,z) = (x \&amp; y) \oplus ((\sim x) \&amp; z), \quad 0 \le t \le 19 \\ Parity(x,y,z) = x \oplus y \oplus z, \quad 20 \le t \le 39 \\ Maj(x,y,z) = (x \&amp; y)\oplus (x \&amp; z) \oplus (y\&amp;z), \quad 40 \le t \le 59 \\ Parity(x,y,z) = x \oplus y \oplus z, \quad 60 \le t \le 79 \end{cases}$$</div><p></p>
+<p></p><div class="mathjax-exps">$$K_{t} = \begin{aligned} &amp; 0x5A827999, \quad 0 \le t \le 19 \\ &amp; 0x6ED9EBA1, \quad 20 \le t \le 39\\ &amp; 0x8F1BBCDC, \quad 40 \le t \le 59\\ &amp; 0xCA62C1D6, \quad 60 \le t \le 79 \end{aligned}$$</div><p></p>
+<h3 class="mume-header" id="sha-224-sha-256toc"><a href="toc">SHA-224 SHA-256</a></h3>
+
+<p></p><div class="mathjax-exps">$$\begin{aligned} Ch(x,y,z) &amp;= (x \&amp; y) \oplus ((\sim x) \&amp; z) \\ Maj(x,y,z) &amp;= (x \&amp; y)\oplus (x \&amp; z) \oplus (y\&amp;z) \\ \sum_{0}^{\{256\}}(x) &amp;= (x\ggg 2)\oplus(x\ggg 13)\oplus(x\ggg 22) \\ \sum_{1}^{\{256\}}(x) &amp;= (x\ggg 6)\oplus(x\ggg 11)\oplus(x\ggg 25) \\ \sigma_{0}^{\{256\}}(x) &amp;= (x\ggg 7)\oplus(x\ggg 18)\oplus(x\gg 3) \\ \sigma_{1}^{\{256\}}(x) &amp;= (x\ggg 17)\oplus(x\ggg 19)\oplus(x\gg 10) \end{aligned}$$</div><p></p>
+<p>&#x5E38;&#x91CF;&#x4E3A;&#x81EA;&#x7136;&#x6570;&#x524D;64&#x4E2A;&#x8D28;&#x6570;&#x7684;&#x7ACB;&#x65B9;&#x6839;&#x7684;&#x5404;&#x81EA;&#x5C0F;&#x6570;&#x7684;&#x524D;32&#x4F4D;:</p>
+<pre data-role="codeBlock" data-info="rust" class="language-rust"><span class="token keyword">const</span> K<span class="token punctuation">[</span>u32<span class="token punctuation">;</span><span class="token number">64</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+<span class="token number">0x428a2f98</span><span class="token punctuation">,</span><span class="token number">0x71374491</span><span class="token punctuation">,</span><span class="token number">0xb5c0fbcf</span><span class="token punctuation">,</span><span class="token number">0xe9b5dba5</span><span class="token punctuation">,</span><span class="token number">0x3956c25b</span><span class="token punctuation">,</span><span class="token number">0x59f111f1</span><span class="token punctuation">,</span><span class="token number">0x923f82a4</span><span class="token punctuation">,</span><span class="token number">0xab1c5ed5</span><span class="token punctuation">,</span>
+<span class="token number">0xd807aa98</span><span class="token punctuation">,</span><span class="token number">0x12835b01</span><span class="token punctuation">,</span><span class="token number">0x243185be</span><span class="token punctuation">,</span><span class="token number">0x550c7dc3</span><span class="token punctuation">,</span><span class="token number">0x72be5d74</span><span class="token punctuation">,</span><span class="token number">0x80deb1fe</span><span class="token punctuation">,</span><span class="token number">0x9bdc06a7</span><span class="token punctuation">,</span><span class="token number">0xc19bf174</span><span class="token punctuation">,</span>
+<span class="token number">0xe49b69c1</span><span class="token punctuation">,</span><span class="token number">0xefbe4786</span><span class="token punctuation">,</span><span class="token number">0x0fc19dc6</span><span class="token punctuation">,</span><span class="token number">0x240ca1cc</span><span class="token punctuation">,</span><span class="token number">0x2de92c6f</span><span class="token punctuation">,</span><span class="token number">0x4a7484aa</span><span class="token punctuation">,</span><span class="token number">0x5cb0a9dc</span><span class="token punctuation">,</span><span class="token number">0x76f988da</span><span class="token punctuation">,</span>
+<span class="token number">0x983e5152</span><span class="token punctuation">,</span><span class="token number">0xa831c66d</span><span class="token punctuation">,</span><span class="token number">0xb00327c8</span><span class="token punctuation">,</span><span class="token number">0xbf597fc7</span><span class="token punctuation">,</span><span class="token number">0xc6e00bf3</span><span class="token punctuation">,</span><span class="token number">0xd5a79147</span><span class="token punctuation">,</span><span class="token number">0x06ca6351</span><span class="token punctuation">,</span><span class="token number">0x14292967</span><span class="token punctuation">,</span>
+<span class="token number">0x27b70a85</span><span class="token punctuation">,</span><span class="token number">0x2e1b2138</span><span class="token punctuation">,</span><span class="token number">0x4d2c6dfc</span><span class="token punctuation">,</span><span class="token number">0x53380d13</span><span class="token punctuation">,</span><span class="token number">0x650a7354</span><span class="token punctuation">,</span><span class="token number">0x766a0abb</span><span class="token punctuation">,</span><span class="token number">0x81c2c92e</span><span class="token punctuation">,</span><span class="token number">0x92722c85</span><span class="token punctuation">,</span>
+<span class="token number">0xa2bfe8a1</span><span class="token punctuation">,</span><span class="token number">0xa81a664b</span><span class="token punctuation">,</span><span class="token number">0xc24b8b70</span><span class="token punctuation">,</span><span class="token number">0xc76c51a3</span><span class="token punctuation">,</span><span class="token number">0xd192e819</span><span class="token punctuation">,</span><span class="token number">0xd6990624</span><span class="token punctuation">,</span><span class="token number">0xf40e3585</span><span class="token punctuation">,</span><span class="token number">0x106aa070</span><span class="token punctuation">,</span>
+<span class="token number">0x19a4c116</span><span class="token punctuation">,</span><span class="token number">0x1e376c08</span><span class="token punctuation">,</span><span class="token number">0x2748774c</span><span class="token punctuation">,</span><span class="token number">0x34b0bcb5</span><span class="token punctuation">,</span><span class="token number">0x391c0cb3</span><span class="token punctuation">,</span><span class="token number">0x4ed8aa4a</span><span class="token punctuation">,</span><span class="token number">0x5b9cca4f</span><span class="token punctuation">,</span><span class="token number">0x682e6ff3</span><span class="token punctuation">,</span>
+<span class="token number">0x748f82ee</span><span class="token punctuation">,</span><span class="token number">0x78a5636f</span><span class="token punctuation">,</span><span class="token number">0x84c87814</span><span class="token punctuation">,</span><span class="token number">0x8cc70208</span><span class="token punctuation">,</span><span class="token number">0x90befffa</span><span class="token punctuation">,</span><span class="token number">0xa4506ceb</span><span class="token punctuation">,</span><span class="token number">0xbef9a3f7</span><span class="token punctuation">,</span><span class="token number">0xc67178f2</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</pre><h3 class="mume-header" id="sha-384-sha-512-sha-512224-sha-512256toc"><a href="#toc">SHA-384 SHA-512 SHA-512/224 SHA-512/256</a></h3>
+
+<p></p><div class="mathjax-exps">$$\begin{aligned} Ch(x,y,z) &amp;= (x \&amp; y) \oplus ((\sim x) \&amp; z) \\ Maj(x,y,z) &amp;= (x \&amp; y)\oplus (x \&amp; z) \oplus (y\&amp;z) \\ \sum_{0}^{\{256\}}(x) &amp;= (x\ggg 28)\oplus(x\ggg 34)\oplus(x\ggg 39) \\ \sum_{1}^{\{256\}}(x) &amp;= (x\ggg 14)\oplus(x\ggg 18)\oplus(x\ggg 41) \\ \sigma_{0}^{\{256\}}(x) &amp;= (x\ggg 1)\oplus(x\ggg 8)\oplus(x\gg 7) \\ \sigma_{1}^{\{256\}}(x) &amp;= (x\ggg 19)\oplus(x\ggg 61)\oplus(x\gg 6) \end{aligned}$$</div><p></p>
+<p>&#x5E38;&#x91CF;&#x4E3A;&#x81EA;&#x7136;&#x6570;&#x524D;80&#x4E2A;&#x8D28;&#x6570;&#x7684;&#x7ACB;&#x65B9;&#x6839;&#x7684;&#x5404;&#x81EA;&#x5C0F;&#x6570;&#x7684;&#x524D;64&#x4F4D;:</p>
+<pre data-role="codeBlock" data-info="rust" class="language-rust"><span class="token keyword">const</span> K<span class="token punctuation">[</span>u64<span class="token punctuation">;</span><span class="token number">80</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+<span class="token number">0x428a2f98d728ae22</span><span class="token punctuation">,</span><span class="token number">0x7137449123ef65cd</span><span class="token punctuation">,</span><span class="token number">0xb5c0fbcfec4d3b2f</span><span class="token punctuation">,</span><span class="token number">0xe9b5dba58189dbbc</span><span class="token punctuation">,</span><span class="token number">0x3956c25bf348b538</span><span class="token punctuation">,</span><span class="token number">0x59f111f1b605d019</span><span class="token punctuation">,</span><span class="token number">0x923f82a4af194f9b</span><span class="token punctuation">,</span><span class="token number">0xab1c5ed5da6d8118</span><span class="token punctuation">,</span>
+<span class="token number">0xd807aa98a3030242</span><span class="token punctuation">,</span><span class="token number">0x12835b0145706fbe</span><span class="token punctuation">,</span><span class="token number">0x243185be4ee4b28c</span><span class="token punctuation">,</span><span class="token number">0x550c7dc3d5ffb4e2</span><span class="token punctuation">,</span><span class="token number">0x72be5d74f27b896f</span><span class="token punctuation">,</span><span class="token number">0x80deb1fe3b1696b1</span><span class="token punctuation">,</span><span class="token number">0x9bdc06a725c71235</span><span class="token punctuation">,</span><span class="token number">0xc19bf174cf692694</span><span class="token punctuation">,</span>
+<span class="token number">0xe49b69c19ef14ad2</span><span class="token punctuation">,</span><span class="token number">0xefbe4786384f25e3</span><span class="token punctuation">,</span><span class="token number">0x0fc19dc68b8cd5b5</span><span class="token punctuation">,</span><span class="token number">0x240ca1cc77ac9c65</span><span class="token punctuation">,</span><span class="token number">0x2de92c6f592b0275</span><span class="token punctuation">,</span><span class="token number">0x4a7484aa6ea6e483</span><span class="token punctuation">,</span><span class="token number">0x5cb0a9dcbd41fbd4</span><span class="token punctuation">,</span><span class="token number">0x76f988da831153b5</span><span class="token punctuation">,</span>
+<span class="token number">0x983e5152ee66dfab</span><span class="token punctuation">,</span><span class="token number">0xa831c66d2db43210</span><span class="token punctuation">,</span><span class="token number">0xb00327c898fb213f</span><span class="token punctuation">,</span><span class="token number">0xbf597fc7beef0ee4</span><span class="token punctuation">,</span><span class="token number">0xc6e00bf33da88fc2</span><span class="token punctuation">,</span><span class="token number">0xd5a79147930aa725</span><span class="token punctuation">,</span><span class="token number">0x06ca6351e003826f</span><span class="token punctuation">,</span><span class="token number">0x142929670a0e6e70</span><span class="token punctuation">,</span>
+<span class="token number">0x27b70a8546d22ffc</span><span class="token punctuation">,</span><span class="token number">0x2e1b21385c26c926</span><span class="token punctuation">,</span><span class="token number">0x4d2c6dfc5ac42aed</span><span class="token punctuation">,</span><span class="token number">0x53380d139d95b3df</span><span class="token punctuation">,</span><span class="token number">0x650a73548baf63de</span><span class="token punctuation">,</span><span class="token number">0x766a0abb3c77b2a8</span><span class="token punctuation">,</span><span class="token number">0x81c2c92e47edaee6</span><span class="token punctuation">,</span><span class="token number">0x92722c851482353b</span><span class="token punctuation">,</span>
+<span class="token number">0xa2bfe8a14cf10364</span><span class="token punctuation">,</span><span class="token number">0xa81a664bbc423001</span><span class="token punctuation">,</span><span class="token number">0xc24b8b70d0f89791</span><span class="token punctuation">,</span><span class="token number">0xc76c51a30654be30</span><span class="token punctuation">,</span><span class="token number">0xd192e819d6ef5218</span><span class="token punctuation">,</span><span class="token number">0xd69906245565a910</span><span class="token punctuation">,</span><span class="token number">0xf40e35855771202a</span><span class="token punctuation">,</span><span class="token number">0x106aa07032bbd1b8</span><span class="token punctuation">,</span>
+<span class="token number">0x19a4c116b8d2d0c8</span><span class="token punctuation">,</span><span class="token number">0x1e376c085141ab53</span><span class="token punctuation">,</span><span class="token number">0x2748774cdf8eeb99</span><span class="token punctuation">,</span><span class="token number">0x34b0bcb5e19b48a8</span><span class="token punctuation">,</span><span class="token number">0x391c0cb3c5c95a63</span><span class="token punctuation">,</span><span class="token number">0x4ed8aa4ae3418acb</span><span class="token punctuation">,</span><span class="token number">0x5b9cca4f7763e373</span><span class="token punctuation">,</span><span class="token number">0x682e6ff3d6b2b8a3</span><span class="token punctuation">,</span>
+<span class="token number">0x748f82ee5defb2fc</span><span class="token punctuation">,</span><span class="token number">0x78a5636f43172f60</span><span class="token punctuation">,</span><span class="token number">0x84c87814a1f0ab72</span><span class="token punctuation">,</span><span class="token number">0x8cc702081a6439ec</span><span class="token punctuation">,</span><span class="token number">0x90befffa23631e28</span><span class="token punctuation">,</span><span class="token number">0xa4506cebde82bde9</span><span class="token punctuation">,</span><span class="token number">0xbef9a3f7b2c67915</span><span class="token punctuation">,</span><span class="token number">0xc67178f2e372532b</span><span class="token punctuation">,</span>
+<span class="token number">0xca273eceea26619c</span><span class="token punctuation">,</span><span class="token number">0xd186b8c721c0c207</span><span class="token punctuation">,</span><span class="token number">0xeada7dd6cde0eb1e</span><span class="token punctuation">,</span><span class="token number">0xf57d4f7fee6ed178</span><span class="token punctuation">,</span><span class="token number">0x06f067aa72176fba</span><span class="token punctuation">,</span><span class="token number">0x0a637dc5a2c898a6</span><span class="token punctuation">,</span><span class="token number">0x113f9804bef90dae</span><span class="token punctuation">,</span><span class="token number">0x1b710b35131c471b</span><span class="token punctuation">,</span>
+<span class="token number">0x28db77f523047d84</span><span class="token punctuation">,</span><span class="token number">0x32caab7b40c72493</span><span class="token punctuation">,</span><span class="token number">0x3c9ebe0a15c9bebc</span><span class="token punctuation">,</span><span class="token number">0x431d67c49c100d4c</span><span class="token punctuation">,</span><span class="token number">0x4cc5d4becb3e42b6</span><span class="token punctuation">,</span><span class="token number">0x597f299cfc657e2a</span><span class="token punctuation">,</span><span class="token number">0x5fcb6fab3ad6faec</span><span class="token punctuation">,</span><span class="token number">0x6c44198c4a475817</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</pre><h2 class="mume-header" id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc"><a href="#toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></h2>
+
+<ul>
+<li><a href="https://csrc.nist.gov/publications/detail/fips/180/4/final">FIPS 180-4</a>;</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "default"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.getElementsByClassName('mermaid'))
+}
+</script>
+    
+    
+    
+    
+    
+  
+    </body></html>
