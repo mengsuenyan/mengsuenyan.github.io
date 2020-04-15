@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>index</title>
+      <title>RSA&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -13,7 +13,7 @@
       
 
       
-      
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@8.1.0/dist/mermaid.min.js"></script>
       
       
       
@@ -268,45 +268,145 @@ pre[data-line] .line-highlight[data-end]:after {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview  ">
-      <p><span id="toc"></span></p>
+      <h1 class="mume-header" id="rsa%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95toc"><a href="#toc">RSA&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;</a></h1>
+
+<p><span id="toc"></span></p>
 <ul>
-<li><a href="#mengsuenyan%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2toc">mengsuenyan&#x7684;&#x4E2A;&#x4EBA;&#x535A;&#x5BA2;</a>
+<li><a href="#rsa%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95toc">RSA&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;</a>
 <ul>
-<li><a href="#cstoc">CS</a></li>
-<li><a href="#eetoc">EE</a></li>
-<li><a href="#mstoc">MS</a></li>
+<li><a href="#%E7%AC%A6%E5%8F%B7%E8%AF%B4%E6%98%8Etoc">&#x7B26;&#x53F7;&#x8BF4;&#x660E;</a></li>
+<li><a href="#rsa-v15toc">RSA v1.5</a>
+<ul>
+<li><a href="#%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90toc">&#x5BC6;&#x94A5;&#x751F;&#x6210;</a></li>
+<li><a href="#%E5%AF%86%E9%92%A5%E7%9A%84%E8%A1%A8%E7%A4%BAtoc">&#x5BC6;&#x94A5;&#x7684;&#x8868;&#x793A;</a></li>
+<li><a href="#%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8Btoc">&#x52A0;&#x5BC6;&#x8FC7;&#x7A0B;</a>
+<ul>
+<li><a href="#%E6%A0%BC%E5%BC%8F%E5%8C%96toc">&#x683C;&#x5F0F;&#x5316;</a></li>
+<li><a href="#%E6%95%B4%E6%95%B0%E8%BD%AC%E6%8D%A2toc">&#x6574;&#x6570;&#x8F6C;&#x6362;</a></li>
+<li><a href="#rsa%E8%AE%A1%E7%AE%97toc">RSA&#x8BA1;&#x7B97;</a></li>
+<li><a href="#%E5%AD%97%E8%8A%82%E6%B5%81%E8%BD%AC%E6%8D%A2toc">&#x5B57;&#x8282;&#x6D41;&#x8F6C;&#x6362;</a></li>
+</ul>
+</li>
+<li><a href="#%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8Btoc">&#x89E3;&#x5BC6;&#x8FC7;&#x7A0B;</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></li>
 </ul>
 </li>
 </ul>
-<h1 class="mume-header" id="mengsuenyan%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2toc"><a href="#toc">mengsuenyan&#x7684;&#x4E2A;&#x4EBA;&#x535A;&#x5BA2;</a></h1>
-
-<h2 class="mume-header" id="cstoc"><a href="#toc">CS</a></h2>
+<h2 class="mume-header" id="%E7%AC%A6%E5%8F%B7%E8%AF%B4%E6%98%8Etoc"><a href="#toc">&#x7B26;&#x53F7;&#x8BF4;&#x660E;</a></h2>
 
 <ul>
-<li><a href="docs/CS/AES%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95.html">AES&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;</a></li>
-<li><a href="docs/CS/HMAC%E5%9F%BA%E4%BA%8EHash%E7%9A%84%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81.html">HMAC&#x57FA;&#x4E8E;Hash&#x7684;&#x6D88;&#x606F;&#x8BA4;&#x8BC1;&#x7801;</a></li>
-<li><a href="docs/CS/MD5%E6%B6%88%E6%81%AF%E6%91%98%E8%A6%81%E7%AE%97%E6%B3%95.html">MD5&#x6D88;&#x606F;&#x6458;&#x8981;&#x7B97;&#x6CD5;</a></li>
-<li><a href="docs/CS/RSA%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95.html">RSA&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;</a></li>
-<li><a href="docs/CS/SHA%E5%AE%89%E5%85%A8%E6%95%A3%E5%88%97%E7%AE%97%E6%B3%95.html">SHA&#x5B89;&#x5168;&#x6563;&#x5217;&#x7B97;&#x6CD5;</a></li>
-<li><a href="docs/CS/%E5%88%86%E7%BB%84%E5%8A%A0%E5%AF%86%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F.html">&#x5206;&#x7EC4;&#x52A0;&#x5BC6;&#x5DE5;&#x4F5C;&#x6A21;&#x5F0F;</a></li>
+<li><span class="mathjax-exps">$x\dots y$</span>: <span class="mathjax-exps">$y$</span>&#x62FC;&#x63A5;&#x5728;<span class="mathjax-exps">$x$</span>&#x4E4B;&#x540E;;</li>
 </ul>
-<h2 class="mume-header" id="eetoc"><a href="#toc">EE</a></h2>
+<h2 class="mume-header" id="rsa-v15toc"><a href="#toc">RSA v1.5</a></h2>
+
+<h3 class="mume-header" id="%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90toc"><a href="#toc">&#x5BC6;&#x94A5;&#x751F;&#x6210;</a></h3>
 
 <ul>
-<li><a href="docs/EE/Markdown%E7%AC%A6%E5%8F%B7%E9%80%9F%E6%9F%A5%E8%A1%A8.html">Markdown&#x7B26;&#x53F7;&#x901F;&#x67E5;&#x8868;</a></li>
-<li><a href="docs/EE/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%BA%BF%E6%80%A7%E7%B3%BB%E7%BB%9F.html">&#x4FE1;&#x53F7;&#x4E0E;&#x7EBF;&#x6027;&#x7CFB;&#x7EDF;</a></li>
-<li><a href="docs/EE/%E5%82%85%E6%B0%8F%E5%8F%98%E6%8D%A2%E7%9A%84%E6%80%A7%E8%B4%A8.html">&#x5085;&#x6C0F;&#x53D8;&#x6362;&#x7684;&#x6027;&#x8D28;</a></li>
-<li><a href="docs/EE/%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%AE%BE%E8%AE%A1.html">&#x6EE4;&#x6CE2;&#x5668;&#x8BBE;&#x8BA1;</a></li>
+<li>&#x968F;&#x673A;&#x9009;&#x62E9;&#x4E24;&#x4E2A;&#x8D28;&#x6570;<span class="mathjax-exps">$p$</span>&#x548C;<span class="mathjax-exps">$q$</span>(<span class="mathjax-exps">$p\neq q$</span>), &#x5219;&#x6A21;&#x6570;<span class="mathjax-exps">$n=p*q$</span>. &#x6A21;&#x6570;&#x7684;&#x5B57;&#x8282;&#x957F;&#x5EA6;<span class="mathjax-exps">$k$</span>&#x6EE1;&#x8DB3;: <span class="mathjax-exps">$2^{((k-1)*8}\le n \lt 2^{k*8}$</span>;</li>
+<li>&#x5728;<span class="mathjax-exps">$[1,n]$</span>&#x4E4B;&#x4E2D;, &#x968F;&#x673A;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x6574;&#x6570;<span class="mathjax-exps">$e$</span>&#x4F5C;&#x4E3A;&#x516C;&#x94A5;&#x7684;&#x6307;&#x6570;&#x90E8;&#x5206;. &#x5176;&#x4E2D;, <span class="mathjax-exps">$e$</span>&#x6EE1;&#x8DB3;&#x548C;<span class="mathjax-exps">$p-1$</span>&#x53CA;<span class="mathjax-exps">$q-1$</span>&#x90FD;&#x662F;&#x4E92;&#x8D28;&#x5173;&#x7CFB;(&#x516C;&#x5171;&#x56E0;&#x5B50;&#x662F;1);</li>
+<li>&#x90A3;&#x4E48;&#x79C1;&#x94A5;&#x7684;&#x6307;&#x6570;&#x90E8;&#x5206;<span class="mathjax-exps">$d$</span>&#x6EE1;&#x8DB3;: <span class="mathjax-exps">$d*e-1$</span>&#x80FD;&#x88AB;<span class="mathjax-exps">$q-1$</span>&#x548C;<span class="mathjax-exps">$p-1$</span>&#x6574;&#x9664;;</li>
 </ul>
-<h2 class="mume-header" id="mstoc"><a href="#toc">MS</a></h2>
+<h3 class="mume-header" id="%E5%AF%86%E9%92%A5%E7%9A%84%E8%A1%A8%E7%A4%BAtoc"><a href="#toc">&#x5BC6;&#x94A5;&#x7684;&#x8868;&#x793A;</a></h3>
 
+<p>RSA&#x6807;&#x51C6;&#x4E2D;&#x7684;&#x5BC6;&#x94A5;&#x8868;&#x793A;&#x91C7;&#x7528;ASN.1&#x8BED;&#x6CD5;, &#x516C;&#x94A5;&#x548C;&#x5BC6;&#x94A5;&#x8868;&#x793A;&#x5982;&#x4E0B;:</p>
+<pre data-role="codeBlock" data-info="txt" class="language-txt"><code>RSAPublicKey ::= SEQUENCE {
+    modulus         INTEGER, -- n
+    publicExponent  INTEGER, -- e
+}
+
+RSAPrivateKey ::= SEQUENCE {
+    version         Version,
+    modulus         INTEGER, -- n
+    publicExponent  INTEGER, -- e
+    privateExponent INTEGER, -- d
+    prime1          INTEGER, -- p
+    prime2          INTEGER, -- q
+    exponent1       INTEGER, -- d mod (p-1)
+    exponent2       INTEGER, -- d mod (q-1)
+    coeffient       INTEGER, -- (inverse of q) mod p
+}
+
+Version ::= INTEGER
+</code></pre><h3 class="mume-header" id="%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8Btoc"><a href="#toc">&#x52A0;&#x5BC6;&#x8FC7;&#x7A0B;</a></h3>
+
+<div class="mermaid">graph LR;
+    id1(&#x6570;&#x636E;&#x5757;&#x683C;&#x5F0F;&#x5316;) --&gt; id2(&#x6574;&#x6570;&#x8F6C;&#x6362;);
+    id2 --&gt; id3(RSA&#x8BA1;&#x7B97;);
+    id3 --&gt; id4(&#x5B57;&#x8282;&#x6D41;&#x8F6C;&#x6362;);
+</div><h4 class="mume-header" id="%E6%A0%BC%E5%BC%8F%E5%8C%96toc"><a href="#toc">&#x683C;&#x5F0F;&#x5316;</a></h4>
+
+<p>&#x8BB0;&#x6709;&#x6570;&#x636E;&#x5757;<span class="mathjax-exps">$D$</span>, &#x5176;&#x5B57;&#x8282;&#x957F;&#x5EA6;&#x5E94;&#x6EE1;&#x8DB3;<span class="mathjax-exps">$len(D)\le k$</span>. &#x90A3;&#x4E48;, <span class="mathjax-exps">$D$</span>&#x9700;&#x8981;&#x6309;&#x7167;&#x5982;&#x4E0B;&#x683C;&#x5F0F;&#x586B;&#x5145;:</p>
+<p></p><div class="mathjax-exps">$$EB = 0x00 \dots BT \dots PS \dots 0x00 \dots D$$</div><p></p>
+<ul>
+<li>EB: &#x683C;&#x5F0F;&#x5316;&#x540E;&#x7684;&#x6570;&#x636E;&#x5757;, &#x5B57;&#x8282;&#x957F;&#x5EA6;&#x4E3A;<span class="mathjax-exps">$k$</span>;</li>
+<li>BT: &#x6570;&#x636E;&#x5757;&#x7684;&#x7C7B;&#x578B;: &#x79C1;&#x94A5;&#x64CD;&#x4F5C;&#x4E2D;&#x4E3A;<code>0x00</code>or<code>0x01</code>, &#x516C;&#x94A5;&#x64CD;&#x4F5C;&#x4E2D;&#x4E3A;<code>0x02</code>;</li>
+<li>D: &#x539F;&#x59CB;&#x6570;&#x636E;&#x5757;;</li>
+<li>PS: &#x5B57;&#x8282;&#x957F;&#x5EA6;&#x4E3A;<span class="mathjax-exps">$k-3-len(D)$</span>, <code>BT=0x00</code>&#x5219;&#x586B;&#x5145;&#x4E3A;<code>0x00</code>; <code>BT=0x01</code>&#x5219;&#x586B;&#x5145;&#x4E3A;<code>0xff</code>; <code>BT=0x02</code>&#x5219;&#x586B;&#x5145;&#x4E3A;&#x975E;0&#x7684;&#x968F;&#x673A;&#x6570;;</li>
+</ul>
+<h4 class="mume-header" id="%E6%95%B4%E6%95%B0%E8%BD%AC%E6%8D%A2toc"><a href="#toc">&#x6574;&#x6570;&#x8F6C;&#x6362;</a></h4>
+
+<p>&#x5C06;EB&#x8F6C;&#x6362;&#x4E3A;&#x6B63;&#x6574;&#x6570;<span class="mathjax-exps">$x$</span>, <span class="mathjax-exps">$x=\sum_{i=0}^{k-1}2^{8*(k-1-i)}EB_{i}$</span>, <span class="mathjax-exps">$EB_{i}$</span>&#x8868;&#x793A;<span class="mathjax-exps">$EB$</span>&#x4ECE;&#x5DE6;&#x5F80;&#x53F3;&#x7684;&#x7B2C;i&#x4E2A;&#x5B57;&#x8282;&#x6240;&#x8868;&#x793A;&#x7684;&#x5341;&#x8FDB;&#x5236;&#x6570;.</p>
+<h4 class="mume-header" id="rsa%E8%AE%A1%E7%AE%97toc"><a href="#toc">RSA&#x8BA1;&#x7B97;</a></h4>
+
+<p>RSA&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#x5982;&#x4E0B;:</p>
+<p></p><div class="mathjax-exps">$$y = x^e \mod n$$</div><p></p>
+<h4 class="mume-header" id="%E5%AD%97%E8%8A%82%E6%B5%81%E8%BD%AC%E6%8D%A2toc"><a href="#toc">&#x5B57;&#x8282;&#x6D41;&#x8F6C;&#x6362;</a></h4>
+
+<p>&#x5C06;&#x6574;&#x6570;<span class="mathjax-exps">$y$</span>&#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x8282;&#x6570;&#x636E;&#x5757;<span class="mathjax-exps">$ED$</span>, &#x6EE1;&#x8DB3;<span class="mathjax-exps">$y=\sum_{i=0}^{k-1}2^{8*(k-1-i)}ED_{i}$</span>, <span class="mathjax-exps">$ED_{i}$</span>&#x8868;&#x793A;<span class="mathjax-exps">$ED$</span>&#x4ECE;&#x5DE6;&#x5F80;&#x53F3;&#x7684;&#x7B2C;i&#x4E2A;&#x5B57;&#x8282;&#x6240;&#x8868;&#x793A;&#x7684;&#x5341;&#x8FDB;&#x5236;&#x6570;.</p>
+<h3 class="mume-header" id="%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8Btoc"><a href="#toc">&#x89E3;&#x5BC6;&#x8FC7;&#x7A0B;</a></h3>
+
+<p>&#x89E3;&#x5BC6;&#x8FC7;&#x7A0B;&#x662F;&#x52A0;&#x5BC6;&#x7684;&#x9006;&#x8FC7;&#x7A0B;, &#x9664;&#x4E86;RSA&#x8BA1;&#x7B97;&#x91C7;&#x7528;&#x7684;&#x662F;&#x79C1;&#x94A5;&#x6307;&#x6570;<span class="mathjax-exps">$y=x^d \mod n$</span>, &#x5176;&#x5B83;&#x6309;&#x7167;&#x52A0;&#x5BC6;&#x7684;&#x9006;&#x5E8F;&#x64CD;&#x4F5C;&#x5373;&#x53EF;;</p>
+<h2 class="mume-header" id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc"><a href="#toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></h2>
+
+<ul>
+<li>RFC2313 RSA v1.5;</li>
+<li>RFC3447 RSA v2.1;</li>
+<li>RFC8017 RSA v2.2;</li>
+</ul>
 
       </div>
       
       
     
     
-    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "default"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.getElementsByClassName('mermaid'))
+}
+</script>
     
     
     
