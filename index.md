@@ -13,6 +13,7 @@
 - [RSA加密算法](docs/CS/RSA加密算法.html)
 - [SHA安全散列算法](docs/CS/SHA安全散列算法.html)
 - [分组加密工作模式](docs/CS/分组加密工作模式.html)
+- [常用校验和(Hash)算法](docs/CS/常用校验和(Hash)算法.html)
 ## [EE](#toc)
 
 
