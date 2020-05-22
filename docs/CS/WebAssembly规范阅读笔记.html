@@ -1,0 +1,555 @@
+<!DOCTYPE html><html><head>
+      <title>WebAssembly&#x89C4;&#x8303;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+        
+      
+      
+
+      
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@8.5.1/dist/mermaid.min.js"></script>
+      
+      
+      
+      
+      
+
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="webassembly">WebAssembly</h1>
+
+<p><span id="toc"></span></p>
+<ul>
+<li><a href="#webassembly">WebAssembly</a>
+<ul>
+<li><a href="#%E8%A7%A3%E7%A0%81toc">&#x89E3;&#x7801;</a>
+<ul>
+<li><a href="#%E7%B1%BB%E5%9E%8B%E7%A7%8D%E7%B1%BBtoc">&#x7C7B;&#x578B;&#x79CD;&#x7C7B;</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8Btoc">&#x57FA;&#x672C;&#x6570;&#x503C;&#x7C7B;&#x578B;</a></li>
+<li><a href="#%E6%8C%87%E4%BB%A4toc">&#x6307;&#x4EE4;</a></li>
+<li><a href="#%E6%A8%A1%E5%9D%97toc">&#x6A21;&#x5757;</a></li>
+</ul>
+</li>
+<li><a href="#%E9%AA%8C%E8%AF%81toc">&#x9A8C;&#x8BC1;</a>
+<ul>
+<li><a href="#%E8%AF%AD%E5%A2%83toc">&#x8BED;&#x5883;</a></li>
+<li><a href="#%E7%B1%BB%E5%9E%8B%E9%AA%8C%E8%AF%81toc">&#x7C7B;&#x578B;&#x9A8C;&#x8BC1;</a>
+<ul>
+<li><a href="#%E8%8C%83%E5%9B%B4%E9%AA%8C%E8%AF%81toc">&#x8303;&#x56F4;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="#%E5%9D%97%E7%B1%BB%E5%9E%8B%E9%AA%8C%E8%AF%81toc">&#x5757;&#x7C7B;&#x578B;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B%E9%AA%8C%E8%AF%81toc">&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="#%E8%A1%A8%E7%B1%BB%E5%9E%8B%E9%AA%8C%E8%AF%81toc">&#x8868;&#x7C7B;&#x578B;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="#%E5%86%85%E5%AD%98%E7%B1%BB%E5%9E%8B%E9%AA%8C%E8%AF%81toc">&#x5185;&#x5B58;&#x7C7B;&#x578B;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E9%AA%8C%E8%AF%81toc">&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="#%E5%A4%96%E9%83%A8%E7%B1%BB%E5%9E%8B%E9%AA%8C%E8%AF%81toc">&#x5916;&#x90E8;&#x7C7B;&#x578B;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="#%E6%8C%87%E4%BB%A4%E9%AA%8C%E8%AF%81toc">&#x6307;&#x4EE4;&#x9A8C;&#x8BC1;</a>
+<ul>
+<li><a href="#%E6%95%B0%E5%80%BC%E6%8C%87%E4%BB%A4%E9%AA%8C%E8%AF%81toc">&#x6570;&#x503C;&#x6307;&#x4EE4;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0%E6%8C%87%E4%BB%A4%E9%AA%8C%E8%AF%81toc">&#x53C2;&#x6570;&#x6307;&#x4EE4;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="#%E5%8F%98%E9%87%8F%E6%8C%87%E4%BB%A4%E9%AA%8C%E8%AF%81toc">&#x53D8;&#x91CF;&#x6307;&#x4EE4;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="#%E5%86%85%E5%AD%98%E6%8C%87%E4%BB%A4%E9%AA%8C%E8%AF%81toc">&#x5185;&#x5B58;&#x6307;&#x4EE4;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="#%E6%8E%A7%E5%88%B6%E6%8C%87%E4%BB%A4%E9%AA%8C%E8%AF%81toc">&#x63A7;&#x5236;&#x6307;&#x4EE4;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="#%E6%A8%A1%E5%9D%97%E9%AA%8C%E8%AF%81toc">&#x6A21;&#x5757;&#x9A8C;&#x8BC1;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%89%A7%E8%A1%8Ctoc">&#x6267;&#x884C;</a>
+<ul>
+<li><a href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E7%BB%93%E6%9E%84toc">&#x8FD0;&#x884C;&#x65F6;&#x7ED3;&#x6784;</a></li>
+<li><a href="#%E5%AE%9E%E4%BE%8B%E5%8C%96toc">&#x5B9E;&#x4F8B;&#x5316;</a></li>
+<li><a href="#%E8%B0%83%E7%94%A8%E6%89%A7%E8%A1%8Ctoc">&#x8C03;&#x7528;&#x6267;&#x884C;</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></li>
+</ul>
+</li>
+</ul>
+<div class="mermaid">graph LR;
+  id3 -.-&gt; id3_0;
+
+  subgraph &#x6267;&#x884C;;
+  id3_0(&#x5B9E;&#x4F8B;&#x5316;) --&gt; id3_1(&#x8C03;&#x7528;&#x6267;&#x884C;)
+  end;
+
+  subgraph &#x4E3B;&#x6D41;&#x7A0B;;
+  id1(&#x89E3;&#x7801;) --&gt; id2(&#x9A8C;&#x8BC1;);
+  id2 --&gt; id3(&#x6267;&#x884C;);
+  end;
+
+</div><h2 class="mume-header" id="%E8%A7%A3%E7%A0%81toc"><a href="#toc">&#x89E3;&#x7801;</a></h2>
+
+<h3 class="mume-header" id="%E7%B1%BB%E5%9E%8B%E7%A7%8D%E7%B1%BBtoc"><a href="#toc">&#x7C7B;&#x578B;&#x79CD;&#x7C7B;</a></h3>
+
+<ul>
+<li>&#x57FA;&#x672C;&#x6570;&#x503C;&#x7C7B;&#x578B;: <code>i32 | i64 | f32 | f64</code>;</li>
+<li>&#x8FD4;&#x56DE;&#x503C;: &#x6267;&#x884C;&#x6307;&#x4EE4;&#x6216;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;, &#x57FA;&#x672C;&#x6570;&#x503C;&#x7C7B;&#x578B;&#x5E8F;&#x5217;;</li>
+<li>&#x51FD;&#x6570;: &#x5C06;&#x4E00;&#x7EC4;&#x57FA;&#x672C;&#x6570;&#x503C;&#x7C7B;&#x578B;&#x5E8F;&#x5217;&#x6620;&#x5C04;&#x5230;&#x53E6;&#x4E00;&#x7EC4;&#x57FA;&#x672C;&#x6570;&#x503C;&#x7C7B;&#x578B;&#x5E8F;&#x5217;;</li>
+<li>&#x5185;&#x5B58;: &#x4E00;&#x5757;&#x7EBF;&#x6027;&#x5185;&#x5B58;;</li>
+<li>&#x8868;: &#x4E00;&#x4E9B;&#x76F8;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x5143;&#x7D20;&#x7EC4;&#x6210;&#x7684;&#x5E8F;&#x5217;, &#x5F53;&#x524D;&#x8868;&#x5143;&#x7D20;&#x5141;&#x8BB8;&#x7684;&#x7C7B;&#x578B;&#x4EC5;&#x6709;&#x51FD;&#x6570;&#x5F15;&#x7528;&#x4E00;&#x79CD;;</li>
+<li>&#x5168;&#x5C40;&#x53D8;&#x91CF;: &#x53EF;&#x4FEE;&#x6539;(var)&#x548C;&#x4E0D;&#x53EF;&#x4FEE;&#x6539;&#x7684;(const)&#x7684;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;;</li>
+<li>&#x5916;&#x90E8;&#x7C7B;&#x578B;: &#x53EF;&#x4ECE;&#x5176;&#x5B83;&#x6A21;&#x5757;&#x5F15;&#x7528;/&#x5BFC;&#x5165;&#x5230;&#x672C;&#x6A21;&#x5757;&#x7684;&#x7C7B;&#x578B;, &#x5305;&#x62EC;&#x51FD;&#x6570;/&#x8868;/&#x5185;&#x5B58;/&#x5168;&#x5C40;&#x53D8;&#x91CF;;</li>
+</ul>
+<h3 class="mume-header" id="%E5%9F%BA%E6%9C%AC%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8Btoc"><a href="#toc">&#x57FA;&#x672C;&#x6570;&#x503C;&#x7C7B;&#x578B;</a></h3>
+
+<ul>
+<li>&#x5B57;&#x8282;;</li>
+<li>&#x6574;&#x6570;: <code>u32 | u64 | s32 | s64 | i8 | i16 | i32 | i64</code>, <code>Boolean</code>&#x548C;<code>&#x5185;&#x5B58;&#x5730;&#x5740;</code>&#x4F7F;&#x7528;32&#x4F4D;&#x7684;&#x6574;&#x6570;&#x8868;&#x793A;;</li>
+<li>&#x6D6E;&#x70B9;&#x6570;: <code>f32 | f64</code>, <strong>IEEE-754-2019</strong>&#x6807;&#x51C6;;</li>
+</ul>
+<h3 class="mume-header" id="%E6%8C%87%E4%BB%A4toc"><a href="#toc">&#x6307;&#x4EE4;</a></h3>
+
+<ul>
+<li>&#x6570;&#x503C;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;:
+<ul>
+<li>&#x6574;&#x6570;&#x4E00;&#x5143;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;: <code>clz | ctz | popcnt</code>;</li>
+<li>&#x6574;&#x6570;&#x4E8C;&#x5143;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;: <code>add | sub | mul | div_sx | rem_sx | and | or | xor | shl | shr_sx | rotl | rotr</code>;</li>
+<li>&#x6D6E;&#x70B9;&#x6570;&#x4E00;&#x5143;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;: <code>abs | neg | sqrt | ceil | floor | trunc | nearest</code>;</li>
+<li>&#x6D6E;&#x70B9;&#x6570;&#x4E8C;&#x5143;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;: <code>add | sub | mul | div | min | max | copysign</code>;</li>
+<li>&#x6574;&#x6570;&#x6D4B;&#x8BD5;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;: <code>eqz</code>;</li>
+<li>&#x6574;&#x6570;&#x5173;&#x7CFB;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;: <code>eq | ne | lt_sx | gt_sx | le_sx | ge_sx</code>;</li>
+<li>&#x6D6E;&#x70B9;&#x6570;&#x5173;&#x7CFB;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;: <code>eq | ne | lt | gt | le | ge</code>;</li>
+</ul>
+</li>
+<li>&#x53C2;&#x6570;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;: <code>drop | select</code>;</li>
+<li>&#x53D8;&#x91CF;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;: <code>local.get | local.set | local.tee | global.set | global.get</code>;</li>
+<li>&#x5185;&#x5B58;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;: <code>memory.grow | memory.size | load | store</code>, &#x5BF9;&#x4E8E;&#x591A;&#x5B57;&#x8282;&#x7684;&#x5185;&#x5B58;&#x7684;&#x8BFB;&#x5199;&#x662F;&#x6309;&#x7167;&#x5C0F;&#x7AEF;&#x5E8F;&#x89E3;&#x91CA;&#x7684;;</li>
+<li>&#x63A7;&#x5236;&#x6307;&#x4EE4;: <code>nop | unreachable | block | loop | if/else | br | br_if | br_table | return | call | call_indirect</code>;</li>
+<li>&#x8868;&#x8FBE;&#x5F0F;: <code>end</code>;</li>
+</ul>
+<p><em>&#x6CE8;: _sx&#x540E;&#x7F00;&#x8868;&#x793A;&#x53EF;&#x80FD;&#x4F1A;&#x5B58;&#x5728;&#x6570;&#x503C;&#x7C7B;&#x578B;&#x8F6C;&#x6362;</em>;</p>
+<h3 class="mume-header" id="%E6%A8%A1%E5%9D%97toc"><a href="#toc">&#x6A21;&#x5757;</a></h3>
+
+<p>&#x6A21;&#x5757;&#x6309;&#x5982;&#x4E0B;&#x5F62;&#x5F0F;&#x7EC4;&#x7EC7;:</p>
+<pre data-role="codeBlock" data-info="txt" class="language-txt"><code>module ::= {
+  types vec(functype),
+  funcs vec(func),
+  tables vec(table),
+  mems vec(mem),
+  globals vec(global),
+  elem vec(elem),
+  data vec(data),
+  start start?,
+  imports vec(import),
+  exports vec(export),
+}
+</code></pre><ul>
+<li><code>types</code>: &#x6A21;&#x5757;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x6240;&#x6709;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x5B9A;&#x4E49;&#x5728;types&#x7C7B;&#x578B;&#x5E8F;&#x5217;&#x4E2D;. &#x8BE5;&#x5E8F;&#x5217;&#x4E2D;, &#x4ECE;&#x5916;&#x90E8;&#x5BFC;&#x5165;&#x7684;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x7B7E;&#x540D;&#x653E;&#x5728;&#x672C;&#x6A21;&#x5757;&#x7684;&#x7B7E;&#x540D;&#x7684;&#x7B7E;&#x540D;;</li>
+<li><code>funcs</code>: &#x6A21;&#x5757;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x6240;&#x6709;&#x51FD;&#x6570;&#x5FC5;&#x987B;&#x5B9A;&#x4E49;&#x5728;funcs&#x5E8F;&#x5217;&#x4E2D;, &#x6709;<code>func ::= type typeidx, locals vec{valtype}, body expr</code>:
+<ul>
+<li><code>type</code>: &#x51FD;&#x6570;&#x7C7B;&#x578B;(&#x7B7E;&#x540D;), &#x53EF;&#x4ECE;types&#x5E8F;&#x5217;&#x4E2D;&#x627E;&#x5230;;</li>
+<li><code>locals</code>: &#x51FD;&#x6570;&#x53C2;&#x6570;&#x548C;&#x51FD;&#x6570;&#x4F7F;&#x7528;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;, &#x53C2;&#x6570;&#x548C;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x5747;&#x53EF;&#x4FEE;&#x6539;. &#x5176;&#x4E2D;, &#x51FD;&#x6570;&#x53C2;&#x6570;&#x5728;<code>locals</code>&#x5E8F;&#x5217;&#x7684;&#x5934;&#x90E8;;</li>
+<li><code>body</code>: &#x51FD;&#x6570;&#x4F53;&#x7684;&#x6307;&#x4EE4;&#x5E8F;&#x5217;, &#x51FD;&#x6570;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x7684;&#x6307;&#x4EE4;&#x7684;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x548C;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x5339;&#x914D;;</li>
+</ul>
+</li>
+<li><code>tables</code>: &#x6A21;&#x5757;&#x5B9A;&#x4E49;&#x6216;&#x4ECE;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x5BFC;&#x5165;&#x7684;&#x8868;&#x7C7B;&#x578B;&#x5E8F;&#x5217;;</li>
+<li><code>mems</code>: &#x6A21;&#x5757;&#x5B9A;&#x4E49;&#x6216;&#x4ECE;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x5BFC;&#x5165;&#x7684;&#x5185;&#x5B58;&#x7C7B;&#x578B;&#x5E8F;&#x5217;;</li>
+<li><code>globals</code>: &#x6A21;&#x5757;&#x5B9A;&#x4E49;&#x6216;&#x4ECE;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x5BFC;&#x5165;&#x7684;&#x5168;&#x5C40;&#x7C7B;&#x578B;&#x5E8F;&#x5217;;</li>
+<li><code>elem</code>: <code>tables</code>&#x5E8F;&#x5217;&#x4E2D;&#x67D0;&#x4E2A;&#x8868;&#x7684;&#x5143;&#x7D20;&#x7684;&#x521D;&#x59CB;&#x5316;&#x7EC4;&#x6210;&#x7684;&#x5E8F;&#x5217;, <code>elem ::= {table tableidx, offset expr, init vec(funcidx)}</code>;</li>
+<li><code>data</code>: <code>mems</code>&#x5E8F;&#x5217;&#x4E2D;&#x67D0;&#x4E2A;&#x5185;&#x5B58;&#x7684;&#x6570;&#x636E;&#x521D;&#x59CB;&#x5316;&#x7EC4;&#x6210;&#x7684;&#x5E8F;&#x5217;, <code>data ::= {data memidx, offset expr, init vec(byte)}</code>;</li>
+<li><code>start</code>: &#x6A21;&#x5757;&#x7684;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;&#x5728;<code>funcs</code>&#x5E8F;&#x5217;&#x4E2D;&#x7684;&#x7D22;&#x5F15;. &#x6A21;&#x5757;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;&#x5728;&#x6A21;&#x5757;&#x5B9E;&#x4F8B;&#x5316;&#x65F6;&#x8C03;&#x7528;, &#x4E14;&#x5728;<code>tables</code>&#x548C;<code>mems</code>&#x521D;&#x59CB;&#x5316;&#x540E;&#x8C03;&#x7528;;</li>
+<li><code>import</code>: <code>import ::= {module name, name name, desc importdesc}</code>&#x4ECE;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x5BFC;&#x5165;&#x5230;&#x672C;&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x51FD;&#x6570;/&#x8868;/&#x5185;&#x5B58;&#x5168;&#x5C40;&#x53D8;&#x91CF;, <code>desc</code>&#x63CF;&#x8FF0;&#x4E86;&#x5BFC;&#x5165;&#x7684;&#x51FD;&#x6570;&#x5728;<code>funcs</code>&#x4E2D;&#x7684;&#x7D22;&#x5F15;/&#x8868;&#x7684;&#x7C7B;&#x578B;/&#x5185;&#x5B58;&#x7C7B;&#x578B;/&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7C7B;&#x578B;;</li>
+<li><code>export</code>: <code>export ::= {name name, desc exportdesc}</code>&#x4ECE;&#x672C;&#x6A21;&#x5757;&#x5BFC;&#x51FA;&#x51FD;&#x6570;/&#x8868;/&#x5185;&#x5B58;/&#x5168;&#x5C40;&#x53D8;&#x91CF;, <code>desc</code>&#x63CF;&#x8FF0;&#x4E86;&#x5BFC;&#x51FA;&#x7684;&#x51FD;&#x6570;/&#x8868;/&#x5185;&#x5B58;/&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x5728;<code>funcs</code>/<code>tables</code>/<code>mems</code>/<code>globals</code>&#x5E8F;&#x5217;&#x4E2D;&#x7684;&#x7684;&#x7D22;&#x5F15;;</li>
+</ul>
+<h2 class="mume-header" id="%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x9A8C;&#x8BC1;</a></h2>
+
+<h3 class="mume-header" id="%E8%AF%AD%E5%A2%83toc"><a href="#toc">&#x8BED;&#x5883;</a></h3>
+
+<p>&#x8BB0;&#x6709;&#x8BED;&#x5883;<code>C</code>&#x5982;&#x4E0B;:</p>
+<pre data-role="codeBlock" data-info="txt" class="language-txt"><code>C ::= {
+  types   functype*,
+  funcs   functype*,
+  tables  tabletype*,
+  mems    memtype*,
+  globals globaltype*,
+  locals  valtype*,
+  labels  resulttype*,
+  return  resulttype?,
+}
+</code></pre><ul>
+<li>types: &#x5F53;&#x524D;&#x6A21;&#x5757;&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#x578B;&#x7EC4;&#x6210;&#x7684;&#x5E8F;&#x5217;;</li>
+<li>funcs: &#x5F53;&#x524D;&#x6A21;&#x5757;&#x58F0;&#x660E;&#x7684;&#x51FD;&#x6570;&#x7EC4;&#x6210;&#x7684;&#x5E8F;&#x5217;;</li>
+<li>tables: &#x5F53;&#x524D;&#x6A21;&#x5757;&#x58F0;&#x660E;&#x7684;&#x8868;&#x7EC4;&#x6210;&#x7684;&#x5E8F;&#x5217;;</li>
+<li>mems: &#x5F53;&#x524D;&#x6A21;&#x5757;&#x58F0;&#x660E;&#x7684;&#x5185;&#x5B58;&#x7EC4;&#x6210;&#x7684;&#x5E8F;&#x5217;;</li>
+<li>globals: &#x5F53;&#x524D;&#x6A21;&#x5757;&#x58F0;&#x660E;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7EC4;&#x6210;&#x7684;&#x5E8F;&#x5217;;</li>
+<li>locals: &#x5F53;&#x524D;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x53CA;&#x5176;&#x4E2D;&#x58F0;&#x660E;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x7EC4;&#x6210;&#x7684;&#x5E8F;&#x5217;;</li>
+<li>labels: &#x5F53;&#x524D;&#x4F4D;&#x7F6E;&#x53EF;&#x8BBF;&#x95EE;&#x7684;&#x6808;&#x6807;&#x7B7E;, &#x7528;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x8868;&#x793A;;</li>
+<li>return: &#x5F53;&#x524D;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;;</li>
+</ul>
+<p>&#x8BB0;&#x5982;&#x4E0B;&#x7B26;&#x53F7;&#x4E3A;: &#x82E5;&#x6761;&#x4EF6;<span class="mathjax-exps">$premise_1, premise_2, \dots, premise_n$</span>&#x6210;&#x7ACB;, &#x5219;&#x5728;&#x8BED;&#x5883;<code>C</code>&#x4E2D;<span class="mathjax-exps">$A$</span>&#x6EE1;&#x8DB3;&#x4ECE;<span class="mathjax-exps">$T1$</span>&#x6620;&#x5C04;<span class="mathjax-exps">$T2$</span>&#x7684;&#x7EA6;&#x675F;;</p>
+<p></p><div class="mathjax-exps">$$\frac{premise_1, premise_2, \dots premise_n}{C \vdash A: T1 \rightarrow T2}$$</div><p></p>
+<h3 class="mume-header" id="%E7%B1%BB%E5%9E%8B%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x7C7B;&#x578B;&#x9A8C;&#x8BC1;</a></h3>
+
+<h4 class="mume-header" id="%E8%8C%83%E5%9B%B4%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x8303;&#x56F4;&#x9A8C;&#x8BC1;</a></h4>
+
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; \frac{n \le k \quad (m \le k)^? \quad (n \le m)^?}{\vdash limits: k} \end{aligned}$$</div><p></p>
+<h4 class="mume-header" id="%E5%9D%97%E7%B1%BB%E5%9E%8B%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x5757;&#x7C7B;&#x578B;&#x9A8C;&#x8BC1;</a></h4>
+
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; \frac{C.types[typeidx] = functype}{C \vdash typeidx: functype} \end{aligned}$$</div><p></p>
+<h4 class="mume-header" id="%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x9A8C;&#x8BC1;</a></h4>
+
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; \frac{}{\vdash [t_1^*] \rightarrow [t_2^*] \ ok} \end{aligned}$$</div><p></p>
+<h4 class="mume-header" id="%E8%A1%A8%E7%B1%BB%E5%9E%8B%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x8868;&#x7C7B;&#x578B;&#x9A8C;&#x8BC1;</a></h4>
+
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; \frac{\vdash limits: k}{\vdash limits \ elemtype \ ok} \end{aligned}$$</div><p></p>
+<h4 class="mume-header" id="%E5%86%85%E5%AD%98%E7%B1%BB%E5%9E%8B%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x5185;&#x5B58;&#x7C7B;&#x578B;&#x9A8C;&#x8BC1;</a></h4>
+
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; \frac{\vdash limits: 2^{16}}{\vdash limits \ ok} \end{aligned}$$</div><p></p>
+<h4 class="mume-header" id="%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x9A8C;&#x8BC1;</a></h4>
+
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; \frac{}{\vdash mut \ valtype \ ok} \end{aligned}$$</div><p></p>
+<h4 class="mume-header" id="%E5%A4%96%E9%83%A8%E7%B1%BB%E5%9E%8B%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x5916;&#x90E8;&#x7C7B;&#x578B;&#x9A8C;&#x8BC1;</a></h4>
+
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; \frac{\vdash functype \ ok}{\vdash func \ functype \quad ok} \\ &amp; \\ &amp; \frac{\vdash tabletype \ ok}{\vdash table \ tabletype \ ok} \\ &amp; \\ &amp; \frac{\vdash memtype \ ok}{\vdash mem \ memtype \ ok} \\ &amp; \\ &amp; \frac{\vdash globaltype \ ok}{\vdash global \ globaltype \ ok} \\ \end{aligned}$$</div><p></p>
+<h4 class="mume-header" id="%E6%8C%87%E4%BB%A4%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x6307;&#x4EE4;&#x9A8C;&#x8BC1;</a></h4>
+
+<h5 class="mume-header" id="%E6%95%B0%E5%80%BC%E6%8C%87%E4%BB%A4%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x6570;&#x503C;&#x6307;&#x4EE4;&#x9A8C;&#x8BC1;</a></h5>
+
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; \frac{}{C \vdash t.const \ c: [] \rightarrow [t]} \\ &amp; \frac{}{C \vdash t.unop: [t] \rightarrow [t]} \\ &amp; \frac{}{C \vdash t.binop: [t t] \rightarrow [t]} \\ &amp; \frac{}{C \vdash t.relop: [t t] \rightarrow [i32]} \\ &amp; \frac{}{C \vdash t.testop: [t] \rightarrow [i32]} \\ &amp; \frac{}{C \vdash t.cvtop\_t_1\_sx^?: [t_1] \rightarrow [t_2]} \\ \end{aligned}$$</div><p></p>
+<h5 class="mume-header" id="%E5%8F%82%E6%95%B0%E6%8C%87%E4%BB%A4%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x53C2;&#x6570;&#x6307;&#x4EE4;&#x9A8C;&#x8BC1;</a></h5>
+
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; \frac{}{C \vdash drop: [t] \rightarrow []} \\ &amp; \frac{}{C \vdash select: [t t i32] \rightarrow [t]} \end{aligned}$$</div><p></p>
+<h5 class="mume-header" id="%E5%8F%98%E9%87%8F%E6%8C%87%E4%BB%A4%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x53D8;&#x91CF;&#x6307;&#x4EE4;&#x9A8C;&#x8BC1;</a></h5>
+
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; \frac{C.locals[x] = t}{C \vdash local.get\ x: [] -&gt; [t]} \\ &amp; \frac{C.locals[x] = t}{C \vdash local.set\ x: [t] -&gt; []} \\ &amp; \frac{C.locals[x] = t}{C \vdash local.tee\ x: [t] -&gt; [t]} \\ &amp; \frac{C.globals[x] = mut\ t}{C \vdash globals.get\ x: [] -&gt; [t]} \\ &amp; \frac{C.globals[x] = var\ t}{C \vdash globals.set\ x: [t] -&gt; []} \\ \end{aligned}$$</div><p></p>
+<h5 class="mume-header" id="%E5%86%85%E5%AD%98%E6%8C%87%E4%BB%A4%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x5185;&#x5B58;&#x6307;&#x4EE4;&#x9A8C;&#x8BC1;</a></h5>
+
+<h5 class="mume-header" id="%E6%8E%A7%E5%88%B6%E6%8C%87%E4%BB%A4%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x63A7;&#x5236;&#x6307;&#x4EE4;&#x9A8C;&#x8BC1;</a></h5>
+
+<h5 class="mume-header" id="%E6%A8%A1%E5%9D%97%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x6A21;&#x5757;&#x9A8C;&#x8BC1;</a></h5>
+
+<h2 class="mume-header" id="%E6%89%A7%E8%A1%8Ctoc"><a href="#toc">&#x6267;&#x884C;</a></h2>
+
+<h3 class="mume-header" id="%E8%BF%90%E8%A1%8C%E6%97%B6%E7%BB%93%E6%9E%84toc"><a href="#toc">&#x8FD0;&#x884C;&#x65F6;&#x7ED3;&#x6784;</a></h3>
+
+<ul>
+<li>&#x6570;&#x503C;&#x5E38;&#x91CF;: <code>val ::= i32.const | i64.const | f32.const | f64.const</code>;</li>
+<li>&#x8BA1;&#x7B97;&#x7ED3;&#x679C;: <code>result ::= val* | trap</code>;</li>
+<li>store: <code>store ::= {funcs funcinst*, tables tableinst*, mems meminst*, globals globalinst*}</code>;</li>
+<li>&#x5730;&#x5740;: &#x5730;&#x5740;&#x662F;&#x4E00;&#x4E2A;i32&#x7684;&#x6574;&#x6570;(u32);</li>
+<li>&#x6A21;&#x5757;&#x5B9E;&#x4F8B;: <code>moduleinst ::= {types functype*, funcaddrs funcaddr*, tableaddrs tableaddr*, memaddrs memaddr*, globaladdrs globaladdr*, exports exportinst*}</code>;</li>
+<li>&#x51FD;&#x6570;&#x5B9E;&#x4F8B;: <code>funcinst ::= {type functype, module moduleinst, code func} | {type functype, hostcode hostfunc}</code>;</li>
+<li>&#x8868;&#x5B9E;&#x4F8B;: <code>tableinst ::= {elem vec(funcaddr), max u32?}</code>;</li>
+<li>&#x5185;&#x5B58;&#x5B9E;&#x4F8B;: <code>meminst ::= {data vec(byte), max u32?}</code>;</li>
+<li>&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x5B9E;&#x4F8B;: <code>globalinst ::= {value val, mut mut}</code>;</li>
+<li>&#x5BFC;&#x51FA;&#x5B9E;&#x4F8B;: <code>exportinst ::= {name name, value externval}</code>, <code>externval ::= func funcaddr | table tableaddr | mem memaddr | global globaladdr</code>;</li>
+<li>&#x6808;: &#x6808;&#x5143;&#x7D20;&#x6709;&#x5982;&#x4E0B;&#x4E09;&#x79CD;:
+<ul>
+<li>&#x6307;&#x4EE4;&#x7684;&#x64CD;&#x4F5C;&#x6570;;</li>
+<li>&#x63A7;&#x5236;&#x5206;&#x652F;&#x7ED3;&#x6784;: <code>label ::= label_n{instr*}</code>;</li>
+<li>&#x51FD;&#x6570;&#x8C03;&#x7528;&#x5E27;: <code>activation ::= frame_n{local val*, module moduleinst}</code>;</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="%E5%AE%9E%E4%BE%8B%E5%8C%96toc"><a href="#toc">&#x5B9E;&#x4F8B;&#x5316;</a></h3>
+
+<h3 class="mume-header" id="%E8%B0%83%E7%94%A8%E6%89%A7%E8%A1%8Ctoc"><a href="#toc">&#x8C03;&#x7528;&#x6267;&#x884C;</a></h3>
+
+<h2 class="mume-header" id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc"><a href="#toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></h2>
+
+<ul>
+<li>WebAssembly Specification Release 1.1;</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "default"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.getElementsByClassName('mermaid'))
+}
+</script>
+    
+    
+    
+    
+    
+  
+    </body></html>

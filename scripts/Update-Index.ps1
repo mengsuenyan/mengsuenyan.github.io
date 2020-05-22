@@ -32,7 +32,8 @@ function Update-Index {
         }
     }
 
-    $md.AddHeader("mengsuenyan的个人博客", 1)
+    $tmp = $md.AddHeader("mengsuenyan的个人博客", 1)
+    $md.AddText($tmp, "- 有些内容可能后续有修改, 但没同步到仓库中, 请参见[cnblog](https://www.cnblogs.com/mengsuenyan/)")
 
     __itedir__ $docspath 2
     $md.SaveFile()
