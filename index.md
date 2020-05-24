@@ -17,6 +17,7 @@
 - [WebAssembly规范阅读笔记](docs/CS/WebAssembly规范阅读笔记.html)
 - [分组加密工作模式](docs/CS/分组加密工作模式.html)
 - [常用校验和(Hash)算法](docs/CS/常用校验和(Hash)算法.html)
+- [常用编码格式](docs/CS/常用编码格式.html)
 ## [EE](#toc)
 
 
