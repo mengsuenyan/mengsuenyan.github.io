@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>&#x6570;&#x8BBA;&#x76F8;&#x5173;</title>
+      <title>&#x5BC6;&#x94A5;&#x6D3E;&#x751F;&#x51FD;&#x6570;</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -266,63 +266,48 @@ pre[data-line] .line-highlight[data-end]:after {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview  ">
-      <h1 class="mume-header" id="%E6%95%B0%E8%AE%BA%E7%9B%B8%E5%85%B3">&#x6570;&#x8BBA;&#x76F8;&#x5173;</h1>
+      <h1 class="mume-header" id="%E5%AF%86%E9%92%A5%E6%B4%BE%E7%94%9F%E5%87%BD%E6%95%B0">&#x5BC6;&#x94A5;&#x6D3E;&#x751F;&#x51FD;&#x6570;</h1>
 
 <p><span id="toc"></span></p>
 <ul>
-<li><a href="#%E6%95%B0%E8%AE%BA%E7%9B%B8%E5%85%B3">&#x6570;&#x8BBA;&#x76F8;&#x5173;</a>
+<li><a href="#%E5%AF%86%E9%92%A5%E6%B4%BE%E7%94%9F%E5%87%BD%E6%95%B0">&#x5BC6;&#x94A5;&#x6D3E;&#x751F;&#x51FD;&#x6570;</a>
 <ul>
-<li><a href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5toc">&#x76F8;&#x5173;&#x6982;&#x5FF5;</a></li>
-<li><a href="#%E8%B4%A8%E6%95%B0%E6%B5%8B%E8%AF%95toc">&#x8D28;&#x6570;&#x6D4B;&#x8BD5;</a>
-<ul>
-<li><a href="#miller-rabin%E9%9A%8F%E6%9C%BA%E8%B4%A8%E6%95%B0%E6%B5%8B%E8%AF%95%E7%AE%97%E6%B3%95toc">Miller-Rabin&#x968F;&#x673A;&#x8D28;&#x6570;&#x6D4B;&#x8BD5;&#x7B97;&#x6CD5;</a>
-<ul>
-<li><a href="#%E5%8E%9F%E7%90%86toc">&#x539F;&#x7406;</a></li>
-<li><a href="#%E6%AD%A5%E9%AA%A4toc">&#x6B65;&#x9AA4;</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="#ans-x963-kdftoc">ANS X9.63-KDF</a></li>
+<li><a href="#ikev2-kdftoc">IKEv2-KDF</a></li>
+<li><a href="#tls-kdftoc">TLS-KDF</a></li>
+<li><a href="#nist-800-56-cantenation-kdftoc">NIST-800-56-Cantenation-KDF</a></li>
 <li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></li>
 </ul>
 </li>
 </ul>
-<h2 class="mume-header" id="%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5toc"><a href="#toc">&#x76F8;&#x5173;&#x6982;&#x5FF5;</a></h2>
+<h2 class="mume-header" id="ans-x963-kdftoc"><a href="#toc">ANS X9.63-KDF</a></h2>
 
-<p>&#x8BB0;&#x6709;&#x7FA4;<span class="mathjax-exps">$(S, \oplus)$</span>, &#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x7B80;&#x8BB0;&#x4E3A;<span class="mathjax-exps">$S$</span>;</p>
+<p>&#x8BB0;&#x6709;&#x6570;&#x636E;<span class="mathjax-exps">$Z$</span>, <a href="https://www.cnblogs.com/mengsuenyan/p/12697811.html">&#x54C8;&#x5E0C;</a>&#x51FD;&#x6570;<span class="mathjax-exps">$Hash$</span>(hash&#x503C;&#x7684;&#x5B57;&#x8282;&#x957F;&#x5EA6;&#x4E3A;<span class="mathjax-exps">$l$</span>), &#x9700;&#x8981;&#x8F93;&#x51FA;&#x7684;&#x5BC6;&#x94A5;&#x6570;&#x636E;&#x5B57;&#x8282;&#x957F;&#x5EA6;&#x4F4D;<span class="mathjax-exps">$k$</span>, &#x53CA;&#x53EF;&#x9009;&#x7684;&#x9644;&#x52A0;&#x6570;&#x636E;<span class="mathjax-exps">$SharedInfo$</span>;</p>
 <ul>
-<li>&#x7FA4;&#x7684;&#x5B9A;&#x4E49;&#x89C1;<a href="https://www.cnblogs.com/mengsuenyan/p/13156265.html">&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x52A0;&#x5BC6;&#x6570;&#x5B66;&#x57FA;&#x7840;</a>;</li>
-<li>&#x7FA4;&#x7684;&#x9636;<span class="mathjax-exps">$\#S$</span>: &#x7FA4;&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x4E2A;&#x6570;;</li>
-<li><span class="mathjax-exps">$a\in S$</span>, &#x8BB0;<span class="mathjax-exps">$a$</span>&#x751F;&#x6210;&#x7684;&#x5B50;&#x7FA4;&#x4E3A;<span class="mathjax-exps">$\langle a \rangle$</span>, &#x751F;&#x6210;&#x8FC7;&#x7A0B;&#x4E3A;: <span class="mathjax-exps">$\{a^{(k)}=\oplus_{i=1}^{k}a, a^{(k)}\in S, k=1\cdots \}$</span>;</li>
-<li><span class="mathjax-exps">$a\in S$</span>, &#x8BB0;<span class="mathjax-exps">$a$</span>&#x7684;&#x9636;<span class="mathjax-exps">$ord_{n}(a)$</span>&#x5B9A;&#x4E49;&#x4E3A;<span class="mathjax-exps">$\langle a \rangle$</span>&#x7684;&#x4E2A;&#x6570;;</li>
-<li>&#x7FA4;&#x7684;&#x539F;&#x6839;(&#x751F;&#x6210;&#x5143;): &#x82E5;<span class="mathjax-exps">$\langle a \rangle = S, a\in S$</span>, &#x90A3;&#x4E48;<span class="mathjax-exps">$a$</span>&#x79F0;&#x4E3A;<span class="mathjax-exps">$a$</span>&#x7684;&#x539F;&#x6839;; &#x5BF9;&#x4E8E;&#x81EA;&#x7136;&#x6570;&#x7684;&#x6A21;<span class="mathjax-exps">$n$</span>&#x52A0;&#x6CD5;&#x7FA4;<span class="mathjax-exps">$Z_n^+$</span>, &#x82E5;<span class="mathjax-exps">$n$</span>&#x662F;&#x8D28;&#x6570;, &#x90A3;&#x4E48;&#x8BE5;&#x7FA4;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x90FD;&#x662F;&#x8BE5;&#x7FA4;&#x7684;&#x751F;&#x6210;&#x6839;; &#x4E58;&#x6CD5;&#x7FA4;<span class="mathjax-exps">$Z_n^*$</span>&#x5219;&#x4E0D;&#x4E00;&#x5B9A;;</li>
-<li>&#x5FAA;&#x73AF;&#x7FA4;: &#x82E5;<span class="mathjax-exps">$S$</span>&#x4E2D;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x539F;&#x6839;, &#x90A3;&#x4E48;&#x8BE5;&#x7FA4;&#x79F0;&#x4E3A;&#x5FAA;&#x73AF;&#x7FA4;;</li>
-</ul>
-<h2 class="mume-header" id="%E8%B4%A8%E6%95%B0%E6%B5%8B%E8%AF%95toc"><a href="#toc">&#x8D28;&#x6570;&#x6D4B;&#x8BD5;</a></h2>
-
-<h3 class="mume-header" id="miller-rabin%E9%9A%8F%E6%9C%BA%E8%B4%A8%E6%95%B0%E6%B5%8B%E8%AF%95%E7%AE%97%E6%B3%95toc"><a href="#toc">Miller-Rabin&#x968F;&#x673A;&#x8D28;&#x6570;&#x6D4B;&#x8BD5;&#x7B97;&#x6CD5;</a></h3>
-
-<h4 class="mume-header" id="%E5%8E%9F%E7%90%86toc"><a href="#toc">&#x539F;&#x7406;</a></h4>
-
+<li><span class="mathjax-exps">$Counter=0x00000001$</span>;</li>
+<li>&#x4ECE;<span class="mathjax-exps">$i=0$</span>&#x8FED;&#x4EE3;&#x5230;<span class="mathjax-exps">$\lceil k/l \rceil$</span>:
 <ul>
-<li>&#x8BB0;&#x6709;&#x6A21;<span class="mathjax-exps">$n$</span>&#x4E58;&#x6CD5;&#x7FA4;<span class="mathjax-exps">$Z_n^*$</span>;</li>
-<li>&#x8D39;&#x9A6C;&#x5B9A;&#x7406;: &#x5982;&#x679C;<span class="mathjax-exps">$p$</span>&#x662F;&#x8D28;&#x6570;, &#x5219;&#x5BF9;&#x4E8E;<span class="mathjax-exps">$a\in Z_p^*$</span>&#x6709;<span class="mathjax-exps">$a^{p-1}\equiv 1 (\mod p)$</span>&#x6210;&#x7ACB;;</li>
-<li>&#x63A8;&#x8BBA;: &#x82E5;<span class="mathjax-exps">$p$</span>&#x662F;&#x8D28;&#x6570;, &#x5219;&#x5BF9;&#x4E8E;&#x4EFB;&#x610F;&#x6574;&#x6570;<span class="mathjax-exps">$x\in [0,p)$</span>, &#x6709;<span class="mathjax-exps">$x^2 \equiv 1(\mod p)$</span>&#x7684;&#x89E3;&#x4E3A;<span class="mathjax-exps">$x=1$</span>&#x6216;<span class="mathjax-exps">$x=p-1$</span>;</li>
-<li><span class="mathjax-exps">$a*b \mod n = ((a\mod n)*(b \mod n)) \mod n$</span>;</li>
+<li><span class="mathjax-exps">$K_i=Hash(Z||Counter||SharedInfo)$</span>;</li>
+<li><span class="mathjax-exps">$Counter+=1$</span></li>
 </ul>
-<h4 class="mume-header" id="%E6%AD%A5%E9%AA%A4toc"><a href="#toc">&#x6B65;&#x9AA4;</a></h4>
+</li>
+<li>&#x53D6;<span class="mathjax-exps">$K_0||K_1||\dots ||K_{\lceil k/l \rceil}$</span>&#x6700;&#x5DE6;&#x8FB9;<span class="mathjax-exps">$k$</span>&#x4E2A;&#x5B57;&#x8282;&#x8D4B;&#x7ED9;<span class="mathjax-exps">$K$</span>;</li>
+<li>&#x8F93;&#x51FA;<span class="mathjax-exps">$K$</span>;</li>
+</ul>
+<p>&#x7B26;&#x53F7;&#x8BF4;&#x660E;: <span class="mathjax-exps">$X||Y$</span>: &#x8868;&#x793A;<span class="mathjax-exps">$Y$</span>&#x62FC;&#x63A5;&#x5728;<span class="mathjax-exps">$X$</span>&#x4E4B;&#x540E;;</p>
+<h2 class="mume-header" id="ikev2-kdftoc"><a href="#toc">IKEv2-KDF</a></h2>
 
-<p>&#x8BB0;&#x6709;&#x4E00;&#x4E2A;&#x5F85;&#x6D4B;&#x8BD5;&#x5947;&#x81EA;&#x7136;&#x6570;<code>a</code>, &#x53CA;&#x6D4B;&#x8BD5;&#x603B;&#x8F6E;&#x6570;<code>s</code>. Miller-Rabin&#x7B97;&#x6CD5;&#x6709;&#x5982;&#x4E0B;&#x5B9A;&#x7406;:</p>
-<ul>
-<li>&#x5982;&#x679C;n&#x662F;&#x4E00;&#x4E2A;&#x5947;&#x5408;&#x6570;, &#x90A3;&#x4E48;&#x6D4B;&#x8BD5;n&#x4E3A;&#x5408;&#x6570;&#x7684;&#x8BC1;&#x636E;&#x7684;&#x6570;&#x636E;&#x81F3;&#x5C11;&#x4E3A;<span class="mathjax-exps">$(n-1)/2$</span>;</li>
-<li>&#x5BF9;&#x4E8E;&#x4EFB;&#x610F;<span class="mathjax-exps">$a \gt 2$</span>&#x7684;&#x5947;&#x6570;&#x548C;&#x6B63;&#x6574;&#x6570;<code>s</code>, Miller-Rabin&#x51FA;&#x9519;&#x7684;&#x6982;&#x7387;&#x81F3;&#x591A;&#x4E3A;<span class="mathjax-exps">$2^{-s}$</span>;</li>
-</ul>
-<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; //\ &#x6D4B;&#x8BD5;&#x4E00;&#x4E2A;&#x6570;&#x662F;&#x5426;&#x662F;&#x5408;&#x6570; \\ &amp; WITNESS(a, n) \\ &amp; \quad n-1 = 2^{t}*u,\ a \% 2=1\\ &amp; \quad x_0 = a^{u} \% n \\ &amp; \quad for\ i\ in\ 1..=t \\ &amp; \quad \quad x_i = x_{i-1}^{2} \% n \\ &amp; \quad \quad if\ x_i = 1\ \And\And\ x_{i-1} \ne 1\ \And\And\ x_{i-1}\ne n-1\\ &amp; \quad \quad \quad return\ true\\ &amp; \quad \quad end \\ &amp; \quad end\\ &amp; \quad \\ &amp; \quad if\ x_t \ne 1\\ &amp; \quad \quad return\ true\\ &amp; \quad end\\ &amp; \quad return\ false\\ &amp; end &amp; \quad \\ &amp; \quad \\ &amp; // &#x6D4B;&#x8BD5;&#x5947;&#x81EA;&#x7136;&#x6570;n&#x662F;&#x8D28;&#x6570;&#x8FD8;&#x662F;&#x5408;&#x6570; \\ &amp; MILLER-RABIN(n,s)\\ &amp; \quad for\ j\ in\ 0..s\\ &amp; \quad \quad a=RANDOM(1,n)\\ &amp; \quad \quad if\ WITNESS(a,n) \\ &amp; \quad \quad \quad return\ COMPOSITE \\ &amp; \quad \quad end\\ &amp; \quad return\ PRIME\\ &amp; end \\ \end{aligned}$$</div><p></p>
+<h2 class="mume-header" id="tls-kdftoc"><a href="#toc">TLS-KDF</a></h2>
+
+<h2 class="mume-header" id="nist-800-56-cantenation-kdftoc"><a href="#toc">NIST-800-56-Cantenation-KDF</a></h2>
+
 <h2 class="mume-header" id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc"><a href="#toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></h2>
 
-<ul>
-<li><a href="https://book.douban.com/subject/20432061/">&#x7B97;&#x6CD5;&#x5BFC;&#x8BBA;</a>;</li>
-</ul>
+<p>[1]. Standars for Efficient Cryptography 1 (SEC1: Elliptic Curve Cryptography), Daniel R.L.Brown;<br>
+[2]. ANSI-X9.63-KDF;<br>
+[3]. IKEv2-KDF;<br>
+[4]. TLS-KDF;<br>
+[5]. NIST-800-56-Concatenation-KDF;</p>
 
       </div>
       
