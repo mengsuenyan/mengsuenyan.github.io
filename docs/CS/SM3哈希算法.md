@@ -1,5 +1,14 @@
 # SM3哈希算法
 
+<span id='toc'></span>
+[TOC]
+
+## [简要说明](#toc)
+
+||消息长度(bits)|块大小(bits)|单词长度(bits)|消息摘要长度(bits)|
+|:----:|:-:|:-:|:-:|:-:|
+|SM3|$\lt 2^{64}$|512|32|256|
+
 ## [算法流程](#toc)
 
 ### [位填充](#toc)
@@ -32,7 +41,7 @@ $$
 & \quad \quad d=c; c=b\lll 9; b=a; a=t1;h=g;g=f\lll19;f=e;e=P_0(t2)\\
 & \quad \quad H_0^i,H_1^i,H_2^i,H_3^i,H_4^i,H_5^i,H_6^i,H_7^i=a,b,c,d,e,f,g,h\\
 & \quad end\\
-& H = [H_0^i,H_1^i,H_2^i,H_3^i,H_4^i,H_5^i,H_6^i,H_7^i]
+& H = [H_0^i,H_1^i,H_2^i,H_3^i,H_4^i,H_5^i,H_6^i,H_7^i] \\
 & end \\
 \end{aligned}
 $$
