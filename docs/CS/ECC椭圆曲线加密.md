@@ -237,7 +237,7 @@
   - 由域参数$T$再选择一组密钥对$(k, (x, y))$;
   - $r=x\mod n$;
   - $H=Hash(M)$, 记$H$的位长度为$l$;
-  - $l\le \lceil log_2(n) \rceil \Rightarrow E=H;\quad l\gt \lceil log_2(n) \rceil \Rightarrow E=truncate(H)$, 其中truncate阶段$H$最左边的$\lceil log_2(n) \rceil$位;
+  - $l\le \lceil log_2(n) \rceil \Rightarrow E=H;\quad l\gt \lceil log_2(n) \rceil \Rightarrow E=truncate(H)$, 其中truncate截断$H$最左边的$\lceil log_2(n) \rceil$位;
   - $E$转为大整数$e$;
   - $s=k^{-1}(e+rd_U) \mod n$;
   - 若$s=0$, 再重新选择一组密钥重新迭代;

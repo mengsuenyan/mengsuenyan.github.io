@@ -21,6 +21,7 @@
 - [KDF密钥派生函数](docs/CS/KDF密钥派生函数.html)
 - [MD5消息摘要算法](docs/CS/MD5消息摘要算法.html)
 - [RSA加密算法](docs/CS/RSA加密算法.html)
+- [SHA3基于置换的哈希和可扩展输出函数](docs/CS/SHA3基于置换的哈希和可扩展输出函数.html)
 - [SHA安全散列算法](docs/CS/SHA安全散列算法.html)
 - [WebAssembly规范阅读笔记](docs/CS/WebAssembly规范阅读笔记.html)
 - [分组加密工作模式](docs/CS/分组加密工作模式.html)
