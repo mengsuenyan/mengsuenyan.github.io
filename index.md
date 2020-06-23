@@ -23,6 +23,7 @@
 - [RSA加密算法](docs/CS/RSA加密算法.html)
 - [SHA3基于置换的哈希和可扩展输出函数](docs/CS/SHA3基于置换的哈希和可扩展输出函数.html)
 - [SHA安全散列算法](docs/CS/SHA安全散列算法.html)
+- [SM3哈希算法](docs/CS/SM3哈希算法.html)
 - [WebAssembly规范阅读笔记](docs/CS/WebAssembly规范阅读笔记.html)
 - [分组加密工作模式](docs/CS/分组加密工作模式.html)
 - [常用校验和(Hash)算法](docs/CS/常用校验和(Hash)算法.html)
