@@ -47,4 +47,6 @@
 ## [Rust](#toc)
 
 
+- [Rust之Borrow和AsRef的区别](docs/Rust/Rust之Borrow和AsRef的区别.html)
+- [Rust源码组织结构](docs/Rust/Rust源码组织结构.html)
 - [Rust的Ordering语义理解](docs/Rust/Rust的Ordering语义理解.html)
