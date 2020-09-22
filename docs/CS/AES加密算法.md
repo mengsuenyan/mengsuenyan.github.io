@@ -70,6 +70,62 @@ begin
 
     out = state
 end
+
+
+// 另一种等效的加解密步骤, Intel AES指令集采用的是这种步骤(两则加密密钥扩展是样的)
+// SubBytes和ShiftRows可以交换
+// InvMixColumns(AddRoundKey(state, RoundKey)) = AddRoundKey(InvMixColumns(state), InvMixColumns(RoundKey)
+
+Cipher(byte in[4*Nb], byte out[4*Nb], word w[Nb*(Nr+1)])
+begin
+    byte state[4, Nb]
+    state = in
+    AddRoundkey(state, w[0, Nb-1])
+
+    for round = 1 step 1 to Nr-1
+        ShiftRows(state)
+        SubBytes(state)
+        MixColumns(state)
+        AddRoundKey(state, w[round*Nb, (round+1)*Nb - 1])
+    end
+
+    ShiftRows(state)
+    SubBytes(state)
+    AddRoundKey(state, w[Nr*Nb, (Nr+1)*Nb - 1])
+
+    out = state
+end
+
+InvCipher(byte in[4*Nb], byte out[4*Nb], word w[Nb*(Nr_1)])
+begin
+
+    byte stae[4, Nb]
+    state = in
+
+    AddRoundKey(state, w[Nr*Nb, (Nr+1)*Nb - 1])
+
+    for round = Nr-1 step -1 downto 1
+        InvSubBytes(state)
+        InvShiftRows(state)
+        InvMixColumns(state)
+        AddRoundKey(state, w[round*Nb, (round+1)*Nb - 1])
+    end
+
+    InvSubBytes(state)
+    InvShiftRows(state)
+    AddRoundKey(state, w[0, Nb-1])
+
+    out = state
+end
+
+// 解密密钥扩展需要增加如下步骤
+for i = 0 step 1 to (Nb*(Nr+1)-1)
+    dw[i] = w[i]
+end
+// 增加的运算
+for round=1 step 1 to Nr-1
+    InvMixColumns(dw[round*Nb, (round+1)*Nb-1])
+end for
 ```
 
 ## [SubBytes变换](#toc)
