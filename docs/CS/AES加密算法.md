@@ -72,7 +72,7 @@ begin
 end
 
 
-// 另一种等效的加解密步骤, Intel AES指令集采用的是这种步骤(两则加密密钥扩展是样的)
+// 另一种等效的加解密步骤, Intel AES指令集采用的是这种步骤(两者加密密钥扩展是一样的)
 // SubBytes和ShiftRows可以交换
 // InvMixColumns(AddRoundKey(state, RoundKey)) = AddRoundKey(InvMixColumns(state), InvMixColumns(RoundKey)
 
