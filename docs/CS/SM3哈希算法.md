@@ -39,9 +39,8 @@ $$
 & \quad \quad t1 = FF_j(a,b,c)+d+s2+W_j^{'} \\
 & \quad \quad t2 = GG_j(e,f,g)+h+s1+W_j \\
 & \quad \quad d=c; c=b\lll 9; b=a; a=t1;h=g;g=f\lll19;f=e;e=P_0(t2)\\
-& \quad \quad H_0^i,H_1^i,H_2^i,H_3^i,H_4^i,H_5^i,H_6^i,H_7^i=a,b,c,d,e,f,g,h\\
 & \quad end\\
-& H = [H_0^i,H_1^i,H_2^i,H_3^i,H_4^i,H_5^i,H_6^i,H_7^i] \\
+& H = [H_0^i\oplus a,H_1^i\oplus b,H_2^i\oplus c,H_3^i\oplus d,H_4^i\oplus e,H_5^i\oplus f,H_6^i\oplus g,H_7^i\oplus h] \\
 & end \\
 \end{aligned}
 $$
