@@ -70,7 +70,7 @@ $$
 FF_j(X,Y,Z) =
 \begin{cases}
 X\oplus Y\oplus Z \quad if\quad 0 \le j \lt 16 \\
-(X\&Y)\oplus(X\&Z)\oplus(Y\&Z) \quad if\quad 16 \le j \lt 64
+(X\land Y) \lor (X\land Z) \lor (Y\land Z) \quad if\quad 16 \le j \lt 64
 \end{cases}
 $$
 
@@ -78,7 +78,7 @@ $$
 GG_j(X,Y,Z) =
 \begin{cases}
 X\oplus Y\oplus Z \quad if\quad 0 \le j \lt 16 \\
-(X\&Y)\oplus((~X)\&Z) \quad if\quad 16 \le j \lt 64
+(X\land Y)\lor((\neg X)\land Z) \quad if\quad 16 \le j \lt 64
 \end{cases}
 $$
 

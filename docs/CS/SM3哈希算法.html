@@ -7,7 +7,7 @@
         <script type="text/x-mathjax-config">
           MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
         </script>
-        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+        <script type="text/javascript" async src="file:///c:\Users\Lenovo\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.5.13\node_modules\@shd101wyy\mume\dependencies\mathjax\MathJax.js" charset="UTF-8"></script>
         
       
       
@@ -268,6 +268,44 @@ pre[data-line] .line-highlight[data-end]:after {
       <div class="mume markdown-preview  ">
       <h1 class="mume-header" id="sm3%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95">SM3&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;</h1>
 
+<p><span id="toc"></span></p>
+<ul>
+<li><a href="#sm3%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95">SM3&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;</a>
+<ul>
+<li><a href="#%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8Etoc">&#x7B80;&#x8981;&#x8BF4;&#x660E;</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8Btoc">&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;</a>
+<ul>
+<li><a href="#%E4%BD%8D%E5%A1%AB%E5%85%85toc">&#x4F4D;&#x586B;&#x5145;</a></li>
+<li><a href="#%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8Btoc">&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E9%87%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89toc">&#x5E38;&#x91CF;&#x4E0E;&#x51FD;&#x6570;&#x5B9A;&#x4E49;</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8Etoc"><a href="#toc">&#x7B80;&#x8981;&#x8BF4;&#x660E;</a></h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">&#x6D88;&#x606F;&#x957F;&#x5EA6;(bits)</th>
+<th style="text-align:center">&#x5757;&#x5927;&#x5C0F;(bits)</th>
+<th style="text-align:center">&#x5355;&#x8BCD;&#x957F;&#x5EA6;(bits)</th>
+<th style="text-align:center">&#x6D88;&#x606F;&#x6458;&#x8981;&#x957F;&#x5EA6;(bits)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SM3</td>
+<td style="text-align:center"><span class="mathjax-exps">$\lt 2^{64}$</span></td>
+<td style="text-align:center">512</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">256</td>
+</tr>
+</tbody>
+</table>
 <h2 class="mume-header" id="%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8Btoc"><a href="#toc">&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;</a></h2>
 
 <h3 class="mume-header" id="%E4%BD%8D%E5%A1%AB%E5%85%85toc"><a href="#toc">&#x4F4D;&#x586B;&#x5145;</a></h3>
@@ -276,7 +314,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <h3 class="mume-header" id="%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8Btoc"><a href="#toc">&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;</a></h3>
 
 <p>&#x5C06;&#x4F4D;&#x586B;&#x5145;&#x540E;&#x7684;&#x6D88;&#x606F;<span class="mathjax-exps">$M$</span>&#x6309;&#x4F4D;&#x957F;&#x5EA6;512&#x5212;&#x5206;&#x4E3A;&#x5757;<span class="mathjax-exps">$M^{(1)}, M^{(2)}, \dots, M^{(n)}, n = len(M)/512$</span>, &#x5C06;&#x5757;<span class="mathjax-exps">$M^{(i)}$</span>&#x6309;&#x4F4D;&#x957F;&#x5EA6;32&#x5212;&#x5206;&#x4E3A;&#x5355;&#x8BCD;<span class="mathjax-exps">$M_0^{(i)}, M_1^{(i)}, \dots, M_16^{(i)}$</span>;</p>
-<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; H_0^0,H_1^0,H_2^0,H_3^0,H_4^0,H_5^0,H_6^0,H_7^0=IV[0],IV[1],IV[2],IV[3],IV[4],IV[5],IV[6],IV[7] \\ &amp; for\ i\ in\ 0..n \\ &amp; \quad for\ j\ in\ 0..64 \\ &amp; \quad \quad if\ j\lt 16 \\ &amp; \quad \quad \quad W_j = M_j^{(i)}\\ &amp; \quad \quad else \\ &amp; \quad \quad \quad W_j = P_1(W_{j-16}\oplus W_{j-9}\oplus (W_{j-3} \lll 15))\oplus (W_{j-13} \lll 7)\oplus W_{j-6}\\ &amp; \quad \quad end \\ &amp; \quad end\\ &amp; \quad \quad \\ &amp; \quad a,b,c,d,e,f,g,h = H_0^i,H_1^i,H_2^i,H_3^i,H_4^i,H_5^i,H_6^i,H_7^i\\ &amp; \quad for\ j\ in\ 0..64 \\ &amp; \quad \quad W_j^{&apos;} = W_j \oplus W_{j+4}\\ &amp; \quad \quad s1 = ((a\lll 12)+e+T_j\lll j)\lll 7\\ &amp; \quad \quad s2 = s1 \oplus (a\lll 12)\\ &amp; \quad \quad t1 = FF_j(a,b,c)+d+s2+W_j^{&apos;} \\ &amp; \quad \quad t2 = GG_j(e,f,g)+h+s1+W_j \\ &amp; \quad \quad d=c; c=b\lll 9; b=a; a=t1;h=g;g=f\lll19;f=e;e=P_0(t2)\\ &amp; \quad \quad H_0^i,H_1^i,H_2^i,H_3^i,H_4^i,H_5^i,H_6^i,H_7^i=a,b,c,d,e,f,g,h\\ &amp; \quad end\\ &amp; H = [H_0^i,H_1^i,H_2^i,H_3^i,H_4^i,H_5^i,H_6^i,H_7^i] &amp; end \\ \end{aligned}$$</div><p></p>
+<p></p><div class="mathjax-exps">$$\begin{aligned} &amp; H_0^0,H_1^0,H_2^0,H_3^0,H_4^0,H_5^0,H_6^0,H_7^0=IV[0],IV[1],IV[2],IV[3],IV[4],IV[5],IV[6],IV[7] \\ &amp; for\ i\ in\ 0..n \\ &amp; \quad for\ j\ in\ 0..64 \\ &amp; \quad \quad if\ j\lt 16 \\ &amp; \quad \quad \quad W_j = M_j^{(i)}\\ &amp; \quad \quad else \\ &amp; \quad \quad \quad W_j = P_1(W_{j-16}\oplus W_{j-9}\oplus (W_{j-3} \lll 15))\oplus (W_{j-13} \lll 7)\oplus W_{j-6}\\ &amp; \quad \quad end \\ &amp; \quad end\\ &amp; \quad \quad \\ &amp; \quad a,b,c,d,e,f,g,h = H_0^i,H_1^i,H_2^i,H_3^i,H_4^i,H_5^i,H_6^i,H_7^i\\ &amp; \quad for\ j\ in\ 0..64 \\ &amp; \quad \quad W_j^{&apos;} = W_j \oplus W_{j+4}\\ &amp; \quad \quad s1 = ((a\lll 12)+e+T_j\lll j)\lll 7\\ &amp; \quad \quad s2 = s1 \oplus (a\lll 12)\\ &amp; \quad \quad t1 = FF_j(a,b,c)+d+s2+W_j^{&apos;} \\ &amp; \quad \quad t2 = GG_j(e,f,g)+h+s1+W_j \\ &amp; \quad \quad d=c; c=b\lll 9; b=a; a=t1;h=g;g=f\lll19;f=e;e=P_0(t2)\\ &amp; \quad \quad H_0^i,H_1^i,H_2^i,H_3^i,H_4^i,H_5^i,H_6^i,H_7^i=a,b,c,d,e,f,g,h\\ &amp; \quad end\\ &amp; H = [H_0^i,H_1^i,H_2^i,H_3^i,H_4^i,H_5^i,H_6^i,H_7^i] \\ &amp; end \\ \end{aligned}$$</div><p></p>
 <h2 class="mume-header" id="%E5%B8%B8%E9%87%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89toc"><a href="#toc">&#x5E38;&#x91CF;&#x4E0E;&#x51FD;&#x6570;&#x5B9A;&#x4E49;</a></h2>
 
 <p>&#x8BF4;&#x660E;:</p>
@@ -287,8 +325,8 @@ pre[data-line] .line-highlight[data-end]:after {
 <pre data-role="codeBlock" data-info="Rust" class="language-rust"><span class="token comment">/// &#x54C8;&#x5E0C;&#x521D;&#x59CB;&#x503C;</span>
 <span class="token keyword">const</span> IV<span class="token punctuation">:</span> <span class="token punctuation">[</span>u32<span class="token punctuation">;</span><span class="token number">8</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0x7380166f</span><span class="token punctuation">,</span> <span class="token number">0x4914b2b9</span><span class="token punctuation">,</span> <span class="token number">0x172442d7</span><span class="token punctuation">,</span> <span class="token number">0xda8a0600</span><span class="token punctuation">,</span> <span class="token number">0xa96f30bc</span><span class="token punctuation">,</span> <span class="token number">0x163138aa</span><span class="token punctuation">,</span> <span class="token number">0xe38dee4d</span><span class="token punctuation">,</span> <span class="token number">0xb0fb0e4e</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 </pre><p></p><div class="mathjax-exps">$$T_j = \begin{cases} 0x79cc4519 \quad if\quad 0 \le j \lt 16 \\ 0x7a879d8a \quad if\quad 16 \le j \lt 64 \end{cases}$$</div><p></p>
-<p></p><div class="mathjax-exps">$$FF_j(X,Y,Z) = \begin{cases} X\oplus Y\oplus Z \quad if\quad 0 \le j \lt 16 \\ (X\&amp;Y)\oplus(X\&amp;Z)\oplus(Y\&amp;Z) \quad if\quad 16 \le j \lt 64 \end{cases}$$</div><p></p>
-<p></p><div class="mathjax-exps">$$GG_j(X,Y,Z) = \begin{cases} X\oplus Y\oplus Z \quad if\quad 0 \le j \lt 16 \\ (X\&amp;Y)\oplus((~X)\&amp;Z) \quad if\quad 16 \le j \lt 64 \end{cases}$$</div><p></p>
+<p></p><div class="mathjax-exps">$$FF_j(X,Y,Z) = \begin{cases} X\oplus Y\oplus Z \quad if\quad 0 \le j \lt 16 \\ (X\land Y) \lor (X\land Z) \lor (Y\land Z) \quad if\quad 16 \le j \lt 64 \end{cases}$$</div><p></p>
+<p></p><div class="mathjax-exps">$$GG_j(X,Y,Z) = \begin{cases} X\oplus Y\oplus Z \quad if\quad 0 \le j \lt 16 \\ (X\land Y)\lor((\neg X)\land Z) \quad if\quad 16 \le j \lt 64 \end{cases}$$</div><p></p>
 <p></p><div class="mathjax-exps">$$P_0(X) = X\oplus (X\lll 9)\oplus (X\lll 17)$$</div><p></p>
 <p></p><div class="mathjax-exps">$$P_1(X)= X\oplus (X\lll 15)\oplus (X\lll 23)$$</div><p></p>
 <h2 class="mume-header" id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc"><a href="#toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></h2>
