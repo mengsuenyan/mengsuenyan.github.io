@@ -23,7 +23,7 @@ $$
 \begin{aligned}
 & H_0^0,H_1^0,H_2^0,H_3^0,H_4^0,H_5^0,H_6^0,H_7^0=IV[0],IV[1],IV[2],IV[3],IV[4],IV[5],IV[6],IV[7] \\
 & for\ i\ in\ 0..n \\
-& \quad for\ j\ in\ 0..67 \\
+& \quad for\ j\ in\ 0..68 \\
 & \quad \quad if\ j\lt 16 \\
 & \quad \quad \quad W_j = M_j^{(i)}\\
 & \quad \quad else \\
