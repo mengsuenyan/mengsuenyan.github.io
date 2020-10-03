@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>KDF&#x5BC6;&#x94A5;&#x6D3E;&#x751F;&#x51FD;&#x6570;</title>
+      <title>Hash&#x51FD;&#x6570;&#x7684;&#x5B89;&#x5168;&#x6027;</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -12,7 +12,7 @@
       
       
       
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@8.5.2/dist/mermaid.min.js"></script>
+      
       
       
       
@@ -266,171 +266,143 @@ pre[data-line] .line-highlight[data-end]:after {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview  ">
-      <h1 class="mume-header" id="kdf%E5%AF%86%E9%92%A5%E6%B4%BE%E7%94%9F%E5%87%BD%E6%95%B0">kDF&#x5BC6;&#x94A5;&#x6D3E;&#x751F;&#x51FD;&#x6570;</h1>
+      <h1 class="mume-header" id="hash%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7">Hash&#x51FD;&#x6570;&#x7684;&#x5B89;&#x5168;&#x6027;</h1>
 
 <p><span id="toc"></span></p>
 <ul>
-<li><a href="#kdf%E5%AF%86%E9%92%A5%E6%B4%BE%E7%94%9F%E5%87%BD%E6%95%B0">kDF&#x5BC6;&#x94A5;&#x6D3E;&#x751F;&#x51FD;&#x6570;</a>
+<li><a href="#hash%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7">Hash&#x51FD;&#x6570;&#x7684;&#x5B89;&#x5168;&#x6027;</a>
 <ul>
-<li><a href="#extraction-then-expansione-e-key-derivation-proceduretoc">Extraction-then-Expansion(E-E) Key Derivation Procedure</a>
+<li><a href="#%E5%AE%89%E5%85%A8%E6%80%A7%E6%8C%87%E6%A0%87toc">&#x5B89;&#x5168;&#x6027;&#x6307;&#x6807;</a>
 <ul>
-<li><a href="#internet-key-exchangeiketoc">Internet Key Exchange(IKE)</a>
-<ul>
-<li><a href="#ikev1-kdftoc">IKEv1-KDF</a></li>
-<li><a href="#ikev2-kdftoc">IKEv2-KDF</a></li>
+<li><a href="#collision-resistancetoc">Collision Resistance</a></li>
+<li><a href="#preimage-resistancetoc">Preimage Resistance</a></li>
+<li><a href="#second-preimage-resistancetoc">Second Preimage Resistance</a></li>
 </ul>
 </li>
-<li><a href="#tls-kdftoc">TLS-KDF</a></li>
-</ul>
-</li>
-<li><a href="#%E5%85%B6%E5%AE%83%E5%BA%94%E7%94%A8%E7%89%B9%E5%AE%9A%E7%9A%84kdftoc">&#x5176;&#x5B83;&#x5E94;&#x7528;&#x7279;&#x5B9A;&#x7684;KDF</a>
-<ul>
-<li><a href="#ans-x963-kdftoc">ANS X9.63-KDF</a></li>
-<li><a href="#secureshellssh-kdftoc">SecureShell(SSH)-KDF</a></li>
-<li><a href="#securerealtimetransportprotocolsrtp-kdftoc">SecureRealTimeTransportProtocol(SRTP)-KDF</a></li>
-<li><a href="#simplenetworkmanagementprotocolsnmp-kdftoc">SimpleNetworkManagementProtocol(SNMP)-KDF</a></li>
-<li><a href="#trustedplatformmoduletpm-kdftoc">TrustedPlatformModule(TPM)-KDF</a></li>
-</ul>
-</li>
+<li><a href="#sha-2toc">SHA-2</a></li>
+<li><a href="#sha-3toc">SHA-3</a></li>
 <li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></li>
 </ul>
 </li>
 </ul>
-<h2 class="mume-header" id="extraction-then-expansione-e-key-derivation-proceduretoc"><a href="#toc">Extraction-then-Expansion(E-E) Key Derivation Procedure</a></h2>
+<h2 class="mume-header" id="%E5%AE%89%E5%85%A8%E6%80%A7%E6%8C%87%E6%A0%87toc"><a href="#toc">&#x5B89;&#x5168;&#x6027;&#x6307;&#x6807;</a></h2>
 
-<div class="mermaid">graph TD;
-  id1(KeyAgreementPrimitive) -.SharedSecret.-&gt; id2(ExtractionStep)
-  id2 -.KeyDerivationKey.-&gt; id3(ExpansionStep)
-  id3 -.DerivedKeyingMaterial, k1..ki..kn.-&gt; id4(KDF)
-  id4 -.- id5(DerivedKeingMaterial)
-</div><ul>
-<li>SP 800-56C&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;ExtractionStep-&gt;ExpansionStep;</li>
-<li>SP 800-108&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;ExpansionStep;</li>
-</ul>
-<h3 class="mume-header" id="internet-key-exchangeiketoc"><a href="#toc">Internet Key Exchange(IKE)</a></h3>
+<h3 class="mume-header" id="collision-resistancetoc"><a href="#toc">Collision Resistance</a></h3>
 
-<h4 class="mume-header" id="ikev1-kdftoc"><a href="#toc">IKEv1-KDF</a></h4>
+<p>&#x6297;&#x78B0;&#x649E;&#x6027;(Collision Resistance): &#x82E5;&#x6709;<strong>&#x4EFB;&#x610F;</strong>&#x4E24;&#x6761;&#x6D88;&#x606F;<span class="mathjax-exps">$x_1, x_2$</span>&#x4E14;<span class="mathjax-exps">$x_1 \ne x_2$</span>, &#x5219;&#x53D1;&#x73B0;<span class="mathjax-exps">$H(x_1)=H(x_2)$</span>&#x9700;&#x8981;&#x8BA1;&#x7B97;&#x7684;&#x6B21;&#x6570;&#x4E3A;<span class="mathjax-exps">$2^N$</span>, &#x5219;&#x5176;&#x6297;&#x78B0;&#x649E;&#x6027;&#x4E3A;<span class="mathjax-exps">$N/2$</span>. &#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;<span class="mathjax-exps">$N=L$</span>;</p>
+<h3 class="mume-header" id="preimage-resistancetoc"><a href="#toc">Preimage Resistance</a></h3>
 
-<ul>
-<li>RFC 2409;</li>
-<li><span class="mathjax-exps">$g^{xy}$</span>: Diffie-Hellman(DH) key exchange value, also called DH shared key;</li>
-<li><span class="mathjax-exps">$a || b$</span>: &#x8868;&#x793A;&#x5B57;&#x7B26;&#x4E32;b&#x62FC;&#x63A5;&#x5728;&#x5B57;&#x7B26;&#x4E32;a&#x540E;;</li>
-</ul>
-<p>&#x5F53;&#x6570;&#x5B57;&#x7B7E;&#x540D;(digital signature)&#x7528;&#x4E8E;&#x8BA4;&#x8BC1;&#x65F6;: <span class="mathjax-exps">$SKEYID=HMAC(Ni_b || Nr_b, g^{xy})$</span>, <span class="mathjax-exps">$Ni_b, Nr_b$</span>&#x662F;non-secret values;</p>
-<p>&#x5F53;&#x516C;&#x94A5;&#x7B97;&#x6CD5;(public key algorithm)&#x7528;&#x4E8E;&#x8BA4;&#x8BC1;&#x65F6;: <span class="mathjax-exps">$SKEYID=HMAC(HASH(Ni_b||Nr_b), CKY-I||CKY-R)$</span>, <span class="mathjax-exps">$Ni_b, Nr_b$</span>&#x662F;secret nonces, <span class="mathjax-exps">$CKY-I, CKY-R$</span>&#x662F;non-secret values;</p>
-<p>&#x5F53;&#x9884;&#x5171;&#x4EAB;&#x5BC6;&#x94A5;(pre-shared key)&#x7528;&#x4E8E;&#x8BA4;&#x8BC1;&#x65F6;: <span class="mathjax-exps">$SKEYID=HMAC(pre\_shared\_key, Ni_b||Nr_b)$</span>, <span class="mathjax-exps">$Ni_b, Nr_b$</span>&#x662F;non-secret values;</p>
-<p><span class="mathjax-exps">$SKEYID_d=HMAC(SKEYID, g^{xy}||CKY-I||CKY-R||0)$</span>, <span class="mathjax-exps">$SKEYID_d$</span>&#x7528;&#x4F5C;&#x5BC6;&#x94A5;&#x6D3E;&#x751F;&#x5BC6;&#x94A5;, &#x4E3A;&#x65B0;&#x7684;&#x534F;&#x5546;SA(security association)&#x751F;&#x6210;&#x65B0;&#x7684;&#x94A5;&#x6750;(Key Material);</p>
-<p><span class="mathjax-exps">$SKEYID_a=HMAC(SKEYID, SKEYID_d||g^{xy}||CKY-I||CKY-R||1$</span>, <span class="mathjax-exps">$SKEYID_a$</span>&#x7528;&#x4F5C;HMAC&#x5BC6;&#x94A5;, &#x4EE5;&#x8BA4;&#x8BC1;&#x5F53;&#x524D;&#x7684;SA&#x6D88;&#x606F;;</p>
-<p><span class="mathjax-exps">$SKEYID_e = HMAC (SKEYID, SKEYID_a || g^{xy} || CKY-I || CKY-R || 2)$</span>, <span class="mathjax-exps">$SKEYID_e$</span>&#x7528;&#x4E8E;&#x5BC6;&#x94A5;&#x6D3E;&#x751F;&#x5BC6;&#x94A5;, &#x4EE5;&#x6D3E;&#x751F;&#x5BF9;&#x79F0;&#x52A0;&#x5BC6;&#x5BC6;&#x94A5;, &#x4E3A;&#x5F53;&#x524D;SA&#x6D88;&#x606F;&#x63D0;&#x4F9B;&#x6388;&#x4FE1;;</p>
-<h4 class="mume-header" id="ikev2-kdftoc"><a href="#toc">IKEv2-KDF</a></h4>
+<p>&#x6297;&#x539F;&#x50CF;&#x6027;(Preimage Resistance): &#x82E5;&#x6709;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#x6458;&#x8981;<span class="mathjax-exps">$y$</span>, &#x5219;&#x627E;&#x5230;&#x4E00;&#x4E2A;&#x6D88;&#x606F;<span class="mathjax-exps">$x$</span>&#x6EE1;&#x8DB3;<span class="mathjax-exps">$H(x)=y$</span>&#x9700;&#x8981;&#x8BA1;&#x7B97;&#x7684;&#x6B21;&#x6570;&#x4E3A;<span class="mathjax-exps">$2^N$</span>, &#x5219;&#x5176;&#x6297;&#x539F;&#x50CF;&#x6027;&#x4E3A;<span class="mathjax-exps">$N$</span>. &#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;<span class="mathjax-exps">$N=L$</span>;</p>
+<h3 class="mume-header" id="second-preimage-resistancetoc"><a href="#toc">Second Preimage Resistance</a></h3>
 
-<ul>
-<li>RFC 4306</li>
-<li><span class="mathjax-exps">$g^{ir}$</span>: Diffie-Hellman(DH) key exchange value, also called DH shared key;</li>
-</ul>
-<p><span class="mathjax-exps">$SKEYSEED=HMAC(Ni||Nr, g^{ir})$</span>, <span class="mathjax-exps">$SKEYSEED$</span>&#x4F5C;&#x4E3A;&#x5BC6;&#x94A5;&#x6D3E;&#x751F;&#x5BC6;&#x94A5;, &#x7528;&#x4E8E;ExpansionStep, <span class="mathjax-exps">$Ni, Nr$</span>&#x662F;non-secret nonce.</p>
-<h3 class="mume-header" id="tls-kdftoc"><a href="#toc">TLS-KDF</a></h3>
+<p>&#x6297;&#x4E8C;&#x6B21;&#x539F;&#x50CF;&#x6027;(Second Preimage Resistance): &#x82E5;<strong>&#x7ED9;&#x5B9A;</strong>&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x6D88;&#x606F;<span class="mathjax-exps">$x_1$</span>, &#x90A3;&#x4E48;&#x627E;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x6D88;&#x606F;<span class="mathjax-exps">$x_2 \ne x_1$</span>, &#x4F7F;&#x5F97;<span class="mathjax-exps">$H(x_2)=H(x_1)$</span>&#x9700;&#x8981;&#x8BA1;&#x7B97;&#x7684;&#x6B21;&#x6570;&#x4E3A;<span class="mathjax-exps">$2^N$</span>, &#x5219;&#x5176;&#x6297;&#x78B0;&#x649E;&#x6027;&#x4E3A;<span class="mathjax-exps">$N$</span>. &#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;<span class="mathjax-exps">$N=L$</span>;</p>
+<h2 class="mume-header" id="sha-2toc"><a href="#toc">SHA-2</a></h2>
 
-<ul>
-<li>RFC 2246;</li>
-<li>RFC 4346;</li>
-</ul>
-<h2 class="mume-header" id="%E5%85%B6%E5%AE%83%E5%BA%94%E7%94%A8%E7%89%B9%E5%AE%9A%E7%9A%84kdftoc"><a href="#toc">&#x5176;&#x5B83;&#x5E94;&#x7528;&#x7279;&#x5B9A;&#x7684;KDF</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">SHA-1</th>
+<th style="text-align:center">SHA-224</th>
+<th style="text-align:center">SHA-256</th>
+<th style="text-align:center">SHA-384</th>
+<th style="text-align:center">SHA-512/224</th>
+<th style="text-align:center">SHA-512/256</th>
+<th style="text-align:center">SHA-512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">CR</td>
+<td style="text-align:center">&lt;80</td>
+<td style="text-align:center">112</td>
+<td style="text-align:center">128</td>
+<td style="text-align:center">192</td>
+<td style="text-align:center">112</td>
+<td style="text-align:center">128</td>
+<td style="text-align:center">256</td>
+</tr>
+<tr>
+<td style="text-align:center">PR</td>
+<td style="text-align:center">160</td>
+<td style="text-align:center">224</td>
+<td style="text-align:center">256</td>
+<td style="text-align:center">384</td>
+<td style="text-align:center">224</td>
+<td style="text-align:center">256</td>
+<td style="text-align:center">512</td>
+</tr>
+<tr>
+<td style="text-align:center">SPR</td>
+<td style="text-align:center">160-L(M)</td>
+<td style="text-align:center">min(224,256-L(M))</td>
+<td style="text-align:center">256-L(M)</td>
+<td style="text-align:center">384</td>
+<td style="text-align:center">224</td>
+<td style="text-align:center">256</td>
+<td style="text-align:center">512-L(M)</td>
+</tr>
+</tbody>
+</table>
+<h2 class="mume-header" id="sha-3toc"><a href="#toc">SHA-3</a></h2>
 
-<h3 class="mume-header" id="ans-x963-kdftoc"><a href="#toc">ANS X9.63-KDF</a></h3>
-
-<ul>
-<li>ANS X9.63</li>
-</ul>
-<p>&#x8BB0;&#x6709;&#x6570;&#x636E;<span class="mathjax-exps">$Z$</span>, <a href="https://www.cnblogs.com/mengsuenyan/p/12697811.html">&#x54C8;&#x5E0C;</a>&#x51FD;&#x6570;<span class="mathjax-exps">$Hash$</span>(hash&#x503C;&#x7684;&#x5B57;&#x8282;&#x957F;&#x5EA6;&#x4E3A;<span class="mathjax-exps">$l$</span>), &#x9700;&#x8981;&#x8F93;&#x51FA;&#x7684;&#x5BC6;&#x94A5;&#x6570;&#x636E;&#x5B57;&#x8282;&#x957F;&#x5EA6;&#x4F4D;<span class="mathjax-exps">$k$</span>, &#x53CA;&#x53EF;&#x9009;&#x7684;&#x9644;&#x52A0;&#x6570;&#x636E;<span class="mathjax-exps">$SharedInfo$</span>;</p>
-<ul>
-<li><span class="mathjax-exps">$Counter=0x00000001$</span>;</li>
-<li>&#x4ECE;<span class="mathjax-exps">$i=0$</span>&#x8FED;&#x4EE3;&#x5230;<span class="mathjax-exps">$\lceil k/l \rceil$</span>:
-<ul>
-<li><span class="mathjax-exps">$K_i=Hash(Z||Counter||SharedInfo)$</span>;</li>
-<li><span class="mathjax-exps">$Counter+=1$</span></li>
-</ul>
-</li>
-<li>&#x53D6;<span class="mathjax-exps">$K_0||K_1||\dots ||K_{\lceil k/l \rceil}$</span>&#x6700;&#x5DE6;&#x8FB9;<span class="mathjax-exps">$k$</span>&#x4E2A;&#x5B57;&#x8282;&#x8D4B;&#x7ED9;<span class="mathjax-exps">$K$</span>;</li>
-<li>&#x8F93;&#x51FA;<span class="mathjax-exps">$K$</span>;</li>
-</ul>
-<p>&#x7B26;&#x53F7;&#x8BF4;&#x660E;: <span class="mathjax-exps">$X||Y$</span>: &#x8868;&#x793A;<span class="mathjax-exps">$Y$</span>&#x62FC;&#x63A5;&#x5728;<span class="mathjax-exps">$X$</span>&#x4E4B;&#x540E;;</p>
-<h3 class="mume-header" id="secureshellssh-kdftoc"><a href="#toc">SecureShell(SSH)-KDF</a></h3>
-
-<ul>
-<li>RFC4251;</li>
-<li>RFC4252;</li>
-<li>RFC4253;</li>
-<li>RFC4254;</li>
-</ul>
-<h3 class="mume-header" id="securerealtimetransportprotocolsrtp-kdftoc"><a href="#toc">SecureRealTimeTransportProtocol(SRTP)-KDF</a></h3>
-
-<ul>
-<li>RFC3550;</li>
-<li>RFC3711;</li>
-<li>RFC6188;</li>
-</ul>
-<h3 class="mume-header" id="simplenetworkmanagementprotocolsnmp-kdftoc"><a href="#toc">SimpleNetworkManagementProtocol(SNMP)-KDF</a></h3>
-
-<ul>
-<li>RFC2571;</li>
-<li>RFC2574;</li>
-</ul>
-<h3 class="mume-header" id="trustedplatformmoduletpm-kdftoc"><a href="#toc">TrustedPlatformModule(TPM)-KDF</a></h3>
-
-<ul>
-<li>TPM Principles;</li>
-<li>TPM Structures;</li>
-<li>TPM Commands;</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">SHA-224</th>
+<th style="text-align:center">SHA-256</th>
+<th style="text-align:center">SHA-384</th>
+<th style="text-align:center">SHA-512</th>
+<th style="text-align:center">SHAKE128</th>
+<th style="text-align:center">SHAKE256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">CR</td>
+<td style="text-align:center">112</td>
+<td style="text-align:center">128</td>
+<td style="text-align:center">192</td>
+<td style="text-align:center">256</td>
+<td style="text-align:center">min(d/2,128)</td>
+<td style="text-align:center">min(d/2,256)</td>
+</tr>
+<tr>
+<td style="text-align:center">PR</td>
+<td style="text-align:center">224</td>
+<td style="text-align:center">256</td>
+<td style="text-align:center">384</td>
+<td style="text-align:center">512</td>
+<td style="text-align:center">&gt;=min(d,128)</td>
+<td style="text-align:center">&gt;=min(d,256)</td>
+</tr>
+<tr>
+<td style="text-align:center">CPR</td>
+<td style="text-align:center">224</td>
+<td style="text-align:center">256</td>
+<td style="text-align:center">384</td>
+<td style="text-align:center">512</td>
+<td style="text-align:center">min(d,128)</td>
+<td style="text-align:center">min(d,256)</td>
+</tr>
+</tbody>
+</table>
+<p>&#x5176;&#x4E2D;:<br>
+</p><div class="mathjax-exps">$$L(M) = \lceil log_2(len(M)/block\_bits\_len) \rceil$$</div><p></p>
 <h2 class="mume-header" id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc"><a href="#toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></h2>
 
-<p>[1]. Standars for Efficient Cryptography 1 (SEC1: Elliptic Curve Cryptography), Daniel R.L.Brown;<br>
-[2]. ANSI-X9.63-KDF;<br>
-[3]. IKEv2-KDF;<br>
-[4]. TLS-KDF;<br>
-[5]. NIST-800-56-Concatenation-KDF;<br>
-[6]. SP 800-135r1;</p>
+<ol>
+<li>FIPS-202;</li>
+<li>SP 800-107 r1;</li>
+</ol>
 
       </div>
       
       
     
     
-    <script>
-// config mermaid init call
-// http://knsv.github.io/mermaid/#configuration
-//
-// You can edit the 'MERMAID_CONFIG' variable below.
-MERMAID_CONFIG = {
-  startOnLoad: false
-}
-
-if (window['MERMAID_CONFIG']) {
-  window['MERMAID_CONFIG'].startOnLoad = false
-  window['MERMAID_CONFIG'].cloneCssStyles = false
-  window['MERMAID_CONFIG'].theme = "default"
-}
-mermaid.initialize(window['MERMAID_CONFIG'] || {})
-if (typeof(window['Reveal']) !== 'undefined') {
-  function mermaidRevealHelper(event) {
-    var currentSlide = event.currentSlide
-    var diagrams = currentSlide.querySelectorAll('.mermaid')
-    for (var i = 0; i < diagrams.length; i++) {
-      var diagram = diagrams[i]
-      if (!diagram.hasAttribute('data-processed')) {
-        mermaid.init(null, diagram, ()=> {
-          Reveal.slide(event.indexh, event.indexv)
-        })
-      }
-    }
-  }
-  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
-  Reveal.addEventListener('ready', mermaidRevealHelper)
-} else {
-  mermaid.init(null, document.getElementsByClassName('mermaid'))
-}
-</script>
+    
     
     
     

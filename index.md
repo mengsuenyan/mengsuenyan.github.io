@@ -15,8 +15,11 @@
 
 
 - [AES加密算法](docs/CS/AES加密算法.html)
+- [CMAC基于块加密的消息认证码](docs/CS/CMAC基于块加密的消息认证码.html)
 - [DES加密算法](docs/CS/DES加密算法.html)
+- [DSS数字签名标准](docs/CS/DSS数字签名标准.html)
 - [ECC椭圆曲线加密](docs/CS/ECC椭圆曲线加密.html)
+- [Hash函数的安全性](docs/CS/Hash函数的安全性.html)
 - [HMAC基于Hash的消息认证码](docs/CS/HMAC基于Hash的消息认证码.html)
 - [KDF密钥派生函数](docs/CS/KDF密钥派生函数.html)
 - [MD5消息摘要算法](docs/CS/MD5消息摘要算法.html)
