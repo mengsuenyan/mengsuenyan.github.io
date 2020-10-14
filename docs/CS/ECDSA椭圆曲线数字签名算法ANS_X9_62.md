@@ -164,8 +164,9 @@
   - 将位字符串$E$转为整数$e$;
 - $u_1 = e' \cdot (s')^{-1} \mod n, u_2 = r' (s')^{-1}\mod n$;
 - $k' = (u_1 + u_2\cdot d) \mod n$;
-- $R = k'\cdot G$;
+- $R = k'\cdot G = (x_R, y_R)$;
 - 验证$R \ne \mathcal{O}$;
+- 将$x_R$转为整数$j$;
 - $v = j\mod n$;
 - 验证$v = r'$;
 

@@ -1,5 +1,7 @@
 # DSS数字签名标准
 
+[Rust实现](https://crates.io/crates/rcrypto);
+
 <span id='toc'></span>
 [TOC]
 
