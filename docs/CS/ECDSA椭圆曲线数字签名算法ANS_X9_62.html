@@ -1,0 +1,1025 @@
+<!DOCTYPE html><html><head>
+      <title>ECDSA&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x6570;&#x5B57;&#x7B7E;&#x540D;&#x7B97;&#x6CD5;ANS_X9_62</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="ecdsa%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95">ECDSA&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x6570;&#x5B57;&#x7B7E;&#x540D;&#x7B97;&#x6CD5;</h1>
+
+<p><span id="toc"></span></p>
+<ul>
+<li><a href="#ecdsa%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95">ECDSA&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x6570;&#x5B57;&#x7B7E;&#x540D;&#x7B97;&#x6CD5;</a>
+<ul>
+<li><a href="#%E7%AC%A6%E5%8F%B7%E8%AF%B4%E6%98%8Etoc">&#x7B26;&#x53F7;&#x8BF4;&#x660E;</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2toc">&#x6570;&#x636E;&#x8F6C;&#x6362;</a>
+<ul>
+<li><a href="#%E6%95%B4%E6%95%B0%E5%92%8C%E5%85%AB%E4%BD%8D%E4%B8%B2%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2toc">&#x6574;&#x6570;&#x548C;&#x516B;&#x4F4D;&#x4E32;&#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x6362;</a></li>
+<li><a href="#%E5%9F%9F%E5%85%83%E7%B4%A0%E8%BD%AC%E4%B8%BA%E5%85%AB%E4%BD%8D%E4%B8%B2toc">&#x57DF;&#x5143;&#x7D20;&#x8F6C;&#x4E3A;&#x516B;&#x4F4D;&#x4E32;</a></li>
+<li><a href="#%E5%85%AB%E4%BD%8D%E4%B8%B2%E8%BD%AC%E4%B8%BA%E5%9F%9F%E5%85%83%E7%B4%A0toc">&#x516B;&#x4F4D;&#x4E32;&#x8F6C;&#x4E3A;&#x57DF;&#x5143;&#x7D20;</a></li>
+<li><a href="#%E5%9F%9F%E5%85%83%E7%B4%A0%E8%BD%AC%E4%B8%BA%E6%95%B4%E6%95%B0toc">&#x57DF;&#x5143;&#x7D20;&#x8F6C;&#x4E3A;&#x6574;&#x6570;</a></li>
+<li><a href="#%E6%9B%B2%E7%BA%BF%E7%82%B9%E8%BD%AC%E4%B8%BA%E5%85%AB%E4%BD%8D%E4%B8%B2toc">&#x66F2;&#x7EBF;&#x70B9;&#x8F6C;&#x4E3A;&#x516B;&#x4F4D;&#x4E32;</a></li>
+<li><a href="#%E5%85%AB%E4%BD%8D%E4%B8%B2%E8%BD%AC%E4%B8%BA%E6%9B%B2%E7%BA%BF%E7%82%B9toc">&#x516B;&#x4F4D;&#x4E32;&#x8F6C;&#x4E3A;&#x66F2;&#x7EBF;&#x70B9;</a></li>
+</ul>
+</li>
+<li><a href="#%E7%AD%BE%E5%90%8Dtoc">&#x7B7E;&#x540D;</a></li>
+<li><a href="#%E9%AA%8C%E8%AF%81toc">&#x9A8C;&#x8BC1;</a>
+<ul>
+<li><a href="#%E9%80%9A%E8%BF%87%E5%85%AC%E9%92%A5%E9%AA%8C%E8%AF%81toc">&#x901A;&#x8FC7;&#x516C;&#x94A5;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="#%E9%80%9A%E8%BF%87%E7%A7%81%E9%92%A5%E9%AA%8C%E8%AF%81toc">&#x901A;&#x8FC7;&#x79C1;&#x94A5;&#x9A8C;&#x8BC1;</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%9F%9F%E5%8F%82%E6%95%B0toc">&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x57DF;&#x53C2;&#x6570;</a>
+<ul>
+<li><a href="#%E7%82%B9%E5%8E%8B%E7%BC%A9toc">&#x70B9;&#x538B;&#x7F29;</a>
+<ul>
+<li><a href="#%E5%9F%9Ff_p%E4%B8%8A%E7%82%B9%E5%8E%8B%E7%BC%A9toc">&#x57DF;<span class="mathjax-exps">$F_p$</span>&#x4E0A;&#x70B9;&#x538B;&#x7F29;</a></li>
+<li><a href="#%E5%9F%9Ff_2m%E4%B8%8A%E7%82%B9%E5%8E%8B%E7%BC%A9toc">&#x57DF;<span class="mathjax-exps">$F_{2^m}$</span>&#x4E0A;&#x70B9;&#x538B;&#x7F29;</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BF%9D%E8%AF%81%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%AE%89%E5%85%A8%E6%80%A7%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6toc">&#x4FDD;&#x8BC1;&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x5B89;&#x5168;&#x6027;&#x7684;&#x4E00;&#x4E9B;&#x5FC5;&#x8981;&#x6761;&#x4EF6;</a>
+<ul>
+<li><a href="#mov%E6%9D%A1%E4%BB%B6toc">MOV&#x6761;&#x4EF6;</a></li>
+<li><a href="#%E5%BC%82%E5%B8%B8%E6%9D%A1%E4%BB%B6the-anomalous-conditiontoc">&#x5F02;&#x5E38;&#x6761;&#x4EF6;(The Anomalous condition)</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E7%9A%84%E9%80%89%E6%8B%A9toc">&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x7684;&#x9009;&#x62E9;</a>
+<ul>
+<li><a href="#%E5%8F%AF%E9%AA%8C%E8%AF%81%E9%9A%8F%E6%9C%BA%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BFtoc">&#x53EF;&#x9A8C;&#x8BC1;&#x968F;&#x673A;&#x692D;&#x5706;&#x66F2;&#x7EBF;</a></li>
+<li><a href="#%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E7%9A%84%E9%AA%8C%E8%AF%81toc">&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x7684;&#x9A8C;&#x8BC1;</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9F%BA%E7%82%B9%E7%9A%84%E9%80%89%E6%8B%A9toc">&#x57FA;&#x70B9;&#x7684;&#x9009;&#x62E9;</a>
+<ul>
+<li><a href="#%E5%8F%AF%E9%AA%8C%E8%AF%81%E9%9A%8F%E6%9C%BA%E5%9F%BA%E7%82%B9toc">&#x53EF;&#x9A8C;&#x8BC1;&#x968F;&#x673A;&#x57FA;&#x70B9;</a></li>
+<li><a href="#%E5%9F%BA%E7%82%B9%E7%9A%84%E9%AA%8C%E8%AF%81toc">&#x57FA;&#x70B9;&#x7684;&#x9A8C;&#x8BC1;</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%9F%9F%E5%8F%82%E6%95%B0%E7%9A%84%E9%80%89%E6%8B%A9toc">&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x57DF;&#x53C2;&#x6570;&#x7684;&#x9009;&#x62E9;</a>
+<ul>
+<li><a href="#ec%E5%9F%9F%E5%8F%82%E6%95%B0%E7%9A%84%E9%AA%8C%E8%AF%81toc">EC&#x57DF;&#x53C2;&#x6570;&#x7684;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="#ec%E5%9F%9F%E5%8F%82%E6%95%B0%E7%9A%84%E7%94%9F%E6%88%90toc">EC&#x57DF;&#x53C2;&#x6570;&#x7684;&#x751F;&#x6210;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%AF%86%E9%92%A5%E5%AF%B9toc">&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x5BC6;&#x94A5;&#x5BF9;</a>
+<ul>
+<li><a href="#%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%85%AC%E9%92%A5%E9%AA%8C%E8%AF%81toc">&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x516C;&#x94A5;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="#%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%AF%86%E9%92%A5%E5%AF%B9%E7%9A%84%E7%94%9F%E6%88%90toc">&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x5BC6;&#x94A5;&#x5BF9;&#x7684;&#x751F;&#x6210;</a></li>
+</ul>
+</li>
+<li><a href="#%E7%B4%A0%E6%80%A7toc">&#x7D20;&#x6027;</a>
+<ul>
+<li><a href="#%E6%A6%82%E7%8E%87%E7%B4%A0%E6%80%A7%E6%B5%8B%E8%AF%95-probabilisticprimalitytesttoc">&#x6982;&#x7387;&#x7D20;&#x6027;&#x6D4B;&#x8BD5;-ProbabilisticPrimalityTest</a></li>
+<li><a href="#%E5%87%86%E7%B4%A0%E6%80%A7near-primality%E6%B5%8B%E8%AF%95toc">&#x51C6;&#x7D20;&#x6027;(near primality)&#x6D4B;&#x8BD5;</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="%E7%AC%A6%E5%8F%B7%E8%AF%B4%E6%98%8Etoc"><a href="#toc">&#x7B26;&#x53F7;&#x8BF4;&#x660E;</a></h2>
+
+<p><a href="#toc">&#x692D;&#x5706;&#x52A0;&#x5BC6;&#x6570;&#x5B66;&#x57FA;&#x7840;</a></p>
+<ul>
+<li><span class="mathjax-exps">$F_p$</span>: <span class="mathjax-exps">$y^2 = x^3 + ax + b, (4a^3+27b^2)\mod p \ne 0, (x,y)\in F_p$</span>;</li>
+<li><span class="mathjax-exps">$F_{2^m}$</span>: <span class="mathjax-exps">$y^2 + xy = x^3 + ax^2+b, b \ne 0, (x,y) \in F_{2^m}$</span>;</li>
+<li><span class="mathjax-exps">$G$</span>: &#x692D;&#x5706;&#x66F2;&#x7EBF;&#x57DF;&#x53C2;&#x6570;&#x7684;&#x57FA;&#x70B9;&#x6216;&#x751F;&#x6210;&#x5B50;;</li>
+<li><span class="mathjax-exps">$(x_P, y_P)$</span>: &#x692D;&#x5706;&#x66F2;&#x7EBF;&#x70B9;<span class="mathjax-exps">$P$</span>&#x7684;&#x5750;&#x6807;&#x8868;&#x793A;;</li>
+<li><span class="mathjax-exps">$(r,s)$</span>: &#x6570;&#x5B57;&#x7B7E;&#x540D;, &#x6574;&#x6570;&#x5BF9;;</li>
+<li><span class="mathjax-exps">$Q$</span>: &#x516C;&#x94A5;;</li>
+<li><span class="mathjax-exps">$d$</span>: &#x79C1;&#x94A5;, <span class="mathjax-exps">$Q = d\cdot G$</span>;</li>
+<li><span class="mathjax-exps">$\mathcal{O}$</span>: &#x65E0;&#x9650;&#x8FDC;&#x70B9;, &#x5145;&#x5F53;&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x7FA4;&#x7684;&#x96F6;&#x5143;&#x7D20;;</li>
+<li><span class="mathjax-exps">$n$</span>: &#x7D20;&#x6570;, &#x751F;&#x6210;&#x5B50;<span class="mathjax-exps">$G$</span>&#x7684;&#x9636;;</li>
+<li><span class="mathjax-exps">$E(F_q)$</span>: &#x5B9A;&#x4E49;&#x5728;<span class="mathjax-exps">$F_q$</span>&#x57DF;&#x4E0A;&#x7684;&#x692D;&#x5706;&#x66F2;&#x7EBF;;</li>
+<li><span class="mathjax-exps">$(a, b)$</span>: &#x692D;&#x5706;&#x66F2;&#x7EBF;&#x7684;&#x7CFB;&#x6570;;</li>
+<li><span class="mathjax-exps">$q$</span>: &#x6709;&#x9650;&#x57DF;&#x7684;&#x5927;&#x5C0F;;</li>
+<li><span class="mathjax-exps">$truncate_l(X)$</span>: &#x53D6;&#x4F4D;&#x5B57;&#x7B26;&#x4E32;<span class="mathjax-exps">$X$</span>&#x7684;&#x6700;&#x5DE6;&#x8FB9;<span class="mathjax-exps">$l$</span>&#x4F4D;/&#x5B57;&#x8282;;</li>
+<li>&#x57DF;&#x53C2;&#x6570;:
+<ul>
+<li><span class="mathjax-exps">$q$</span>;</li>
+<li><span class="mathjax-exps">$a$</span>;</li>
+<li><span class="mathjax-exps">$b$</span>;</li>
+<li><span class="mathjax-exps">$x_G$</span>;</li>
+<li><span class="mathjax-exps">$y_G$</span>;</li>
+<li><span class="mathjax-exps">$n$</span>;</li>
+<li><span class="mathjax-exps">$SEED$</span>: (&#x53EF;&#x9009;), &#x7528;&#x4E8E;&#x751F;&#x6210;&#x53EF;&#x9A8C;&#x8BC1;&#x7684;&#x968F;&#x673A;&#x57DF;&#x53C2;&#x6570;&#x7684;&#x4F4D;&#x5B57;&#x7B26;&#x4E32;;</li>
+<li><span class="mathjax-exps">$h$</span>: (&#x53EF;&#x9009;), &#x4F59;&#x56E0;&#x5B50;<span class="mathjax-exps">$h=|E|/n$</span>;</li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2toc"><a href="#toc">&#x6570;&#x636E;&#x8F6C;&#x6362;</a></h2>
+
+<h3 class="mume-header" id="%E6%95%B4%E6%95%B0%E5%92%8C%E5%85%AB%E4%BD%8D%E4%B8%B2%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2toc"><a href="#toc">&#x6574;&#x6570;&#x548C;&#x516B;&#x4F4D;&#x4E32;&#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x6362;</a></h3>
+
+<p>&#x8BB0;&#x6709;&#x81EA;&#x7136;&#x6570;<span class="mathjax-exps">$x$</span>, &#x4E0E;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x516B;&#x4F4D;&#x4E32;&#x8BB0;&#x4E3A;<span class="mathjax-exps">$M$</span>. &#x5176;&#x4E2D;, <span class="mathjax-exps">$len(M) = k, 2^{8\cdot k} \gt x$</span>, &#x90A3;&#x4E48;&#x6574;&#x6570;&#x548C;&#x516B;&#x4F4D;&#x4E32;&#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x6362;&#x53EF;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x516C;&#x5F0F;:</p>
+<ul>
+<li><span class="mathjax-exps">$x = \sum_{i=1}^{k}2^{8\cdot (k-i)} \cdot m_i$</span>;</li>
+<li><span class="mathjax-exps">$M = m_1 || m_2 || \dots || m_k$</span>;</li>
+</ul>
+<h3 class="mume-header" id="%E5%9F%9F%E5%85%83%E7%B4%A0%E8%BD%AC%E4%B8%BA%E5%85%AB%E4%BD%8D%E4%B8%B2toc"><a href="#toc">&#x57DF;&#x5143;&#x7D20;&#x8F6C;&#x4E3A;&#x516B;&#x4F4D;&#x4E32;</a></h3>
+
+<p>&#x8BB0;&#x6709;&#x57DF;&#x5143;&#x7D20;<span class="mathjax-exps">$\alpha, \alpha \in F_q$</span>, &#x5C06;&#x5176;&#x8F6C;&#x6362;&#x4E3A;&#x516B;&#x4F4D;&#x4E32;<span class="mathjax-exps">$M$</span>:</p>
+<ul>
+<li><span class="mathjax-exps">$t = \lceil \log_2(q) \rceil, l = \lceil t/8 \rceil$</span>;</li>
+<li><span class="mathjax-exps">$q \mod 2 = 1$</span>:
+<ul>
+<li><span class="mathjax-exps">$\alpha \in [0,q-1]$</span>&#x7684;&#x6574;&#x6570;, &#x6309;&#x7167;&#x6574;&#x6570;&#x5C06;&#x5176;&#x8F6C;&#x4E3A;&#x516B;&#x4F4D;&#x4E32;;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$q \mod 2 = 0, q = 2^m$</span>:
+<ul>
+<li><span class="mathjax-exps">$\alpha = s_1 || s_2 || \dots || s_m$</span>;</li>
+<li><span class="mathjax-exps">$S = 0||\dots||0, bitslen(S) = 8\cdot l - m$</span>;</li>
+<li><span class="mathjax-exps">$M = S || s_1 || s_2 || \dots || s_m$</span>;</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="%E5%85%AB%E4%BD%8D%E4%B8%B2%E8%BD%AC%E4%B8%BA%E5%9F%9F%E5%85%83%E7%B4%A0toc"><a href="#toc">&#x516B;&#x4F4D;&#x4E32;&#x8F6C;&#x4E3A;&#x57DF;&#x5143;&#x7D20;</a></h3>
+
+<p>&#x8BB0;&#x6709;&#x57DF;<span class="mathjax-exps">$F_q$</span>, &#x516B;&#x4F4D;&#x4E32;<span class="mathjax-exps">$M, len(M) = l, l = \lceil t/8 \rceil, t = \lceil \log_2(q) \rceil$</span>, &#x5C06;&#x5176;&#x8F6C;&#x4E3A;&#x57DF;&#x5143;&#x7D20;<span class="mathjax-exps">$\alpha$</span>:</p>
+<ul>
+<li><span class="mathjax-exps">$q \mod 2 = 1$</span>:
+<ul>
+<li>&#x5C06;<span class="mathjax-exps">$M$</span>&#x8F6C;&#x4E3A;&#x6574;&#x6570;<span class="mathjax-exps">$x$</span>, &#x82E5;<span class="mathjax-exps">$x \in [0,q-1]$</span>, &#x5219;<span class="mathjax-exps">$\alpha = x$</span>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$q \mod 2 = 0, q = 2^m$</span>:
+<ul>
+<li><span class="mathjax-exps">$M = S || m_1 || m_2 || \dots || m_m, bitslen(S) = 8\cdot l - m$</span>;</li>
+<li><span class="mathjax-exps">$\alpha = m_1 || m_2 ||\dots ||m_m$</span>;</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="%E5%9F%9F%E5%85%83%E7%B4%A0%E8%BD%AC%E4%B8%BA%E6%95%B4%E6%95%B0toc"><a href="#toc">&#x57DF;&#x5143;&#x7D20;&#x8F6C;&#x4E3A;&#x6574;&#x6570;</a></h3>
+
+<p>&#x8BB0;&#x6709;&#x57DF;&#x5143;&#x7D20;<span class="mathjax-exps">$\alpha \in F_q$</span>, &#x5C06;&#x5176;&#x8F6C;&#x4E3A;&#x6574;&#x6570;<span class="mathjax-exps">$x$</span>:</p>
+<ul>
+<li><span class="mathjax-exps">$q \mod 2 = 1$</span>:
+<ul>
+<li><span class="mathjax-exps">$x = \alpha$</span>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$q \mod 2 = 0, q = 2^m$</span>:
+<ul>
+<li><span class="mathjax-exps">$\alpha = s_1 || s_2 || \dots || s_m$</span>;</li>
+<li><span class="mathjax-exps">$x = \sum_{i=1}^{m} 2^{m-i} s_i$</span>;</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="%E6%9B%B2%E7%BA%BF%E7%82%B9%E8%BD%AC%E4%B8%BA%E5%85%AB%E4%BD%8D%E4%B8%B2toc"><a href="#toc">&#x66F2;&#x7EBF;&#x70B9;&#x8F6C;&#x4E3A;&#x516B;&#x4F4D;&#x4E32;</a></h3>
+
+<p>&#x65E0;&#x7A77;&#x8FDC;&#x70B9;<span class="mathjax-exps">$\mathcal{O}$</span>&#x8F6C;&#x4E3A;<span class="mathjax-exps">$M = 0x00$</span>;</p>
+<p>&#x8BB0;&#x6709;&#x692D;&#x5706;&#x66F2;&#x7EBF;<span class="mathjax-exps">$E(F_q)$</span>&#x4E0A;&#x7684;&#x975E;&#x65E0;&#x7A77;&#x8FDC;&#x70B9;<span class="mathjax-exps">$P=(x_P, y_P)$</span>, &#x5C06;&#x5176;&#x8F6C;&#x4E3A;&#x516B;&#x4F4D;&#x4E32;<span class="mathjax-exps">$M$</span>:</p>
+<ul>
+<li>&#x5C06;&#x57DF;&#x5143;&#x7D20;<span class="mathjax-exps">$x_P$</span>&#x8F6C;&#x4E3A;&#x516B;&#x4F4D;&#x4E32;<span class="mathjax-exps">$M_x$</span>;</li>
+<li>&#x82E5;&#x4EE5;&#x538B;&#x7F29;&#x5F62;&#x5F0F;&#x8868;&#x793A;&#x70B9;, &#x5219;:
+<ul>
+<li>&#x8BA1;&#x7B97;&#x538B;&#x7F29;&#x5F62;&#x5F0F;<span class="mathjax-exps">$(x_P, z_P)$</span>;</li>
+<li><span class="mathjax-exps">$z_P = 0$</span>:
+<ul>
+<li><span class="mathjax-exps">$M = 0x02 || M_x$</span>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$z_P = 1$</span>:
+<ul>
+<li><span class="mathjax-exps">$M = 0x03 || M_x$</span>;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>&#x82E5;&#x4EE5;&#x975E;&#x538B;&#x7F29;&#x5F62;&#x5F0F;&#x8868;&#x793A;&#x70B9;, &#x5219;:
+<ul>
+<li>&#x5C06;&#x57DF;&#x5143;&#x7D20;<span class="mathjax-exps">$y_P$</span>&#x8F6C;&#x4E3A;&#x516B;&#x4F4D;&#x4E32;<span class="mathjax-exps">$M_y$</span>;</li>
+<li><span class="mathjax-exps">$M = 0x04 || M_x  || M_y$</span>;</li>
+</ul>
+</li>
+<li>&#x82E5;&#x4EE5;&#x6DF7;&#x5408;&#x5F62;&#x5F0F;&#x8868;&#x793A;&#x70B9;, &#x5219;:
+<ul>
+<li>&#x5C06;&#x57DF;&#x5143;&#x7D20;<span class="mathjax-exps">$y_P$</span>&#x8F6C;&#x4E3A;&#x516B;&#x4F4D;&#x4E32;<span class="mathjax-exps">$M_y$</span>;</li>
+<li>&#x8BA1;&#x7B97;<span class="mathjax-exps">$z_P$</span>;</li>
+<li><span class="mathjax-exps">$z_P = 0$</span>:
+<ul>
+<li><span class="mathjax-exps">$M= 0x06 || M_x || M_y$</span>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$z_P = 1$</span>:
+<ul>
+<li><span class="mathjax-exps">$M= 0x07 || M_x || M_y$</span>;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="%E5%85%AB%E4%BD%8D%E4%B8%B2%E8%BD%AC%E4%B8%BA%E6%9B%B2%E7%BA%BF%E7%82%B9toc"><a href="#toc">&#x516B;&#x4F4D;&#x4E32;&#x8F6C;&#x4E3A;&#x66F2;&#x7EBF;&#x70B9;</a></h3>
+
+<p>&#x8BB0;&#x6709;&#x57DF;<span class="mathjax-exps">$F_q$</span>, &#x548C;&#x5408;&#x6CD5;&#x7684;&#x516B;&#x4F4D;&#x4E32;<span class="mathjax-exps">$M$</span>, &#x5C06;&#x5176;&#x8F6C;&#x4E3A;&#x70B9;$P=(x_P, y_P);:</p>
+<ul>
+<li><span class="mathjax-exps">$l = \lceil \log_2(q) / 8 \rceil$</span>;</li>
+<li><span class="mathjax-exps">$len(M) = 1 \land M = 0x00$</span>:
+<ul>
+<li><span class="mathjax-exps">$P = \mathcal{O}$</span>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$len(M) = l + 1$</span>:
+<ul>
+<li><span class="mathjax-exps">$M = S || M_x, len(S) = 1$</span>;</li>
+<li>&#x9A8C;&#x8BC1;<span class="mathjax-exps">$S = 0x02 \lor S = 0x03$</span>;</li>
+<li><span class="mathjax-exps">$S = 0x02$</span>:
+<ul>
+<li><span class="mathjax-exps">$z_P = 0$</span>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$S = 0x03$</span>;
+<ul>
+<li><span class="mathjax-exps">$z_P = 1$</span>;</li>
+</ul>
+</li>
+<li>&#x5C06;&#x516B;&#x4F4D;&#x4E32;<span class="mathjax-exps">$M_x$</span>&#x8F6C;&#x4E3A;&#x57DF;&#x5143;&#x7D20;<span class="mathjax-exps">$x_P$</span>;</li>
+<li>&#x538B;&#x7F29;&#x5F62;&#x5F0F;&#x7684;&#x70B9;<span class="mathjax-exps">$(x_P, z_P)$</span>&#x8F6C;&#x4E3A;&#x70B9;<span class="mathjax-exps">$(x_P, y_P)$</span>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$len(M) = 2\cdot l + 1$</span>:
+<ul>
+<li><span class="mathjax-exps">$M = S || M_x || M_y, len(S) = 1, len(M_x) = l$</span>;</li>
+<li>&#x9A8C;&#x8BC1;<span class="mathjax-exps">$S = 0x04 \lor S = 0x06 \lor S = 0x07$</span>;</li>
+<li>&#x5C06;&#x516B;&#x4F4D;&#x4E32;<span class="mathjax-exps">$M_x$</span>&#x8F6C;&#x4E3A;&#x57DF;&#x5143;&#x7D20;<span class="mathjax-exps">$x_P$</span>;</li>
+<li>&#x5C06;&#x516B;&#x4F4D;&#x4E32;<span class="mathjax-exps">$M_y$</span>&#x8F6C;&#x4E3A;&#x57DF;&#x5143;&#x7D20;<span class="mathjax-exps">$x_P$</span>;</li>
+<li><span class="mathjax-exps">$S = 0x06 \lor S = 0x07$</span>:
+<ul>
+<li><span class="mathjax-exps">$S = 0x06$</span>
+<ul>
+<li><span class="mathjax-exps">$z_P = 0$</span></li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$S = 0x07$</span>
+<ul>
+<li><span class="mathjax-exps">$z_P = 1$</span></li>
+</ul>
+</li>
+<li>&#x7531;<span class="mathjax-exps">$(x_P, y_P)$</span>&#x8BA1;&#x7B97;<span class="mathjax-exps">$z_{P}^{&apos;}$</span>, &#x9A8C;&#x8BC1;<span class="mathjax-exps">$z_P = z_{P}^{&apos;}$</span>;</li>
+<li>&#x7531;<span class="mathjax-exps">$(x_P, z_P)$</span>&#x8BA1;&#x7B97;<span class="mathjax-exps">$(x_P, y_{P}^{&apos;})$</span>, &#x9A8C;&#x8BC1;<span class="mathjax-exps">$y_P = y_{P}^{&apos;}$</span>;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="%E7%AD%BE%E5%90%8Dtoc"><a href="#toc">&#x7B7E;&#x540D;</a></h2>
+
+<ul>
+<li>&#x8BB0;&#x6709;&#x4F4D;&#x5B57;&#x7B26;&#x4E32;&#x6D88;&#x606F;<span class="mathjax-exps">$M$</span>;</li>
+<li>&#x7531;&#x57DF;&#x53C2;&#x6570;&#x751F;&#x6210;&#x4E34;&#x65F6;&#x5BC6;&#x94A5;&#x5BF9;<span class="mathjax-exps">$(k, R)$</span>;</li>
+<li>&#x5C06;<span class="mathjax-exps">$x_R$</span>&#x8F6C;&#x4E3A;&#x6574;&#x6570;<span class="mathjax-exps">$j$</span>;</li>
+<li><span class="mathjax-exps">$r = j \mod n, r \ne 0$</span>;</li>
+<li><span class="mathjax-exps">$H = Hash(M)$</span>;</li>
+<li>&#x5C06;<span class="mathjax-exps">$H$</span>&#x8F6C;&#x4E3A;&#x6574;&#x6570;<span class="mathjax-exps">$e$</span>:
+<ul>
+<li><span class="mathjax-exps">$E = truncate_l(H), l = \min(log_2(n), bitslen(H))$</span>;</li>
+<li>&#x5C06;&#x4F4D;&#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x4E3A;&#x6574;&#x6570;<span class="mathjax-exps">$e$</span>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$s = k^{-1}\cdot (e+d\cdot r) \mod n,\quad s \ne 0$</span>;</li>
+<li>&#x8F93;&#x51FA;<span class="mathjax-exps">$(r, s), r\in [1,n-1], s\in [1,n-1]$</span>;</li>
+</ul>
+<h2 class="mume-header" id="%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x9A8C;&#x8BC1;</a></h2>
+
+<h3 class="mume-header" id="%E9%80%9A%E8%BF%87%E5%85%AC%E9%92%A5%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x901A;&#x8FC7;&#x516C;&#x94A5;&#x9A8C;&#x8BC1;</a></h3>
+
+<ul>
+<li>&#x8BB0;&#x6536;&#x5230;&#x6D88;&#x606F;<span class="mathjax-exps">$M&apos;$</span>, &#x7B7E;&#x540D;<span class="mathjax-exps">$(r&apos;, s&apos;)$</span>;</li>
+<li>&#x9A8C;&#x8BC1;<span class="mathjax-exps">$(r&apos; \in [1,n-1]) \land  (s&apos; \in [1,n-1])$</span>;</li>
+<li><span class="mathjax-exps">$H&apos; = Hash(M&apos;)$</span>;</li>
+<li>&#x5C06;<span class="mathjax-exps">$H&apos;$</span>&#x8F6C;&#x4E3A;&#x6574;&#x6570;<span class="mathjax-exps">$e$</span>:
+<ul>
+<li><span class="mathjax-exps">$E = truncate_l(H&apos;), l = \min(log_2(n), bitslen(H))$</span>;</li>
+<li>&#x5C06;&#x4F4D;&#x5B57;&#x7B26;&#x4E32;<span class="mathjax-exps">$E$</span>&#x8F6C;&#x4E3A;&#x6574;&#x6570;<span class="mathjax-exps">$e$</span>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$u_1 = e&apos; \cdot (s&apos;)^{-1} \mod n, u_2 = r&apos; (s&apos;)^{-1}\mod n$</span>;</li>
+<li>&#x8BA1;&#x7B97;&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x70B9;<span class="mathjax-exps">$R=(x_R, y_R) = u_1\cdot G + u_2\cdot Q$</span>;</li>
+<li>&#x9A8C;&#x8BC1;<span class="mathjax-exps">$R \ne \mathcal{O}$</span>;</li>
+<li>&#x5C06;<span class="mathjax-exps">$x_R$</span>&#x8F6C;&#x4E3A;&#x6574;&#x6570;<span class="mathjax-exps">$j$</span>;</li>
+<li><span class="mathjax-exps">$v = j\mod n$</span>;</li>
+<li>&#x9A8C;&#x8BC1;<span class="mathjax-exps">$v = r&apos;$</span>;</li>
+</ul>
+<h3 class="mume-header" id="%E9%80%9A%E8%BF%87%E7%A7%81%E9%92%A5%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x901A;&#x8FC7;&#x79C1;&#x94A5;&#x9A8C;&#x8BC1;</a></h3>
+
+<ul>
+<li>&#x8BB0;&#x6536;&#x5230;&#x6D88;&#x606F;<span class="mathjax-exps">$M&apos;$</span>, &#x7B7E;&#x540D;<span class="mathjax-exps">$(r&apos;, s&apos;)$</span>;</li>
+<li>&#x9A8C;&#x8BC1;<span class="mathjax-exps">$(r&apos; \in [1,n-1]) \land  (s&apos; \in [1,n-1])$</span>;</li>
+<li><span class="mathjax-exps">$H&apos; = Hash(M&apos;)$</span>;</li>
+<li>&#x5C06;<span class="mathjax-exps">$H&apos;$</span>&#x8F6C;&#x4E3A;&#x6574;&#x6570;<span class="mathjax-exps">$e$</span>:
+<ul>
+<li><span class="mathjax-exps">$E = truncate_l(H&apos;), l = \min(log_2(n), bitslen(H))$</span>;</li>
+<li>&#x5C06;&#x4F4D;&#x5B57;&#x7B26;&#x4E32;<span class="mathjax-exps">$E$</span>&#x8F6C;&#x4E3A;&#x6574;&#x6570;<span class="mathjax-exps">$e$</span>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$u_1 = e&apos; \cdot (s&apos;)^{-1} \mod n, u_2 = r&apos; (s&apos;)^{-1}\mod n$</span>;</li>
+<li><span class="mathjax-exps">$k&apos; = (u_1 + u_2\cdot d) \mod n$</span>;</li>
+<li><span class="mathjax-exps">$R = k&apos;\cdot G$</span>;</li>
+<li>&#x9A8C;&#x8BC1;<span class="mathjax-exps">$R \ne \mathcal{O}$</span>;</li>
+<li><span class="mathjax-exps">$v = j\mod n$</span>;</li>
+<li>&#x9A8C;&#x8BC1;<span class="mathjax-exps">$v = r&apos;$</span>;</li>
+</ul>
+<h2 class="mume-header" id="%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%9F%9F%E5%8F%82%E6%95%B0toc"><a href="#toc">&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x57DF;&#x53C2;&#x6570;</a></h2>
+
+<h3 class="mume-header" id="%E7%82%B9%E5%8E%8B%E7%BC%A9toc"><a href="#toc">&#x70B9;&#x538B;&#x7F29;</a></h3>
+
+<p>&#x8BB0;&#x7531;&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x4E0A;&#x7684;&#x4E00;&#x70B9;<span class="mathjax-exps">$P=(x_P, y_P)$</span>, &#x5219;&#x70B9;&#x53EF;&#x4EE5;&#x538B;&#x7F29;&#x4E3A;<span class="mathjax-exps">$x_P$</span>&#x548C;<span class="mathjax-exps">$y_P$</span>&#x7684;&#x67D0;&#x4E9B;&#x4F4D;<span class="mathjax-exps">$z_P$</span>;</p>
+<ul>
+<li><span class="mathjax-exps">$rightmost_l(y)$</span>&#x8868;&#x793A;<span class="mathjax-exps">$y$</span>&#x7684;&#x6700;&#x53F3;&#x8FB9;&#x7684;<span class="mathjax-exps">$l$</span>&#x4F4D;;</li>
+<li><span class="mathjax-exps">$leftmost_l(y)$</span>&#x8868;&#x793A;<span class="mathjax-exps">$y$</span>&#x7684;&#x6700;&#x5DE6;&#x8FB9;&#x7684;<span class="mathjax-exps">$l$</span>&#x4F4D;;</li>
+</ul>
+<h4 class="mume-header" id="%E5%9F%9Ff_p%E4%B8%8A%E7%82%B9%E5%8E%8B%E7%BC%A9toc"><a href="#toc">&#x57DF;<span class="mathjax-exps">$F_p$</span>&#x4E0A;&#x70B9;&#x538B;&#x7F29;</a></h4>
+
+<p><span class="mathjax-exps">$P=(x_P,y_P), y^2 = x^3 + a\cdot x+b,\quad x,y\in F_p,\ z_P = rightmost_1(y_P)$</span>;</p>
+<ul>
+<li>&#x5DF2;&#x77E5;<span class="mathjax-exps">$(x_P, z_P)$</span>&#x6C42;<span class="mathjax-exps">$y_P$</span>;
+<ul>
+<li><span class="mathjax-exps">$\alpha = x_P^3 + a\cdot x_P + b \mod p$</span>;</li>
+<li><span class="mathjax-exps">$\beta = \sqrt{\alpha} \mod p$</span>;</li>
+<li><span class="mathjax-exps">$y_P = \beta\quad if\ rightmost_1(\beta)=y_P\quad else\ y_P = p-\beta$</span>;</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="%E5%9F%9Ff_2m%E4%B8%8A%E7%82%B9%E5%8E%8B%E7%BC%A9toc"><a href="#toc">&#x57DF;<span class="mathjax-exps">$F_{2^m}$</span>&#x4E0A;&#x70B9;&#x538B;&#x7F29;</a></h4>
+
+<p><span class="mathjax-exps">$P=(x_P,y_P), y^2 + x\cdot y = x^3 + a\cdot x^2 + b,\quad x,y\in F_{2^m}$</span>. &#x82E5;<span class="mathjax-exps">$x_P=0$</span>, &#x5219;<span class="mathjax-exps">$z_P=0$</span>. &#x5426;&#x5219;, <span class="mathjax-exps">$z_P = rightmost_1(y_P\cdot x_{P}^{-1})$</span>;</p>
+<ul>
+<li>&#x5DF2;&#x77E5;<span class="mathjax-exps">$(x_P, z_P)$</span>&#x6C42;<span class="mathjax-exps">$y_P$</span>;
+<ul>
+<li>&#x82E5;<span class="mathjax-exps">$x_P=0$</span>, <span class="mathjax-exps">$y_P = b^{2^{m-1}}$</span>;</li>
+<li>&#x82E5;<span class="mathjax-exps">$x_P\ne 0$</span>:
+<ul>
+<li><span class="mathjax-exps">$\alpha = x_P + a + b\cdot x_P^{-2}$</span>;</li>
+<li><span class="mathjax-exps">$\beta^2 + \beta = \alpha$</span>;</li>
+<li><span class="mathjax-exps">$z_{P}^{&apos;} = rightmost_1(\beta)$</span>;</li>
+<li><span class="mathjax-exps">$z_{P}^{&apos;} \ne z_P$</span>;
+<ul>
+<li><span class="mathjax-exps">$\beta = \beta + g$</span>, &#x5176;&#x4E2D;<span class="mathjax-exps">$g$</span>&#x662F;<a href="https://www.cnblogs.com/mengsuenyan/p/13156265.html">&#x4E58;&#x6CD5;&#x5355;&#x4F4D;&#x5143;</a>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$y_P = x_P\cdot \beta$</span>;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="%E4%BF%9D%E8%AF%81%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%AE%89%E5%85%A8%E6%80%A7%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6toc"><a href="#toc">&#x4FDD;&#x8BC1;&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x5B89;&#x5168;&#x6027;&#x7684;&#x4E00;&#x4E9B;&#x5FC5;&#x8981;&#x6761;&#x4EF6;</a></h3>
+
+<h4 class="mume-header" id="mov%E6%9D%A1%E4%BB%B6toc"><a href="#toc">MOV&#x6761;&#x4EF6;</a></h4>
+
+<p>Menezes-Okamoto-Vanstone(MOV): <span class="mathjax-exps">$F_q \rightarrow F_{q^B}, B\ge 1$</span>, ANS X9.62&#x4E2D;&#x9009;&#x62E9;<span class="mathjax-exps">$B$</span>&#x5927;&#x4E8E;&#x7B49;&#x4E8E;100;</p>
+<ul>
+<li>&#x7ED9;&#x5B9A;MOV&#x9608;&#x503C;<span class="mathjax-exps">$B$</span>, &#x7D20;&#x6570;<span class="mathjax-exps">$q$</span>, &#x7D20;&#x6570;<span class="mathjax-exps">$n, n=|E(F_q)|$</span>, &#x9A8C;&#x8BC1;MOV&#x6761;&#x4EF6;&#x662F;&#x5426;&#x5408;&#x6CD5;:
+<ul>
+<li><span class="mathjax-exps">$t = 1$</span>;</li>
+<li><code>for i in 1..=B</code>:
+<ul>
+<li><span class="mathjax-exps">$t = t\cdot q \mod n$</span>;</li>
+<li><code>return false</code>, if <span class="mathjax-exps">$t = 1$</span>;</li>
+</ul>
+</li>
+<li><code>return true</code>;</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="%E5%BC%82%E5%B8%B8%E6%9D%A1%E4%BB%B6the-anomalous-conditiontoc"><a href="#toc">&#x5F02;&#x5E38;&#x6761;&#x4EF6;(The Anomalous condition)</a></h4>
+
+<p>&#x82E5;<span class="mathjax-exps">$|E(F_q)| = q$</span>, &#x5219;&#x79F0;&#x5B9A;&#x4E49;&#x5728;<span class="mathjax-exps">$F_q$</span>&#x4E0A;&#x7684;&#x692D;&#x5706;&#x66F2;&#x7EBF;<span class="mathjax-exps">$E(F_q)$</span>&#x662F;<span class="mathjax-exps">$F_q-anomalous$</span>, &#x8BE5;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x7684;&#x79BB;&#x6563;&#x5BF9;&#x6570;&#x95EE;&#x9898;&#x5F88;&#x5BB9;&#x6613;&#x88AB;&#x89E3;&#x51FA;.</p>
+<ul>
+<li>&#x7ED9;&#x5B9A;<span class="mathjax-exps">$E(F_q)$</span>, &#x53CA;&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x7684;&#x9636;<span class="mathjax-exps">$u=|E(F_q)|$</span>, &#x9A8C;&#x8BC1;&#x662F;&#x5426;&#x6EE1;&#x8DB3;Anomalous&#x6761;&#x4EF6;:
+<ul>
+<li><code>return u != q</code>;</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E7%9A%84%E9%80%89%E6%8B%A9toc"><a href="#toc">&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x7684;&#x9009;&#x62E9;</a></h3>
+
+<h4 class="mume-header" id="%E5%8F%AF%E9%AA%8C%E8%AF%81%E9%9A%8F%E6%9C%BA%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BFtoc"><a href="#toc">&#x53EF;&#x9A8C;&#x8BC1;&#x968F;&#x673A;&#x692D;&#x5706;&#x66F2;&#x7EBF;</a></h4>
+
+<p>&#x7ED9;&#x5B9A;&#x968F;&#x673A;&#x79CD;&#x5B50;<span class="mathjax-exps">$SEED$</span>, <span class="mathjax-exps">$t=bitslen(HashVal)$</span>, <span class="mathjax-exps">$|F_q|=q$</span>, &#x6C42;&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x7684;&#x7CFB;&#x6570;<span class="mathjax-exps">$(a,b)$</span>;</p>
+<ul>
+<li><span class="mathjax-exps">$m = \lceil \log_2(q) \rceil$</span>;</li>
+<li><span class="mathjax-exps">$s = \lfloor (m-1)/t \rfloor$</span>;</li>
+<li><span class="mathjax-exps">$k = m - st - (q \mod 2)$</span>;</li>
+<li><span class="mathjax-exps">$H = Hash(SEED)$</span>;</li>
+<li><span class="mathjax-exps">$H$</span>&#x8F6C;&#x4E3A;&#x6574;&#x6570;<span class="mathjax-exps">$e$</span>;</li>
+<li><span class="mathjax-exps">$c_0 = e \mod 2^k$</span>;</li>
+<li><code>for j in 1..=s</code>:
+<ul>
+<li><span class="mathjax-exps">$c_j = Hash((SEED + j)\mod 2^g)$</span></li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$c = c_0\cdot 2^{ts} + c_1\cdot 2^{t\cdot (s-1)}+\dots + c_s$</span>;</li>
+<li>&#x5C06;&#x6574;&#x6570;<span class="mathjax-exps">$c$</span>&#x8F6C;&#x4E3A;&#x57DF;&#x5143;&#x7D20;<span class="mathjax-exps">$r$</span>;</li>
+<li>&#x4ECE;<span class="mathjax-exps">$F_q$</span>&#x4E2D;&#x968F;&#x673A;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x5143;&#x7D20;<span class="mathjax-exps">$a$</span>;</li>
+<li><span class="mathjax-exps">$q \mod 2 = 0$</span>:
+<ul>
+<li><span class="mathjax-exps">$b = r$</span>;</li>
+<li><code>return error</code>, if <span class="mathjax-exps">$b = 0$</span>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$q \mod 2  = 1$</span>:
+<ul>
+<li><span class="mathjax-exps">$b^2\cdot r = a^3$</span></li>
+<li><code>return error</code>, if <span class="mathjax-exps">$4\cdot a^3 + 27\cdot b^2 = 0$</span>;</li>
+</ul>
+</li>
+<li><code>return (a,b)</code>;</li>
+</ul>
+<h4 class="mume-header" id="%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E7%9A%84%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x7684;&#x9A8C;&#x8BC1;</a></h4>
+
+<ul>
+<li>&#x7ED9;&#x5B9A;&#x692D;&#x5706;&#x66F2;&#x7EBF;<span class="mathjax-exps">$E(F_q, a, b)$</span>, &#x53EF;&#x9009;&#x7684;&#x79CD;&#x5B50;<span class="mathjax-exps">$SEED$</span>, &#x9A8C;&#x8BC1;&#x8BE5;&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x662F;&#x5426;&#x5408;&#x6CD5;:
+<ul>
+<li><span class="mathjax-exps">$q$</span>&#x662F;&#x5947;&#x6570;, &#x82E5;:
+<ul>
+<li><span class="mathjax-exps">$q$</span>&#x4E0D;&#x662F;&#x7D20;&#x6570;:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$a \notin [0,q-1], b \notin [0,q-1]$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$4\cdot a^3 + 27\cdot b^2  = 0$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$q$</span>&#x662F;&#x5076;&#x6570;, &#x82E5;:
+<ul>
+<li><span class="mathjax-exps">$q$</span>&#x4E0D;&#x6EE1;&#x8DB3;<span class="mathjax-exps">$q = 2^m$</span>, <span class="mathjax-exps">$m$</span>&#x662F;&#x7D20;&#x6570;;
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$bitslen(a) \ne m, bitslen(b) \ne m$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>&#x82E5;<span class="mathjax-exps">$SEED$</span>&#x63D0;&#x4F9B;, &#x9A8C;&#x8BC1;&#x66F4;&#x5177;&#x4E0A;&#x4E00;&#x8282;&#x7684;&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x751F;&#x6210;&#x7B97;&#x6CD5;&#x751F;&#x6210;<span class="mathjax-exps">$(a&apos;, b&apos;)$</span>:
+<ul>
+<li><code>return a=a&apos; &amp;&amp; b=b&apos;</code>;</li>
+</ul>
+</li>
+<li><code>return true</code>;</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="%E5%9F%BA%E7%82%B9%E7%9A%84%E9%80%89%E6%8B%A9toc"><a href="#toc">&#x57FA;&#x70B9;&#x7684;&#x9009;&#x62E9;</a></h3>
+
+<h4 class="mume-header" id="%E5%8F%AF%E9%AA%8C%E8%AF%81%E9%9A%8F%E6%9C%BA%E5%9F%BA%E7%82%B9toc"><a href="#toc">&#x53EF;&#x9A8C;&#x8BC1;&#x968F;&#x673A;&#x57FA;&#x70B9;</a></h4>
+
+<p>&#x7ED9;&#x5B9A;&#x968F;&#x673A;&#x79CD;&#x5B50;<span class="mathjax-exps">$SEED$</span>, &#x6574;&#x6570;&#x8BA1;&#x6570;&#x5668;<span class="mathjax-exps">$base$</span>, <span class="mathjax-exps">$hashlen = bitslen(HashVal)$</span>, &#x57DF;&#x5927;&#x5C0F;<span class="mathjax-exps">$q$</span>, &#x4F59;&#x56E0;&#x5B50;<span class="mathjax-exps">$h$</span>, &#x6C42;&#x57FA;&#x70B9;<span class="mathjax-exps">$x_G, y_G$</span>;</p>
+<ul>
+<li><span class="mathjax-exps">$element = 1$</span>;</li>
+<li><code>loop</code>:
+<ul>
+<li>&#x5C06;&#x8BA1;&#x6570;&#x5668;<span class="mathjax-exps">$base$</span>&#x7684;&#x503C;&#x548C;<span class="mathjax-exps">$element$</span>&#x8F6C;&#x4E3A;&#x4F4D;&#x5B57;&#x7B26;&#x4E32;<span class="mathjax-exps">$Base, Element$</span>;</li>
+<li><span class="mathjax-exps">$H = Hash(&quot;Base point&quot; || Base || Element || SEED)$</span>;</li>
+<li><span class="mathjax-exps">$H$</span>&#x8F6C;&#x4E3A;&#x6574;&#x6570;<span class="mathjax-exps">$e$</span>;</li>
+<li><span class="mathjax-exps">$element = element + 1$</span>;</li>
+<li><code>break</code>, if <span class="mathjax-exps">$\lfloor e/2\cdot q \rfloor \ne \lfloor 2^{hashlen} / (2\cdot q) \rfloor$</span>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$t = e \mod (2\cdot q)$</span>;</li>
+<li><span class="mathjax-exps">$x = t\mod q, z = \lfloor t/q \rfloor$</span>;</li>
+<li><span class="mathjax-exps">$x$</span>&#x8F6C;&#x4E3A;&#x57DF;&#x5143;&#x7D20;<span class="mathjax-exps">$x_G$</span>;</li>
+<li>&#x7531;<span class="mathjax-exps">$(x_G, z)$</span>&#x8BA1;&#x7B97;&#x51FA;<span class="mathjax-exps">$y_G$</span>;</li>
+<li>&#x8F93;&#x51FA;<span class="mathjax-exps">$(x_G, y_G)$</span>;</li>
+</ul>
+<h4 class="mume-header" id="%E5%9F%BA%E7%82%B9%E7%9A%84%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x57FA;&#x70B9;&#x7684;&#x9A8C;&#x8BC1;</a></h4>
+
+<p>&#x7ED9;&#x5B9A;&#x57DF;&#x53C2;&#x6570;, &#x9A8C;&#x8BC1;&#x57FA;&#x70B9;<span class="mathjax-exps">$G$</span>&#x662F;&#x5426;&#x5408;&#x6CD5;;</p>
+<ul>
+<li><span class="mathjax-exps">$G = \mathcal{O}$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$q$</span>&#x5947;&#x6570;, &#x82E5;:
+<ul>
+<li><span class="mathjax-exps">$x_G \notin [0,q-1], y_G \notin [0,q-1]$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$y_{G}^2 \ne x_{G}^3 + a\cdot x_G + b$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$q=2^m$</span>&#x5076;&#x6570;, &#x82E5;:
+<ul>
+<li><span class="mathjax-exps">$bitslen(x_G) \ne m, bitslen(y_G) \ne m$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$y_{G}^2 + x_G\cdot y_G \ne x_{G}^3 + a\cdot x_{G}^2 + b$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$n\cdot G \ne \mathcal{O}$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li>&#x82E5;&#x63D0;&#x4F9B;&#x4E86;&#x968F;&#x673A;&#x79CD;&#x5B50;<span class="mathjax-exps">$SEED$</span>:
+<ul>
+<li><span class="mathjax-exps">$base = 1$</span>:</li>
+<li><code>loop</code>:
+<ul>
+<li><code>return false</code>, if <span class="mathjax-exps">$base \gt 10\cdot h^2$</span>;</li>
+<li>&#x901A;&#x8FC7;<span class="mathjax-exps">$SEED$</span>&#x548C;<span class="mathjax-exps">$base$</span>&#x751F;&#x6210;&#x57FA;&#x70B9;<span class="mathjax-exps">$R=(x,y)$</span>;</li>
+<li><span class="mathjax-exps">$G&apos; = h\cdot R$</span>;</li>
+<li><span class="mathjax-exps">$base = base + 1$</span>;</li>
+<li><code>break</code>, if <span class="mathjax-exps">$n\cdot G&apos; = \mathcal{O}$</span>;</li>
+</ul>
+</li>
+<li><code>return G&apos; = G</code>;</li>
+</ul>
+</li>
+<li><code>return true</code>;</li>
+</ul>
+<h3 class="mume-header" id="%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%9F%9F%E5%8F%82%E6%95%B0%E7%9A%84%E9%80%89%E6%8B%A9toc"><a href="#toc">&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x57DF;&#x53C2;&#x6570;&#x7684;&#x9009;&#x62E9;</a></h3>
+
+<p>&#x751F;&#x6210;&#x968F;&#x673A;&#x79CD;&#x5B50;<span class="mathjax-exps">$SEED$</span>, &#x751F;&#x6210;&#x57FA;&#x70B9;/&#x66F2;&#x7EBF;&#x7CFB;&#x6570;;</p>
+<h4 class="mume-header" id="ec%E5%9F%9F%E5%8F%82%E6%95%B0%E7%9A%84%E9%AA%8C%E8%AF%81toc"><a href="#toc">EC&#x57DF;&#x53C2;&#x6570;&#x7684;&#x9A8C;&#x8BC1;</a></h4>
+
+<p>&#x7ED9;&#x5B9A;&#x5B89;&#x5168;&#x7EA7;&#x522B;<span class="mathjax-exps">$s$</span>;</p>
+<ul>
+<li><span class="mathjax-exps">$n \lt \max(2^{2\cdot s - 1}, 2^{160})$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$n$</span>&#x4E0D;&#x662F;&#x7D20;&#x6570;:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li>&#x692D;&#x5706;&#x66F2;&#x7EBF;<span class="mathjax-exps">$E(F_q, a, b)$</span>&#x4E0D;&#x5408;&#x6CD5;:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$h&apos; = \lfloor (q^{1/2} + 1)^2 / n$</span>;</li>
+<li>&#x5982;&#x679C;&#x57DF;&#x53C2;&#x6570;&#x63D0;&#x4F9B;&#x4E86;<span class="mathjax-exps">$h$</span>, &#x82E5;<span class="mathjax-exps">$h \ne h&apos;$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$h&apos; \gt 2^{s/8}$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li>MOV&#x6761;&#x4EF6;&#x4E0D;&#x5408;&#x6CD5;:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li>Anomalous&#x6761;&#x4EF6;&#x4E0D;&#x5408;&#x6CD5;:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li>&#x57FA;&#x70B9;<span class="mathjax-exps">$G$</span>&#x4E0D;&#x5408;&#x6CD5;:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li><code>return true</code>;</li>
+</ul>
+<h4 class="mume-header" id="ec%E5%9F%9F%E5%8F%82%E6%95%B0%E7%9A%84%E7%94%9F%E6%88%90toc"><a href="#toc">EC&#x57DF;&#x53C2;&#x6570;&#x7684;&#x751F;&#x6210;</a></h4>
+
+<p>&#x7ED9;&#x5B9A;&#x5B89;&#x5168;&#x7EA7;&#x522B;<span class="mathjax-exps">$s$</span>, &#x548C;&#x53EF;&#x9009;&#x7684;&#x4E00;&#x4E9B;&#x9650;&#x5236;: &#x6700;&#x5927;&#x7684;&#x4F59;&#x56E0;&#x5B50;&#x503C;<span class="mathjax-exps">$h_max$</span>, &#x51C6;&#x7D20;&#x6027;&#x9A8C;&#x8BC1;&#x4E2D;&#x7684;&#x7D20;&#x9664;&#x6570;&#x754C;<span class="mathjax-exps">$I_max$</span>, MOV&#x6761;&#x4EF6;&#x7684;&#x9608;&#x503C;<span class="mathjax-exps">$B$</span>;</p>
+<ul>
+<li>&#x751F;&#x6210;<span class="mathjax-exps">$SEED$</span>;</li>
+<li>&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x7B26;&#x5408;&#x5B89;&#x5168;&#x7EA7;&#x522B;&#x7684;&#x57DF;&#x5927;&#x5C0F;<span class="mathjax-exps">$q$</span>;</li>
+<li>&#x751F;&#x6210;<span class="mathjax-exps">$E(F_q, a, b)$</span>;</li>
+<li>&#x8BA1;&#x7B97;&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x7684;&#x5927;&#x5C0F;<span class="mathjax-exps">$u=|E|$</span>;</li>
+<li>&#x751F;&#x6210;<span class="mathjax-exps">$n, h$</span>;</li>
+<li>&#x751F;&#x6210;&#x57FA;&#x70B9;<span class="mathjax-exps">$G$</span>;</li>
+<li>&#x9A8C;&#x8BC1;&#x57DF;&#x53C2;&#x6570;&#x7684;&#x5408;&#x6CD5;&#x6027;;</li>
+<li>&#x8F93;&#x51FA;&#x57DF;&#x53C2;&#x6570;;</li>
+</ul>
+<h2 class="mume-header" id="%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%AF%86%E9%92%A5%E5%AF%B9toc"><a href="#toc">&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x5BC6;&#x94A5;&#x5BF9;</a></h2>
+
+<p><span class="mathjax-exps">$(d, Q), d\in [1,n-1], Q = d\cdot G$</span>;</p>
+<h3 class="mume-header" id="%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%85%AC%E9%92%A5%E9%AA%8C%E8%AF%81toc"><a href="#toc">&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x516C;&#x94A5;&#x9A8C;&#x8BC1;</a></h3>
+
+<p>&#x7ED9;&#x5B9A;&#x516C;&#x94A5;<span class="mathjax-exps">$Q$</span>&#x548C;&#x5DF2;&#x7ECF;&#x9A8C;&#x8BC1;&#x6B63;&#x786E;&#x7684;&#x57DF;&#x53C2;&#x6570;, &#x9A8C;&#x8BC1;<span class="mathjax-exps">$Q$</span>&#x7684;&#x5408;&#x6CD5;&#x6027;:</p>
+<ul>
+<li><span class="mathjax-exps">$Q = \mathcal{O}$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$q \mod 2 = 1$</span>:
+<ul>
+<li><span class="mathjax-exps">$x_Q \not in [0,q-1], y_Q \notin [0,q-1]$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$y_Q^2 \ne x_Q^3 + a\cdot x_Q + b$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$q \mod 2 = 0, q = 2^m$</span>:
+<ul>
+<li><span class="mathjax-exps">$bitslen(x_Q) \ne m, bitslen(y_Q) \ne m$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$y_Q^2 + x_Q \cdot y_Q \ne x_Q^3 + a\cdot x_Q^2 + b$</span>:
+<ul>
+<li><code>return false</code></li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$n\cdot Q \ne \mathcal{O}$</span>:
+<ul>
+<li><code>return false</code>;</li>
+</ul>
+</li>
+<li><span class="mathjax-exps">$n\cdot Q = \mathcal{O}$</span>:
+<ul>
+<li><code>return true</code>;</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%AF%86%E9%92%A5%E5%AF%B9%E7%9A%84%E7%94%9F%E6%88%90toc"><a href="#toc">&#x692D;&#x5706;&#x66F2;&#x7EBF;&#x5BC6;&#x94A5;&#x5BF9;&#x7684;&#x751F;&#x6210;</a></h3>
+
+<p>&#x7ED9;&#x5B9A;&#x5DF2;&#x7ECF;&#x9A8C;&#x8BC1;&#x6B63;&#x786E;&#x7684;&#x57DF;&#x53C2;&#x6570;, &#x5BC6;&#x94A5;&#x5BF9;<span class="mathjax-exps">$(d, Q)$</span>&#x751F;&#x6210;&#x5982;&#x4E0B;:</p>
+<ul>
+<li>&#x968F;&#x673A;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x4F5C;&#x4E3A;&#x79C1;&#x94A5;<span class="mathjax-exps">$d\in [1,n-1]$</span>;</li>
+<li>&#x8BA1;&#x7B97;&#x516C;&#x94A5;<span class="mathjax-exps">$Q = d\cdot G$</span>;</li>
+</ul>
+<h2 class="mume-header" id="%E7%B4%A0%E6%80%A7toc"><a href="#toc">&#x7D20;&#x6027;</a></h2>
+
+<h3 class="mume-header" id="%E6%A6%82%E7%8E%87%E7%B4%A0%E6%80%A7%E6%B5%8B%E8%AF%95-probabilisticprimalitytesttoc"><a href="#toc">&#x6982;&#x7387;&#x7D20;&#x6027;&#x6D4B;&#x8BD5;-ProbabilisticPrimalityTest</a></h3>
+
+<p><a href="https://www.cnblogs.com/mengsuenyan/p/12969712.html">Miller-Rabin&#x6D4B;&#x8BD5;</a>;</p>
+<p>&#x7531;&#x4E8E;&#x65E9;&#x671F;&#x535A;&#x5BA2;&#x7B26;&#x53F7;&#x4E0D;&#x7EDF;&#x4E00;, &#x8FD9;&#x91CC;&#x91CD;&#x65B0;&#x63CF;&#x8FF0;&#x4E0B;:</p>
+<ul>
+<li>&#x8BB0;&#x7531;&#x4E00;&#x4E2A;&#x5947;&#x6570;<span class="mathjax-exps">$n$</span>, &#x548C;&#x6B63;&#x6574;&#x6570;<span class="mathjax-exps">$T$</span>, &#x73B0;&#x9700;&#x5224;&#x65AD;<span class="mathjax-exps">$n$</span>&#x662F;&#x5408;&#x6570;, &#x8FD8;&#x662F;&#x53EF;&#x80FD;&#x662F;&#x4E00;&#x4E2A;&#x7D20;&#x6570;(&#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x662F;&#x53EF;&#x80FD;, Miller-Rabin&#x6D4B;&#x8BD5;&#x51FA;&#x9519;&#x7684;&#x6982;&#x7387;&#x548C;&#x6D4B;&#x8BD5;&#x6B21;&#x6570;&#x6709;&#x5173;, &#x81F3;&#x591A;&#x4E3A;<span class="mathjax-exps">$2^{-T}$</span>);
+<ul>
+<li>&#x8BA1;&#x7B97;&#x975E;&#x8D1F;&#x6574;&#x6570;<span class="mathjax-exps">$v$</span>&#x548C;&#x5947;&#x6B63;&#x6570;<span class="mathjax-exps">$w$</span>, &#x6EE1;&#x8DB3;<span class="mathjax-exps">$n-1 = 2^v \cdot w$</span>;</li>
+<li>rust: <code>for j in 1..=T</code>:
+<ul>
+<li>&#x968F;&#x673A;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x6574;&#x6570;<span class="mathjax-exps">$a, a\in [2, n-1]$</span>;</li>
+<li><span class="mathjax-exps">$b = a^w \mod n$</span>;</li>
+<li><code>continue</code>, if <span class="mathjax-exps">$b = 1$</span> or <span class="mathjax-exps">$b = n-1$</span>;</li>
+<li><span class="mathjax-exps">$cnt = 0$</span>;</li>
+<li><code>for i in 1..=(v-1)</code>:
+<ul>
+<li><span class="mathjax-exps">$b = b^2 \mod n$</span>;</li>
+<li><code>break</code>, if <span class="mathjax-exps">$b = n-1$</span>;</li>
+<li><code>return &#x5408;&#x6570;</code> if <span class="mathjax-exps">$b = 1$</span>;</li>
+<li><span class="mathjax-exps">$cnt = cnt + 1$</span>;</li>
+</ul>
+</li>
+<li><code>return &#x5408;&#x6570;</code>, if <span class="mathjax-exps">$cnt = v-1$</span>;</li>
+</ul>
+</li>
+<li><code>return &#x53EF;&#x80FD;&#x662F;&#x7D20;&#x6570;</code>;</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="%E5%87%86%E7%B4%A0%E6%80%A7near-primality%E6%B5%8B%E8%AF%95toc"><a href="#toc">&#x51C6;&#x7D20;&#x6027;(near primality)&#x6D4B;&#x8BD5;</a></h3>
+
+<ul>
+<li>
+<p>&#x6982;&#x5FF5;&#x8BF4;&#x660E;:</p>
+<ul>
+<li>&#x8BB0;&#x6709;&#x6B63;&#x6574;&#x6570;<span class="mathjax-exps">$I_{max}$</span>, &#x82E5;&#x6B63;&#x6574;&#x6570;<span class="mathjax-exps">$h$</span>&#x7684;&#x6BCF;&#x4E2A;&#x7D20;&#x9664;&#x6570;&#x90FD;&#x4E0D;&#x8D85;&#x8FC7;<span class="mathjax-exps">$I_{max}$</span>, &#x90A3;&#x4E48;&#x79F0;<span class="mathjax-exps">$h$</span>&#x662F;<span class="mathjax-exps">$I_{max}-smooth$</span>;</li>
+<li>&#x8BB0;&#x6709;&#x4E24;&#x4E2A;&#x7D20;&#x6570;<span class="mathjax-exps">$p_1, p_2$</span>, &#x6709;<span class="mathjax-exps">$p=p_1\cdot p_2$</span>, &#x90A3;&#x4E48;&#x79F0;<span class="mathjax-exps">$p$</span>&#x662F;&#x51C6;&#x7D20;&#x6570;;</li>
+<li>&#x8BB0;&#x6709;&#x6B63;&#x6574;&#x6570;<span class="mathjax-exps">$r_{min}$</span>, <span class="mathjax-exps">$I_{max}-smooth$</span>&#x7684;&#x6B63;&#x6574;&#x6570;<span class="mathjax-exps">$h$</span>, &#x53CA;&#x53EF;&#x80FD;&#x662F;&#x7D20;&#x6570;&#x7684;&#x6B63;&#x6574;&#x6570;<span class="mathjax-exps">$n, n\ge r_{min}$</span>. &#x82E5;&#x6B63;&#x6574;&#x6570;<span class="mathjax-exps">$u$</span>&#x6EE1;&#x8DB3;<span class="mathjax-exps">$u=h\cdot n$</span>, &#x90A3;&#x4E48;<span class="mathjax-exps">$u$</span>&#x662F;&#x4E00;&#x4E2A;&#x51C6;&#x7D20;&#x6570;;</li>
+</ul>
+</li>
+<li>
+<p>&#x51C6;&#x7D20;&#x6027;&#x6D4B;&#x8BD5;:</p>
+<ul>
+<li>&#x8BB0;&#x6709;&#x6B63;&#x6574;&#x6570;<span class="mathjax-exps">$r_{min}, I_{max}, u$</span>, &#x5224;&#x65AD;<span class="mathjax-exps">$u$</span>&#x662F;&#x5426;&#x662F;&#x4E00;&#x4E2A;&#x51C6;&#x7D20;&#x6570;:
+<ul>
+<li><span class="mathjax-exps">$n = u, h = 1$</span>;</li>
+<li><code>for i in 2..=I_max</code>:
+<ul>
+<li>while <span class="mathjax-exps">$n / i \gt 0$</span>:
+<ul>
+<li><span class="mathjax-exps">$n = n / i,\quad h = h\cdot i$</span>;</li>
+<li><code>return &#x975E;&#x51C6;&#x7D20;&#x6570;</code>, if <span class="mathjax-exps">$n \lt r_{min}$</span>;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>return (&#x51C6;&#x7D20;&#x6570;, h, n)</code>, if <span class="mathjax-exps">$n$</span>&#x6EE1;&#x8DB3;&#x6982;&#x7387;&#x7D20;&#x6027;&#x6D4B;&#x8BD5;;</li>
+<li><code>return &#x975E;&#x51C6;&#x7D20;&#x6570;</code>;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99toc"><a href="#toc">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></h2>
+
+<ul>
+<li>ANS X9.62-2005;</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
