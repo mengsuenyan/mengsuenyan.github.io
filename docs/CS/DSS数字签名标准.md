@@ -126,14 +126,17 @@ $$
 相关的标准有:
 
 - ANS X9.31;
-- PKCS1;
+- [PKCS1](https://www.cnblogs.com/mengsuenyan/p/13796306.html);
 
 ## [ECDSA数字签名算法](#toc)
 
 相关标准:
 
-- ANS X9.62;
+- [ANS X9.62](https://www.cnblogs.com/mengsuenyan/p/13816789.html);
+
+其它内容**待补充**;
 
 ## [参考资料](#toc)
 
 - FIPS 186-4;
+- FIPS 186-5-draft;
