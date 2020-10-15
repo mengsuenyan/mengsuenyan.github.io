@@ -169,7 +169,7 @@ ZUC主要由LFSR线性反馈移位寄存器, BR比特重组和F非线性函数�
 - $K' = k_0 || k_1 || \dots || K_{32\cdot n - 1}, bitslen(k_i)=1, i\in [0, 32\cdot n - 1]$;
 - $k_{i}^{'} = k_i || k_{i+1} || \dots || k_{i+31}, i\in [0,32\cdot n - 1], bitslen(k_{i}^{'})=32$;
 
-### [ZUCMac哈希值生成](#toc)
+### [ZUCMac消息认证码生成](#toc)
 
 - $T = 0x00000000$;
 - `for i in 0..=(LENGTH-1)`:
