@@ -29,7 +29,7 @@ ZUC主要由LFSR线性反馈移位寄存器, BR比特重组和F非线性函数�
 
 ### [LFSR线性反馈移位寄存器](#toc)
 
-- $s_0, s_1, \dots, s_{15}$为LFSR的16个31位长的寄存器;
+- $s_0, s_1, \dots, s_{15}$为LFSR的16个**31位长**的寄存器(涉及到s寄存器的是按31位处理的, 注意不是32位, 如循环移位是不同的);
 
 #### [LFSR初始化模式](#toc)
 
@@ -51,10 +51,10 @@ ZUC主要由LFSR线性反馈移位寄存器, BR比特重组和F非线性函数�
 ### [BR比特重组](#toc)
 
 - `BitReconstruction()`:
-  - $X_0 = (s_{15} \land 0xffff0000) \lor (s_{14} \land 0x0000ffff)$;
-  - $X_1 = (s_{9} \land 0xffff0000) \lor (s_{11} \land 0x0000ffff)$;
-  - $X_2 = (s_{5} \land 0xffff0000) \lor (s_{7} \land 0x0000ffff)$;
-  - $X_3 = (s_{0} \land 0xffff0000) \lor (s_{2} \land 0x0000ffff)$;
+  - $X_0 = ((s_{15} \land 0x7fff8000) \ll 1) \lor (s_{14} \land 0x0000ffff)$;
+  - $X_1 = ((s_{9} \land 0x7fff8000) \gg 15) \lor ((s_{11} \land 0x0000ffff) \ll 16)$;
+  - $X_2 = ((s_{5} \land 0x7fff8000) \gg 15) \lor ((s_{7} \land 0x0000ffff) \ll 16)$;
+  - $X_3 = ((s_{0} \land 0x7fff8000) \gg 15) \lor ((s_{2} \land 0x0000ffff) \ll 16)$;
 
 ### [F非线性函数](#toc)
 
@@ -62,8 +62,9 @@ ZUC主要由LFSR线性反馈移位寄存器, BR比特重组和F非线性函数�
   - $W = (X_0 \oplus R_1) + R_2 \mod 2^{32}$;
   - $W_1 = R_1 + X_1 \mod 2^{32}$;
   - $W_2 = R_2 \oplus X_2$;;
-  - $R_1 = S(L_1((W_1 \land 0x0000ffff) \lor (W_2 \land 0xffff0000)))$;
-  - $R_2 = S(L_2((W_2 \land 0x0000ffff) \lor (W_1 \land 0xffff0000)))$;
+  - $R_1 = S(L_1(((W_1 \ll 16) \lor (W_2 \gg 16)))$;
+  - $R_2 = S(L_2((W_2 \ll 16) \lor (W_1 \gg 16)))$;
+  - 输出$W$;
 
 - `L_1(X)`:
   - $X\oplus (X \lll 2) \oplus (X\lll 10) \oplus (X \lll 18) \oplus (X \lll 24)$;

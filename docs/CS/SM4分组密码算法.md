@@ -1,5 +1,7 @@
 # [SM4分组密码算法](#toc)
 
+[Rust实现](https://crates.io/crates/rcrypto);
+
 <span id='toc'></span>
 [TOC]
 
@@ -25,8 +27,8 @@
 ### [解密](#toc)
 
 - 记有密文$X= X_0 || X_1 || X_2 || X_3, bitslen(X_i)=32, i\in [0,3]$;
-- `for i in 31..=0`:
-  - $X_i = F(X_i, X_{i+1}, X_{i+2}, X_{i+3}, rk_i)$;
+- `for i in 0..32`:
+  - $X_i = F(X_i, X_{i+1}, X_{i+2}, X_{i+3}, rk_{31-i})$;
 - $X_{35}||X_{34}||X_{33}||X_{32}$;
 
 ### [密钥扩展](#toc)

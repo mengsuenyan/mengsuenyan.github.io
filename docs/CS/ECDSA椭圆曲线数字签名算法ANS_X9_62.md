@@ -5,7 +5,7 @@
 
 ## [符号说明](#toc)
 
-[椭圆加密数学基础](#toc)
+[椭圆加密数学基础](https://www.cnblogs.com/mengsuenyan/p/13156265.html)
 
 - $F_p$: $y^2 = x^3 + ax + b, (4a^3+27b^2)\mod p \ne 0, (x,y)\in F_p$;
 - $F_{2^m}$: $y^2 + xy = x^3 + ax^2+b, b \ne 0, (x,y) \in F_{2^m}$;
