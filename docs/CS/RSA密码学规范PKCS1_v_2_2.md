@@ -147,7 +147,7 @@ $$
 - 检查消息长度是否合规:
   - $len(M) \le (len(n) - 11)$;
 - EME-PKCS1-v1.5编码:
-  - 生成各字节都非0的八位串: $PS,\quad len(PS) = len(n)-len(M)-3$;
+  - 随机生成各字节都非0的八位串: $PS,\quad len(PS) = len(n)-len(M)-3$;
   - $EM = 0x00||0x02||PS||0x00||M$;
 - RSA加密:
   - $m=OS2IP(EM)$;
