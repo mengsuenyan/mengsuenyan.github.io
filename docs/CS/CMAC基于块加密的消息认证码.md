@@ -13,7 +13,7 @@ $$
 & b = Cipher_{K}.block\_size() \\
 & L = Cipher_{K}(0^b) \\
 & K_1 = L \ll 1 \quad if\quad MSB_{1}(L) = 0,\quad otherwise \quad (L \ll 1) \oplus R_{b} \\
-& K_2 = K_1 \ll 1 \quad if\quad MSB_{1}(K_1),\quad otherwise \quad (K_1 \ll 1) \oplus R_{b} \\
+& K_2 = K_1 \ll 1 \quad if\quad MSB_{1}(K_1)=0,\quad otherwise \quad (K_1 \ll 1) \oplus R_{b} \\
 & return \quad (K_1, K_2)
 \end{aligned}
 $$
