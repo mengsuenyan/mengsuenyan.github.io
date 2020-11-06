@@ -225,7 +225,7 @@ $$
 - `EMSA-PSS-Encode(M, emBits)`:
   - 检查消息的长度是否合规:
     - $len(M)$小于Hash函数的最大输入串的长度;
-    - $emLen \le (len(HashVal) + sLen + 2$;
+    - $emLen \ge (len(HashVal) + sLen + 2$;
   - $mHash = Hash(M)$;
   - 随机生成长度为$sLen$的salt字符串;
   - $M' = 0x00||0x00||0x00||0x00||0x00||0x00||0x00||0x00||mHash||salt$;
@@ -243,7 +243,7 @@ $$
 - `EMSA-PSS-Verify(M, EM, emBits)`:
   - 检查消息的长度是否合规:
     - $len(M)$小于Hash函数的最大输入串的长度;
-    - $emLen \le (len(HashVal) + sLen + 2$;
+    - $emLen \ge (len(HashVal) + sLen + 2$;
   - 检查$EM$最右边的字节是否为$0xbc$;
   - $EM = maskedDB || H, len(maskedDB) = emLen - len(HashVal) - 1$;
   - 检查$maskedDB$最左边的$8*emLen - emBits$的各位是否为0;

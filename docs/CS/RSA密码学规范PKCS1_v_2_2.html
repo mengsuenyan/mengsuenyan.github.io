@@ -537,7 +537,7 @@ pre[data-line] .line-highlight[data-end]:after {
 </li>
 <li>EME-PKCS1-v1.5&#x7F16;&#x7801;:
 <ul>
-<li>&#x751F;&#x6210;&#x5404;&#x5B57;&#x8282;&#x90FD;&#x975E;0&#x7684;&#x516B;&#x4F4D;&#x4E32;: <span class="mathjax-exps">$PS,\quad len(PS) = len(n)-len(M)-3$</span>;</li>
+<li>&#x968F;&#x673A;&#x751F;&#x6210;&#x5404;&#x5B57;&#x8282;&#x90FD;&#x975E;0&#x7684;&#x516B;&#x4F4D;&#x4E32;: <span class="mathjax-exps">$PS,\quad len(PS) = len(n)-len(M)-3$</span>;</li>
 <li><span class="mathjax-exps">$EM = 0x00||0x02||PS||0x00||M$</span>;</li>
 </ul>
 </li>
@@ -668,7 +668,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>&#x68C0;&#x67E5;&#x6D88;&#x606F;&#x7684;&#x957F;&#x5EA6;&#x662F;&#x5426;&#x5408;&#x89C4;:
 <ul>
 <li><span class="mathjax-exps">$len(M)$</span>&#x5C0F;&#x4E8E;Hash&#x51FD;&#x6570;&#x7684;&#x6700;&#x5927;&#x8F93;&#x5165;&#x4E32;&#x7684;&#x957F;&#x5EA6;;</li>
-<li><span class="mathjax-exps">$emLen \le (len(HashVal) + sLen + 2$</span>;</li>
+<li><span class="mathjax-exps">$emLen \ge (len(HashVal) + sLen + 2$</span>;</li>
 </ul>
 </li>
 <li><span class="mathjax-exps">$mHash = Hash(M)$</span>;</li>
@@ -693,7 +693,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>&#x68C0;&#x67E5;&#x6D88;&#x606F;&#x7684;&#x957F;&#x5EA6;&#x662F;&#x5426;&#x5408;&#x89C4;:
 <ul>
 <li><span class="mathjax-exps">$len(M)$</span>&#x5C0F;&#x4E8E;Hash&#x51FD;&#x6570;&#x7684;&#x6700;&#x5927;&#x8F93;&#x5165;&#x4E32;&#x7684;&#x957F;&#x5EA6;;</li>
-<li><span class="mathjax-exps">$emLen \le (len(HashVal) + sLen + 2$</span>;</li>
+<li><span class="mathjax-exps">$emLen \ge (len(HashVal) + sLen + 2$</span>;</li>
 </ul>
 </li>
 <li>&#x68C0;&#x67E5;<span class="mathjax-exps">$EM$</span>&#x6700;&#x53F3;&#x8FB9;&#x7684;&#x5B57;&#x8282;&#x662F;&#x5426;&#x4E3A;<span class="mathjax-exps">$0xbc$</span>;</li>
